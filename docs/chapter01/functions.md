@@ -26,7 +26,7 @@ fn cast_technique(name: &str, power: i32) {
 
 fn main() {
     cast_technique(\"術式順転『蒼』\", 1000);
-    cast_technique(\"術式反転『赤』\", 1500);
+    cast_technique(\"術式反転『赫』\", 1500);
     cast_technique(\"虚式『茈』\", 3000);
 }
 ```
@@ -45,7 +45,7 @@ fn get_technique_name(level: i32) -> &'static str {
     if level >= 3000 {
         \"虚式『茈』\"
     } else if level >= 1500 {
-        \"術式反転『赤』\"
+        \"術式反転『赫』\"
     } else {
         \"術式順転『蒼』\"
     }
@@ -269,7 +269,7 @@ fn attack(attacker: &Sorcerer, target: &mut Sorcerer, technique_name: &str) {
 fn calculate_technique_damage(sorcerer: &Sorcerer, technique: &str) -> i32 {
     let base_damage = match technique {
         \"術式順転『蒼』\" => sorcerer.power,
-        \"術式反転『赤』\" => (sorcerer.power as f64 * 1.5) as i32,
+        \"術式反転『赫』\" => (sorcerer.power as f64 * 1.5) as i32,
         \"虚式『茈』\" => sorcerer.power * 2,
         \"無下限呪術『紫』\" => sorcerer.power * 10,
         _ => sorcerer.power / 2,
@@ -407,9 +407,9 @@ fn main() {
 ```rust
 fn combo_technique(tech1: &str, tech2: &str) -> (String, i32) {
     match (tech1, tech2) {
-        (\"蒼\", \"赤\") | (\"赤\", \"蒼\") => (String::from(\"虚式『茈』\"), 3000),
+        (\"蒼\", \"赫\") | (\"赫\", \"蒼\") => (String::from(\"虚式『茈』\"), 3000),
         (\"蒼\", \"蒼\") => (String::from(\"強化『蒼』\"), 1500),
-        (\"赤\", \"赤\") => (String::from(\"強化『赤』\"), 2000),
+        (\"赫\", \"赫\") => (String::from(\"強化『赫』\"), 2000),
         (\"茈\", _) | (_, \"茈\") => (String::from(\"超虚式『茈』\"), 5000),
         _ => (format!(\"{} + {}\", tech1, tech2), 800),
     }
@@ -417,9 +417,9 @@ fn combo_technique(tech1: &str, tech2: &str) -> (String, i32) {
 
 fn main() {
     let combinations = [
-        (\"蒼\", \"赤\"),
+        (\"蒼\", \"赫\"),
         (\"蒼\", \"蒼\"),
-        (\"赤\", \"赤\"),
+        (\"赫\", \"赫\"),
         (\"茈\", \"蒼\"),
         (\"基本\", \"基本\"),
     ];

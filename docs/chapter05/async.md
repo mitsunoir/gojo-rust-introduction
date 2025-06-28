@@ -79,9 +79,9 @@ async fn cast_blue() -> String {
 }
 
 async fn cast_red() -> String {
-    println!("術式反転『赤』詠唱開始...");
+    println!("術式反転『赫』詠唱開始...");
     sleep(Duration::from_millis(1200)).await;
-    "術式反転『赤』発動完了！".to_string()
+    "術式反転『赫』発動完了！".to_string()
 }
 
 async fn cast_hollow() -> String {

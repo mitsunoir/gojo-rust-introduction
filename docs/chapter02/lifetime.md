@@ -73,7 +73,7 @@ fn combine_techniques<'a, 'b>(
 
 fn main() {
     let blue = "蒼";
-    let red = "赤";
+    let red = "赫";
     let combo = combine_techniques(blue, red);
     println!("コンボ: {}", combo);
 }
@@ -165,7 +165,7 @@ fn main() {
     let mut gojo = Sorcerer::new("五条悟");
 
     gojo.add_technique("術式順転『蒼』");
-    gojo.add_technique("術式反転『赤』");
+    gojo.add_technique("術式反転『赫』");
     gojo.add_technique("虚式『茈』");
     gojo.add_technique("無下限呪術『紫』");
 
@@ -377,7 +377,7 @@ impl BattleSimulator {
         // 戦闘シミュレーション
         record.record_technique("術式順転『蒼』");
         record.record_technique("解");
-        record.record_technique("術式反転『赤』");
+        record.record_technique("術式反転『赫』");
         record.record_technique("捌");
         record.record_technique("虚式『茈』");
         record.record_technique("伏魔御廚子");

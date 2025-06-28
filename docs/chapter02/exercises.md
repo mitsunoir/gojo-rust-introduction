@@ -119,7 +119,7 @@ fn main() {
     let techniques = vec![
         String::from(\"術式順転『蒼』\"),
         String::from(\"基本攻撃\"),
-        String::from(\"術式反転『赤』\"),
+        String::from(\"術式反転『赫』\"),
         String::from(\"防御技\"),
     ];
 
@@ -150,7 +150,7 @@ fn main() {
     let techniques = vec![
         String::from(\"術式順転『蒼』\"),
         String::from(\"基本攻撃\"),
-        String::from(\"術式反転『赤』\"),
+        String::from(\"術式反転『赫』\"),
         String::from(\"防御技\"),
     ];
 
@@ -207,7 +207,7 @@ fn main() {
     let mut log = BattleLog::new();
     log.add_entry(String::from(\"五条悟が術式順転『蒼』を使用\"));
     log.add_entry(String::from(\"宿儺が解を発動\"));
-    log.add_entry(String::from(\"五条悟が術式反転『赤』を使用\"));
+    log.add_entry(String::from(\"五条悟が術式反転『赫』を使用\"));
 
     // テスト用コード
 }
@@ -272,7 +272,7 @@ fn main() {
     let mut log = BattleLog::new();
     log.add_entry(String::from(\"五条悟が術式順転『蒼』を使用\"));
     log.add_entry(String::from(\"宿儺が解を発動\"));
-    log.add_entry(String::from(\"五条悟が術式反転『赤』を使用\"));
+    log.add_entry(String::from(\"五条悟が術式反転『赫』を使用\"));
     log.add_entry(String::from(\"虎杖悠仁が黒閃を発動\"));
 
     println!(\"=== 戦闘ログ分析 ===\");
@@ -324,7 +324,7 @@ fn main() {
 fn main() {
     let techniques = [
         \"術式順転『蒼』\",
-        \"術式反転『赤』\",
+        \"術式反転『赫』\",
         \"虚式『茈』\",
         \"無効な技名\",
         \"基本攻撃\",
@@ -423,7 +423,7 @@ fn generate_technique_stats(techniques: &[&str]) -> String {
 fn main() {
     let techniques = [
         \"術式順転『蒼』\",
-        \"術式反転『赤』\",
+        \"術式反転『赫』\",
         \"虚式『茈』\",
         \"無効な技名\",
         \"基本攻撃\",
@@ -500,7 +500,7 @@ fn main() {
     let names = [\"五条悟\", \"両面宿儺\", \"虎杖悠仁\"];
     let grades = [\"特級\", \"特級\", \"1級\"];
     let techniques = [
-        vec![\"無下限呪術\", \"術式順転『蒼』\", \"術式反転『赤』\"],
+        vec![\"無下限呪術\", \"術式順転『蒼』\", \"術式反転『赫』\"],
         vec![\"解\", \"捌\", \"伏魔御廚子\"],
         vec![\"黒閃\", \"発散\"],
     ];
@@ -655,7 +655,7 @@ fn main() {
     let mut gojo = SorcererRef::new(names[0], grades[0]);
     gojo.add_technique(\"無下限呪術\");
     gojo.add_technique(\"術式順転『蒼』\");
-    gojo.add_technique(\"術式反転『赤』\");
+    gojo.add_technique(\"術式反転『赫』\");
     gojo.add_technique(\"虚式『茈』\");
     database.add_sorcerer(gojo);
 

@@ -169,7 +169,7 @@ fn main() {
     println!(\"全体: {}\", full_slice);
 
     // 文字列リテラルは&str型
-    let literal: &str = \"術式反転『赤』\";
+    let literal: &str = \"術式反転『赫』\";
     println!(\"リテラル: {}\", literal);
 }
 ```
@@ -185,7 +185,7 @@ fn analyze_technique_name(name: &str) -> usize {
 fn get_technique_grade(name: &str) -> &str {
     if name.contains(\"茈\") {
         \"特級\"
-    } else if name.contains(\"蒼\") || name.contains(\"赤\") {
+    } else if name.contains(\"蒼\") || name.contains(\"赫\") {
         \"上級\"
     } else {
         \"基本\"

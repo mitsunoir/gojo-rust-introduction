@@ -51,7 +51,7 @@ fn main() {
 
 !!! tip "シャドーイングの利点"
     シャドーイングを使えば、同じ名前で違う型の値を扱える。
-    俺の術式も「蒼」→「赤」→「茈」と進化するように、変数も段階的に進化させられる。
+    俺の術式も「蒼」→「赫」→「茈」と進化するように、変数も段階的に進化させられる。
 
 ## 型アノテーション - 術式の詳細指定
 
@@ -130,7 +130,7 @@ fn main() {
 ```rust
 fn main() {
     // 固定長配列
-    let techniques = [\"蒼\", \"赤\", \"茈\"];
+    let techniques = [\"蒼\", \"赫\", \"茈\"];
     let power_levels = [1000, 1500, 3000];
 
     // 型と長さを明示
@@ -152,7 +152,7 @@ fn main() {
 
 ```rust
 fn main() {
-    let techniques = [\"蒼\", \"赤\", \"茈\", \"紫\"];
+    let techniques = [\"蒼\", \"赫\", \"茈\", \"紫\"];
 
     // インデックス付きループ
     for i in 0..techniques.len() {
@@ -203,7 +203,7 @@ fn main() {
 
 ```rust
 fn main() {
-    let mut techniques = vec![\"蒼\", \"赤\"];
+    let mut techniques = vec![\"蒼\", \"赫\"];
 
     // 要素の追加
     techniques.push(\"茈\");
@@ -325,7 +325,7 @@ fn main() {
 
 ```rust
 fn main() {
-    let techniques = [1000, 1500, 3000];  // 蒼、赤、茈の威力
+    let techniques = [1000, 1500, 3000];  // 蒼、赫、茈の威力
     let mut total_power = 0;
 
     for power in techniques.iter() {

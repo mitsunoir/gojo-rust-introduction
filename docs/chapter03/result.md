@@ -153,7 +153,7 @@ impl Sorcerer {
 fn main() {
     let mut gojo = Sorcerer::new(\"五条悟\", 3000);
     gojo.add_technique(\"術式順転『蒼』\".to_string());
-    gojo.add_technique(\"術式反転『赤』\".to_string());
+    gojo.add_technique(\"術式反転『赫』\".to_string());
 
     // 成功例
     match gojo.use_technique(\"術式順転『蒼』\", 500) {

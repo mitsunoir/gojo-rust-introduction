@@ -54,7 +54,7 @@ fn cast_advanced_technique(
     // 呪力チェック
     let required_power = match technique {
         \"蒼\" => 500,
-        \"赤\" => 800,
+        \"赫\" => 800,
         \"茈\" => 1500,
         \"紫\" => 3000,
         _ => return Err(SorceryError::TechniqueNotFound(technique.to_string())),
@@ -78,7 +78,7 @@ fn cast_advanced_technique(
 fn main() {
     let test_cases = [
         (2000, \"蒼\", \"呪霊A\"),
-        (300, \"赤\", \"呪霊B\"),
+        (300, \"赫\", \"呪霊B\"),
         (1000, \"未知の術式\", \"呪霊C\"),
         (2000, \"茈\", \"\"),
     ];

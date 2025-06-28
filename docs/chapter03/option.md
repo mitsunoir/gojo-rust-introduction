@@ -2,7 +2,7 @@
 
 ## 反転術式の概念 - エラーを力に変える
 
-さあ、いよいよ反転術式の習得だ。俺の術式反転『赤』が引力を斥力に変えるように、Rustでは失敗や不在を安全に扱う技術がある。
+さあ、いよいよ反転術式の習得だ。俺の術式反転『赫』が引力を斥力に変えるように、Rustでは失敗や不在を安全に扱う技術がある。
 
 従来の言語では、値が存在しない場合に`null`や`undefined`を使っていた。でもこれは呪いのようなもので、予期しないクラッシュを引き起こす。Rustは違う。**Option型**で安全に「値があるかもしれない」状況を表現する。
 
@@ -61,7 +61,7 @@ fn main() {
 fn find_technique_power(technique_name: &str) -> Option<i32> {
     match technique_name {
         \"蒼\" => Some(1000),
-        \"赤\" => Some(1500),
+        \"赫\" => Some(1500),
         \"茈\" => Some(3000),
         \"紫\" => Some(9999),
         _ => None,  // 未知の技
@@ -116,7 +116,7 @@ fn get_power_level(power: Option<i32>) -> String {
 fn main() {
     let techniques = [
         (\"蒼\", Some(1000)),
-        (\"赤\", Some(1500)),
+        (\"赫\", Some(1500)),
         (\"茈\", Some(3000)),
         (\"未知\", None),
     ];
@@ -274,7 +274,7 @@ fn main() {
 fn get_technique_power(name: &str) -> Option<i32> {
     match name {
         \"蒼\" => Some(1000),
-        \"赤\" => Some(1500),
+        \"赫\" => Some(1500),
         \"茈\" => Some(3000),
         _ => None,
     }
@@ -471,7 +471,7 @@ fn main() {
     let mut gojo = Sorcerer::new(\"五条悟\", \"特級\", 3000);
     gojo.add_technique(\"無下限呪術\".to_string());
     gojo.add_technique(\"術式順転『蒼』\".to_string());
-    gojo.add_technique(\"術式反転『赤』\".to_string());
+    gojo.add_technique(\"術式反転『赫』\".to_string());
 
     let mut sukuna = Sorcerer::new(\"両面宿儺\", \"特級\", 2800);
     sukuna.add_technique(\"解\".to_string());

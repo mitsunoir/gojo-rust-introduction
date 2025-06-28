@@ -187,7 +187,7 @@ fn main() {
 
     // 技の習得
     gojo.learn_technique(String::from(\"術式順転『蒼』\"));
-    gojo.learn_technique(String::from(\"術式反転『赤』\"));
+    gojo.learn_technique(String::from(\"術式反転『赫』\"));
     gojo.learn_technique(String::from(\"虚式『茈』\"));
 
     megumi.learn_technique(String::from(\"玉犬\"));
@@ -345,7 +345,7 @@ fn combine_techniques(mut tech1: Vec<String>, mut tech2: Vec<String>) -> Vec<Str
 fn main() {
     let gojo_techniques = vec![
         String::from(\"術式順転『蒼』\"),
-        String::from(\"術式反転『赤』\")
+        String::from(\"術式反転『赫』\")
     ];
 
     let megumi_techniques = vec![

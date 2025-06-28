@@ -484,7 +484,7 @@ impl Ability for BlackFlash {
 fn main() {
     let abilities: Vec<Box<dyn Ability>> = vec![
         Box::new(Limitless::new("蒼")),
-        Box::new(Limitless::new("赤")),
+        Box::new(Limitless::new("赫")),
         Box::new(BlackFlash),
     ];
 

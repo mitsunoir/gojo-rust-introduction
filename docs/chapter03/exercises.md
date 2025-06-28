@@ -238,7 +238,7 @@ struct TechniqueDatabase {
 fn main() {
     let techniques = vec![
         TechniqueInfo { name: \"蒼\".to_string(), power: 1000, element: \"無下限\".to_string() },
-        TechniqueInfo { name: \"赤\".to_string(), power: 1500, element: \"無下限\".to_string() },
+        TechniqueInfo { name: \"赫\".to_string(), power: 1500, element: \"無下限\".to_string() },
         TechniqueInfo { name: \"茈\".to_string(), power: 3000, element: \"無下限\".to_string() },
     ];
 
@@ -311,7 +311,7 @@ impl TechniqueDatabase {
         let power2 = self.get_power(tech2)?;
 
         let (combo_power, combo_name) = match (tech1, tech2) {
-            (\"蒼\", \"赤\") | (\"赤\", \"蒼\") => {
+            (\"蒼\", \"赫\") | (\"赫\", \"蒼\") => {
                 (power1 + power2 + 500, \"虚式『茈』\".to_string())
             },
             (a, b) if a == b => {
@@ -349,7 +349,7 @@ impl TechniqueDatabase {
 fn main() {
     let techniques = vec![
         TechniqueInfo { name: \"蒼\".to_string(), power: 1000, element: \"無下限\".to_string() },
-        TechniqueInfo { name: \"赤\".to_string(), power: 1500, element: \"無下限\".to_string() },
+        TechniqueInfo { name: \"赫\".to_string(), power: 1500, element: \"無下限\".to_string() },
         TechniqueInfo { name: \"茈\".to_string(), power: 3000, element: \"無下限\".to_string() },
         TechniqueInfo { name: \"黒閃\".to_string(), power: 800, element: \"物理\".to_string() },
     ];
@@ -359,7 +359,7 @@ fn main() {
     println!(\"=== Option型チェーン操作システム ===\");
 
     // 1. 基本的な威力取得
-    let techniques_to_test = [\"蒼\", \"赤\", \"存在しない術式\"];
+    let techniques_to_test = [\"蒼\", \"赫\", \"存在しない術式\"];
     for tech in techniques_to_test.iter() {
         match db.get_power(tech) {
             Some(power) => println!(\"✓ {}: 威力 {}\", tech, power),
@@ -379,8 +379,8 @@ fn main() {
     // 3. 合計威力計算
     println!(\"\\n=== 合計威力計算 ===\");
     let combos = vec![
-        vec![\"蒼\", \"赤\"],
-        vec![\"蒼\", \"赤\", \"茈\"],
+        vec![\"蒼\", \"赫\"],
+        vec![\"蒼\", \"赫\", \"茈\"],
         vec![\"蒼\", \"存在しない術式\"],
     ];
 
@@ -398,7 +398,7 @@ fn main() {
     // 4. コンボ効果計算
     println!(\"\\n=== コンボ効果分析 ===\");
     let combo_pairs = vec![
-        (\"蒼\", \"赤\"),
+        (\"蒼\", \"赫\"),
         (\"蒼\", \"蒼\"),
         (\"茈\", \"黒閃\"),
     ];
@@ -418,7 +418,7 @@ fn main() {
 
     for level in user_levels.iter() {
         println!(\"\\nユーザーレベル: {}\", level);
-        for (tech1, tech2) in [(\"蒼\", \"赤\"), (\"茈\", \"黒閃\")].iter() {
+        for (tech1, tech2) in [(\"蒼\", \"赫\"), (\"茈\", \"黒閃\")].iter() {
             match db.analyze_combo_viability(tech1, tech2, *level) {
                 Some(analysis) => println!(\"  {}\", analysis),
                 None => println!(\"  {}/{}: 分析失敗\", tech1, tech2),
