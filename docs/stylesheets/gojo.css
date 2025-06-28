@@ -1,0 +1,131 @@
+/* 五条悟風スタイル */
+:root {
+  --gojo-blue: #0066ff;
+  --gojo-cyan: #00ccff;
+  --gojo-white: #ffffff;
+  --gojo-black: #000000;
+  --gojo-purple: #6644ff;
+}
+
+/* ヘッダーを五条悟のサングラス風に */
+.md-header {
+  background: linear-gradient(135deg, var(--gojo-blue), var(--gojo-cyan));
+  box-shadow: 0 2px 10px rgba(0, 102, 255, 0.3);
+}
+
+/* ナビゲーション */
+.md-tabs__link {
+  color: var(--gojo-white) !important;
+  font-weight: bold;
+}
+
+.md-tabs__link--active {
+  color: var(--gojo-cyan) !important;
+  text-shadow: 0 0 5px var(--gojo-cyan);
+}
+
+/* コードブロック */
+.highlight {
+  border-left: 4px solid var(--gojo-blue);
+  background: rgba(0, 102, 255, 0.05);
+}
+
+/* 警告ボックス（術式説明用） */
+.admonition {
+  border-left: 4px solid var(--gojo-purple);
+  background: rgba(102, 68, 255, 0.05);
+}
+
+.admonition.note {
+  border-left-color: var(--gojo-blue);
+  background: rgba(0, 102, 255, 0.05);
+}
+
+.admonition.tip {
+  border-left-color: var(--gojo-cyan);
+  background: rgba(0, 204, 255, 0.05);
+}
+
+/* 見出し */
+h1 {
+  color: var(--gojo-blue);
+  text-shadow: 0 0 10px rgba(0, 102, 255, 0.3);
+  border-bottom: 2px solid var(--gojo-blue);
+}
+
+h2 {
+  color: var(--gojo-purple);
+}
+
+/* リンク */
+a {
+  color: var(--gojo-blue);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--gojo-cyan);
+  text-shadow: 0 0 5px var(--gojo-cyan);
+}
+
+/* ボタン */
+.md-button {
+  background: linear-gradient(135deg, var(--gojo-blue), var(--gojo-cyan));
+  color: var(--gojo-white) !important;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.md-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 102, 255, 0.4);
+}
+
+/* 検索ボックス */
+.md-search__input {
+  border: 2px solid var(--gojo-blue);
+  border-radius: 20px;
+}
+
+/* サイドバー */
+.md-nav__link--active {
+  color: var(--gojo-blue) !important;
+  font-weight: bold;
+}
+
+/* 五条悟の無下限術式風エフェクト */
+@keyframes infinity-effect {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.infinity-effect {
+  animation: infinity-effect 2s ease-in-out infinite;
+}
+
+/* 練習問題用のスタイル */
+.exercise {
+  background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 204, 255, 0.1));
+  border: 2px solid var(--gojo-blue);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.solution {
+  background: rgba(102, 68, 255, 0.1);
+  border: 2px solid var(--gojo-purple);
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px 0;
+}
+
+/* 術式名のスタイル */
+.jutsu-name {
+  color: var(--gojo-purple);
+  font-weight: bold;
+  font-size: 1.2em;
+  text-shadow: 0 0 5px rgba(102, 68, 255, 0.5);
+}

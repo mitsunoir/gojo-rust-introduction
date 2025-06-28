@@ -1,0 +1,88 @@
+site_name: "最強の呪術師への道 - Rust完全習得指南書"
+site_description: "五条悟先生直伝！プログラミング言語Rustで最強を目指す入門書"
+site_author: "五条悟"
+site_url: https://mitsunoir.github.io/gojo-rust-introduction/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - content.code.annotate
+    - content.code.copy
+  font:
+    text: Noto Sans JP
+    code: JetBrains Mono
+
+nav:
+  - はじめに: index.md
+  - 第1章 術式習得編（基本文法）:
+      - 基本的な術式: chapter01/basics.md
+      - 変数と型: chapter01/variables.md
+      - 制御構文: chapter01/control.md
+      - 関数: chapter01/functions.md
+      - 練習問題: chapter01/exercises.md
+  - 第2章 呪力操作編（所有権・借用）:
+      - 所有権システム: chapter02/ownership.md
+      - 借用と参照: chapter02/borrowing.md
+      - ライフタイム: chapter02/lifetime.md
+      - 練習問題: chapter02/exercises.md
+  - 第3章 反転術式編（エラーハンドリング）:
+      - Option型: chapter03/option.md
+      - Result型: chapter03/result.md
+      - エラー処理: chapter03/error_handling.md
+      - 練習問題: chapter03/exercises.md
+  - 第4章 領域展開編（ジェネリクス・トレイト）:
+      - ジェネリクス: chapter04/generics.md
+      - トレイト: chapter04/traits.md
+      - 高度なトレイト: chapter04/advanced_traits.md
+      - 練習問題: chapter04/exercises.md
+  - 第5章 無下限呪術編（非同期・マクロ）:
+      - 非同期プログラミング: chapter05/async.md
+      - マクロ: chapter05/macros.md
+      - 最強への道: chapter05/mastery.md
+      - 最終練習問題: chapter05/final_exercises.md
+
+plugins:
+  - search:
+      lang: ja
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+extra_css:
+  - stylesheets/gojo.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/
