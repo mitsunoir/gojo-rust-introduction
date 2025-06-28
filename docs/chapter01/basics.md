@@ -18,7 +18,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 !!! note "五条先生のアドバイス"
     これでRustのツールチェーン一式がインストールされる。`rustc`（コンパイラ）、`cargo`（パッケージマネージャー）、`rustup`（ツール管理）が使えるようになる。
-    
+
     俺の無下限術式みたいに、一度セットアップすれば後は楽勝だ。
 
 ### 最初のプログラム - 「Hello, 最強!」
@@ -70,19 +70,19 @@ fn saikyou_technique() {
 
 ## 文と式 - 術式の構造
 
-Rustには**文（Statement）**と**式（Expression）**がある。これを理解するのは重要だ。
+Rustには\*\*文（Statement）**と**式（Expression）\*\*がある。これを理解するのは重要だ。
 
 ```rust
 fn main() {
     // 文（Statement）- 値を返さない
     let x = 5;  // 変数宣言文
-    
+
     // 式（Expression）- 値を返す
     let y = {
         let inner = 3;
         inner + 1  // セミコロンがない！これが式の値になる
     }; // yは4になる
-    
+
     println!(\"x: {}, y: {}\", x, y);
 }
 ```
@@ -90,7 +90,7 @@ fn main() {
 !!! note "式と文の違い"
     - **文**：処理を実行するが値を返さない（セミコロンで終わる）
     - **式**：値を評価して返す（セミコロンがない）
-    
+
     俺の術式で例えると、「術式順転『青』」の発動は文で、その威力の計算は式だ。
 
 ## 基本的なデータ型 - 呪力の種類
@@ -101,10 +101,10 @@ fn main() {
 fn main() {
     let power_level: i32 = 999999;  // 32ビット符号付き整数
     let curse_count: u64 = 1000000000;  // 64ビット符号なし整数
-    
+
     // 型推論も使える
     let small_power = 100;  // デフォルトはi32
-    
+
     println!(\"俺の呪力レベル: {}\", power_level);
 }
 ```
@@ -115,7 +115,7 @@ fn main() {
 fn main() {
     let precision: f64 = 99.999;  // 64ビット浮動小数点
     let speed: f32 = 299792458.0;  // 32ビット浮動小数点
-    
+
     println!(\"術式の精度: {}%\", precision);
 }
 ```
@@ -126,7 +126,7 @@ fn main() {
 fn main() {
     let is_saikyou = true;
     let has_limits = false;
-    
+
     if is_saikyou && !has_limits {
         println!(\"俺は最強だ\");
     }
@@ -139,7 +139,7 @@ fn main() {
 fn main() {
     let technique = '青';  // Unicodeスカラー値
     let symbol = '∞';      // 無下限のシンボル
-    
+
     println!(\"術式: {}\", technique);
 }
 ```
@@ -150,11 +150,11 @@ fn main() {
 fn main() {
     // 文字列スライス（&str）- 不変
     let greeting = \"やあやあ\";
-    
+
     // String型 - 可変長、ヒープに保存
     let mut technique_name = String::from(\"術式順転\");
     technique_name.push_str(\"『青』\");
-    
+
     println!(\"{}: {}\", greeting, technique_name);
 }
 ```
@@ -166,19 +166,19 @@ fn main() {
     // 算術演算
     let base_power = 1000;
     let multiplier = 10;
-    
+
     let total_power = base_power + multiplier * 100;  // 2000
     let remaining = total_power % 300;                // 200
-    
+
     // 論理演算
     let is_strongest = true;
     let has_limitless = true;
     let is_gojo = is_strongest && has_limitless;
-    
+
     // 比較演算
     let enemy_power = 500;
     let can_defeat = total_power > enemy_power;
-    
+
     println!(\"呪力: {}, 敵を倒せる: {}\", total_power, can_defeat);
 }
 ```
@@ -189,12 +189,12 @@ fn main() {
 fn main() {
     let power_i32: i32 = 1000;
     let power_f64 = power_i32 as f64;  // 明示的な型変換
-    
+
     // 文字列から数値への変換
     let power_str = \"9999\";
     let power_from_str: i32 = power_str.parse()
         .expect(\"数値変換に失敗しました\");
-    
+
     println!(\"変換された呪力: {}\", power_from_str);
 }
 ```
@@ -223,12 +223,12 @@ fn main() {
 覚えておくべき重要なポイント：
 
 1. **型システム** - Rustは型に厳格。でもそれが安全性を保証してくれる
-2. **式と文** - セミコロンの有無で意味が変わる
-3. **型推論** - 明示しなくてもコンパイラが推論してくれる
-4. **不変性** - デフォルトで値は不変（`mut`で可変にできる）
+1. **式と文** - セミコロンの有無で意味が変わる
+1. **型推論** - 明示しなくてもコンパイラが推論してくれる
+1. **不変性** - デフォルトで値は不変（`mut`で可変にできる）
 
 次は変数と可変性について学んでいこう。俺の術式もそうだけど、時には変化が必要なんだ。
 
----
+______________________________________________________________________
 
 *「基礎をしっかり固めることが、最強への第一歩だ」*

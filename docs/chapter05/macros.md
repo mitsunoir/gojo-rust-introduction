@@ -51,11 +51,11 @@ macro_rules! sorcerer_info {
 fn main() {
     // 基本的な使用
     technique_announce!();
-    
+
     // パラメータ付き
     cast_technique!("無下限術式");
     cast_technique!("黒閃", 1500);
-    
+
     // 複雑なパターン
     println!("{}", sorcerer_info!("五条悟"));
     println!("{}", sorcerer_info!("虎杖悠仁", grade => "1級"));
@@ -115,13 +115,13 @@ macro_rules! technique_combinations {
 fn main() {
     // 術式リストの作成
     let techniques = create_technique_list![
-        "無下限術式", 
-        "黒閃", 
-        "十種影法術", 
+        "無下限術式",
+        "黒閃",
+        "十種影法術",
         "共鳴"
     ];
     println!("術式一覧: {:?}", techniques);
-    
+
     // 呪術師の定義
     let sorcerers = define_sorcerers![
         ("五条悟", 3000),
@@ -130,7 +130,7 @@ fn main() {
         ("釘崎野薔薇", 900)
     ];
     println!("呪術師と呪力: {:?}", sorcerers);
-    
+
     // 複雑な組み合わせ
     let combinations = technique_combinations![
         gojo: ["無下限術式", "領域展開"],
@@ -158,7 +158,7 @@ macro_rules! define_sorcerer_struct {
                 $field_name: $field_type,
             )*
         }
-        
+
         impl $name {
             fn new() -> Self {
                 $name {
@@ -167,14 +167,14 @@ macro_rules! define_sorcerer_struct {
                     )*
                 }
             }
-            
+
             // Getter methods
             $(
                 paste::paste! {
                     fn [<get_ $field_name>](&self) -> &$field_type {
                         &self.$field_name
                     }
-                    
+
                     fn [<set_ $field_name>](&mut self, value: $field_type) {
                         self.$field_name = value;
                     }
@@ -182,7 +182,7 @@ macro_rules! define_sorcerer_struct {
             )*
         }
     };
-    
+
     // デフォルト値のヘルパー
     (@default $type:ty, $default:expr) => { $default };
     (@default String) => { String::new() };
@@ -215,16 +215,16 @@ macro_rules! battle_scenario {
     ) => {
         {
             use std::collections::HashMap;
-            
+
             // 戦闘者の初期化
             let mut fighters = HashMap::new();
             $(
                 fighters.insert(stringify!($fighter).to_string(), $power);
             )*
-            
+
             println!("=== 戦闘シナリオ開始 ===");
             println!("参戦者: {:?}", fighters);
-            
+
             // ラウンド実行
             $(
                 println!("\n--- ラウンド {} ---", $round_num);
@@ -232,40 +232,40 @@ macro_rules! battle_scenario {
                     battle_scenario!(@action $action, fighters, $actor $(, $target)? $(, $value)?);
                 )*
             )*
-            
+
             println!("\n=== 戦闘結果 ===");
             for (name, power) in &fighters {
                 println!("{}: 残り呪力 {}", name, power);
             }
-            
+
             fighters
         }
     };
-    
+
     // アクションの実行
     (@action attack, $fighters:ident, $actor:ident, $target:ident, $damage:expr) => {
         let actor_name = stringify!($actor);
         let target_name = stringify!($target);
-        
+
         if let Some(target_power) = $fighters.get_mut(target_name) {
             *target_power = (*target_power - $damage).max(0);
             println!("{}が{}を攻撃！{}ダメージ", actor_name, target_name, $damage);
         }
     };
-    
+
     (@action heal, $fighters:ident, $actor:ident, $amount:expr) => {
         let actor_name = stringify!($actor);
-        
+
         if let Some(power) = $fighters.get_mut(actor_name) {
             *power += $amount;
             println!("{}が回復！+{}", actor_name, $amount);
         }
     };
-    
+
     (@action special, $fighters:ident, $actor:ident, $target:ident, $damage:expr) => {
         let actor_name = stringify!($actor);
         let target_name = stringify!($target);
-        
+
         if let Some(target_power) = $fighters.get_mut(target_name) {
             let actual_damage = $damage * 2; // 特殊攻撃は2倍
             *target_power = (*target_power - actual_damage).max(0);
@@ -289,31 +289,31 @@ impl_display_for_sorcerer!(Sorcerer, "呪術師: {} (呪力: {})", self.name, se
 
 fn main() {
     println!("=== 高度なマクロデモ ===");
-    
+
     // 戦闘シナリオの実行
     let result = battle_scenario! {
         fighters: [gojo: 3000, sukuna: 2800, yuji: 1200],
         rounds: 3,
-        
+
         round 1 => {
             attack(gojo, sukuna, 500);
             attack(sukuna, gojo, 600);
             heal(yuji, 200)
         }
-        
+
         round 2 => {
             special(gojo, sukuna, 400);
             attack(sukuna, yuji, 300);
             attack(yuji, sukuna, 250)
         }
-        
+
         round 3 => {
             special(sukuna, gojo, 450);
             special(gojo, sukuna, 500);
             heal(gojo, 100)
         }
     };
-    
+
     // 勝者の判定
     let winner = result.iter().max_by_key(|(_, power)| *power);
     if let Some((name, power)) = winner {
@@ -340,19 +340,19 @@ use syn::{parse_macro_input, DeriveInput};
 pub fn sorcerer_info_derive(input: TokenStream) -> TokenStream {
     let input = parse_macro_input!(input as DeriveInput);
     let name = input.ident;
-    
+
     let expanded = quote! {
         impl #name {
             fn sorcerer_type(&self) -> &'static str {
                 stringify!(#name)
             }
-            
+
             fn power_level(&self) -> String {
                 format!("{}の呪力レベル", stringify!(#name))
             }
         }
     };
-    
+
     TokenStream::from(expanded)
 }
 
@@ -361,10 +361,10 @@ pub fn sorcerer_info_derive(input: TokenStream) -> TokenStream {
 pub fn technique_log(args: TokenStream, input: TokenStream) -> TokenStream {
     let input_fn = parse_macro_input!(input as syn::ItemFn);
     let fn_name = &input_fn.sig.ident;
-    
+
     let expanded = quote! {
         #input_fn
-        
+
         // ログ付きのラッパー関数を生成
         paste::paste! {
             pub fn [<logged_ #fn_name>]() {
@@ -374,7 +374,7 @@ pub fn technique_log(args: TokenStream, input: TokenStream) -> TokenStream {
             }
         }
     };
-    
+
     TokenStream::from(expanded)
 }
 */
@@ -400,7 +400,7 @@ macro_rules! simulate_proc_macro {
             fn sorcerer_type(&self) -> &'static str {
                 stringify!($struct_name)
             }
-            
+
             fn power_level(&self) -> String {
                 format!("{}の呪力レベル", stringify!($struct_name))
             }
@@ -421,7 +421,7 @@ fn main() {
         name: "五条悟".to_string(),
         power: 3000,
     };
-    
+
     println!("種類: {}", sorcerer.sorcerer_type());
     println!("レベル: {}", sorcerer.power_level());
 }
@@ -447,7 +447,7 @@ macro_rules! generate_power_tests {
                     "{}の呪力{}が期待範囲[{}, {}]外です",
                     sorcerer.name, power, $expected_min, $expected_max
                 );
-                println!("✓ {}: 呪力{} (範囲: {}-{})", 
+                println!("✓ {}: 呪力{} (範囲: {}-{})",
                         sorcerer.name, power, $expected_min, $expected_max);
             }
         )*
@@ -464,22 +464,22 @@ macro_rules! generate_technique_benchmarks {
         $(
             fn $bench_name() {
                 use std::time::Instant;
-                
+
                 let iterations = 1000;
                 let start = Instant::now();
-                
+
                 for _ in 0..iterations {
                     let _ = $technique();
                 }
-                
+
                 let duration = start.elapsed();
                 let avg_time = duration.as_nanos() / iterations;
-                
-                println!("ベンチマーク {}: 平均実行時間 {}ns", 
+
+                println!("ベンチマーク {}: 平均実行時間 {}ns",
                         stringify!($bench_name), avg_time);
             }
         )*
-        
+
         pub fn run_all_benchmarks() {
             println!("=== 術式ベンチマーク実行 ===");
             $(
@@ -505,7 +505,7 @@ impl TestSorcerer {
             multiplier,
         }
     }
-    
+
     fn calculate_power(&self) -> i32 {
         (self.base_power as f32 * self.multiplier) as i32
     }
@@ -544,15 +544,15 @@ generate_technique_benchmarks! {
 
 fn main() {
     println!("=== マクロ生成テスト実行 ===");
-    
+
     // 手動でテストを実行（通常は cargo test で実行）
     test_gojo_power();
     test_yuji_power();
     test_megumi_power();
     test_nobara_power();
-    
+
     println!();
-    
+
     // ベンチマーク実行
     run_all_benchmarks();
 }
@@ -577,7 +577,7 @@ macro_rules! feature_dependent_code {
     (async: $async_code:block, sync: $sync_code:block) => {
         #[cfg(feature = "async")]
         $async_code
-        
+
         #[cfg(not(feature = "async"))]
         $sync_code
     };
@@ -591,13 +591,13 @@ macro_rules! platform_specific {
             println!("Windows版呪術システム起動");
             "windows_technique"
         }
-        
+
         #[cfg(target_os = "linux")]
         {
             println!("Linux版呪術システム起動");
             "linux_technique"
         }
-        
+
         #[cfg(target_os = "macos")]
         {
             println!("macOS版呪術システム起動");
@@ -608,10 +608,10 @@ macro_rules! platform_specific {
 
 fn main() {
     debug_technique!("五条悟の術式を{}で実行", "デバッグモード");
-    
+
     let platform_technique = platform_specific!();
     println!("プラットフォーム固有術式: {}", platform_technique);
-    
+
     feature_dependent_code! {
         async: {
             println!("非同期機能が有効です");
@@ -632,7 +632,7 @@ macro_rules! recursive_technique_chain {
     ($technique:expr) => {
         println!("最終術式: {}", $technique);
     };
-    
+
     // 再帰ケース
     ($first:expr, $($rest:expr),+) => {
         println!("術式実行: {}", $first);
@@ -647,16 +647,16 @@ macro_rules! counted_execution {
             println!("実行 {}/{}: {}", $count, $max, $technique);
         }
     };
-    
+
     ($technique:expr, $times:expr) => {
         counted_execution!(@generate 1, $times, $technique);
     };
-    
+
     (@generate $current:expr, $max:expr, $technique:expr) => {
         counted_execution!(@step $current, $max, $technique);
         counted_execution!(@increment $current, $max, $technique);
     };
-    
+
     (@increment $current:expr, $max:expr, $technique:expr) => {
         if $current < $max {
             counted_execution!(@generate $current + 1, $max, $technique);
@@ -689,21 +689,21 @@ macro_rules! generate_power_levels {
 
 fn main() {
     println!("=== 高度なマクロテクニック ===");
-    
+
     // 再帰チェーン
     println!("\n--- 術式チェーン ---");
     recursive_technique_chain!(
-        "無下限術式", 
-        "術式順転『青』", 
-        "術式反転『赤』", 
+        "無下限術式",
+        "術式順転『青』",
+        "術式反転『赤』",
         "虚式『茈』"
     );
-    
+
     // 呪力レベル生成
     println!("\n--- 呪力レベル計算 ---");
     let power_levels = generate_power_levels!(1000; 1, 2, 3, 5, 8);
     println!("呪力レベル: {:?}", power_levels);
-    
+
     // コンパイル時フィボナッチ（小さい値のみ）
     println!("\n--- コンパイル時計算 ---");
     const FIB_5: i32 = compile_time_fibonacci!(5);
@@ -747,7 +747,7 @@ macro_rules! measure_time {
             result
         }
     };
-    
+
     ($name:expr, $operation:expr) => {
         {
             let start = std::time::Instant::now();
@@ -768,7 +768,7 @@ macro_rules! optimized_technique {
             println!("⚡ 最適化版術式実行: {}", $technique);
             $technique.to_uppercase()
         }
-        
+
         #[cfg(not(feature = "optimized"))]
         {
             // 通常版
@@ -785,20 +785,20 @@ fn expensive_operation() -> i32 {
 
 fn main() {
     println!("=== マクロのデバッグと最適化 ===");
-    
+
     // デバッグ展開
     let result = debug_expand! {
         5 + 3 * 2
     };
     println!("計算結果: {}", result);
-    
+
     // 時間計測
     measure_time!("高コスト術式", expensive_operation());
-    
+
     // 最適化の例
     let optimized_result = optimized_technique!("無下限術式");
     println!("最適化結果: {}", optimized_result);
-    
+
     // 安全な除算（コンパイル時エラーチェック）
     // safe_division!(10, 0); // これはコンパイルエラーになる
     let safe_result = safe_division!(10, 2);
@@ -811,10 +811,10 @@ fn main() {
 マクロの力をマスターできたか？重要なポイント：
 
 1. **宣言マクロ** - `macro_rules!`による構文レベルの抽象化
-2. **手続きマクロ** - コンパイル時のコード生成
-3. **パターンマッチング** - 柔軟な入力処理
-4. **再帰と条件分岐** - 複雑なロジックの実装
-5. **コンパイル時最適化** - 実行時コストゼロの抽象化
+1. **手続きマクロ** - コンパイル時のコード生成
+1. **パターンマッチング** - 柔軟な入力処理
+1. **再帰と条件分岐** - 複雑なロジックの実装
+1. **コンパイル時最適化** - 実行時コストゼロの抽象化
 
 これで現実改変の力を手に入れた。俺の「無量空処」を超えて、**コードという現実そのものを思いのままに操れる**ようになったな。
 
@@ -822,6 +822,6 @@ fn main() {
 
 次は最強への道を学ぼう。これまでの全ての技術を統合した、真の最強プログラマーになるための最終章だ。
 
----
+______________________________________________________________________
 
 *「マクロを極めれば、コードの神となれる」*

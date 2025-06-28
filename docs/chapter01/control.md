@@ -10,7 +10,7 @@
 fn main() {
     let enemy_power = 1500;
     let my_power = 2000;
-    
+
     if my_power > enemy_power {
         println!(\"楽勝だね\");
     } else if my_power == enemy_power {
@@ -29,7 +29,7 @@ fn main() {
 ```rust
 fn main() {
     let enemy_type = \"特級呪霊\";
-    
+
     let technique = if enemy_type == \"特級呪霊\" {
         \"術式順転『青』\"
     } else if enemy_type == \"偽夏油\" {
@@ -37,13 +37,13 @@ fn main() {
     } else {
         \"基本術式\"
     };
-    
+
     println!(\"使用する技: {}\", technique);
-    
+
     // 数値での例
     let power_level = 1000;
     let damage = if power_level > 500 { power_level * 2 } else { power_level };
-    
+
     println!(\"ダメージ: {}\", damage);
 }
 ```
@@ -57,7 +57,7 @@ fn main() {
 ```rust
 fn main() {
     let technique_type = \"青\";
-    
+
     match technique_type {
         \"青\" => println!(\"術式順転『青』 - 引力操作\"),
         \"赤\" => println!(\"術式反転『赤』 - 斥力操作\"),
@@ -83,7 +83,7 @@ fn calculate_damage(technique: &str) -> i32 {
 
 fn main() {
     let techniques = [\"青\", \"赤\", \"茈\", \"紫\"];
-    
+
     for tech in techniques.iter() {
         let damage = calculate_damage(tech);
         println!(\"{}: ダメージ {}\", tech, damage);
@@ -96,7 +96,7 @@ fn main() {
 ```rust
 fn main() {
     let enemy_grade = 2;
-    
+
     let strategy = match enemy_grade {
         1 | 2 => \"基本術式で十分\",
         3 => \"少し本気を出そう\",
@@ -104,7 +104,7 @@ fn main() {
         0 => \"特級の中でも格が違う\",
         _ => \"未知の等級\",
     };
-    
+
     println!(\"戦略: {}\", strategy);
 }
 ```
@@ -114,7 +114,7 @@ fn main() {
 ```rust
 fn main() {
     let power_level = 1500;
-    
+
     let comment = match power_level {
         0..=500 => \"雑魚だね\",
         501..=1000 => \"まあまあかな\",
@@ -122,7 +122,7 @@ fn main() {
         2001..=5000 => \"お、なかなか\",
         5001.. => \"ほほう、面白い\",
     };
-    
+
     println!(\"評価: {}\", comment);
 }
 ```
@@ -134,13 +134,13 @@ fn main() {
 ```rust
 fn main() {
     let mut curse_count = 5;
-    
+
     loop {
         if curse_count == 0 {
             println!(\"全ての呪霊を祓った！\");
             break;  // ループから抜ける
         }
-        
+
         println!(\"呪霊を祓った。残り: {}\", curse_count);
         curse_count -= 1;
     }
@@ -152,15 +152,15 @@ fn main() {
 ```rust
 fn main() {
     let mut counter = 0;
-    
+
     let result = loop {
         counter += 1;
-        
+
         if counter == 10 {
             break counter * 2;  // 値を返してループ終了
         }
     };
-    
+
     println!(\"結果: {}\", result);  // 20
 }
 ```
@@ -171,12 +171,12 @@ fn main() {
 fn main() {
     let mut enemy_hp = 1000;
     let damage = 150;
-    
+
     while enemy_hp > 0 {
         enemy_hp -= damage;
         println!(\"攻撃！残りHP: {}\", enemy_hp.max(0));
     }
-    
+
     println!(\"敵を倒した！\");
 }
 ```
@@ -191,13 +191,13 @@ fn main() {
         println!(\"{}\", i);
     }
     println!(\"術式発動！\");
-    
+
     // 配列のループ
     let techniques = [\"青\", \"赤\", \"茈\"];
     for (index, technique) in techniques.iter().enumerate() {
         println!(\"技{}: {}\", index + 1, technique);
     }
-    
+
     // ベクターのループ
     let mut enemies = vec![\"呪霊A\", \"呪霊B\", \"呪霊C\"];
     for enemy in enemies.iter_mut() {
@@ -219,7 +219,7 @@ fn main() {
         }
         println!(\"数値: {}\", i);
     }
-    
+
     println!(\"\\n=== continue の例 ===\");
     for i in 1..=10 {
         if i % 2 == 0 {
@@ -256,35 +256,35 @@ fn main() {
         (\"特級呪霊\", 1500),
         (\"特級呪霊(偽夏油)\", 3000),
     ];
-    
+
     let techniques = [
         (\"青\", 600),
         (\"赤\", 800),
         (\"茈\", 2000),
         (\"紫\", 9999),
     ];
-    
+
     for (enemy_name, enemy_hp) in enemies.iter() {
         println!(\"\\n{} (HP: {}) が現れた！\", enemy_name, enemy_hp);
-        
+
         let selected_technique = match *enemy_hp {
             0..=500 => &techniques[0],      // 青
             501..=1000 => &techniques[1],   // 赤
             1001..=2000 => &techniques[2],  // 茈
             _ => &techniques[3],            // 紫
         };
-        
+
         let (tech_name, damage) = selected_technique;
-        
+
         println!(\"『{}』を使用！\", tech_name);
-        
+
         if damage >= enemy_hp {
             println!(\"{}ダメージ！{} を撃破！\", damage, enemy_name);
         } else {
             println!(\"{}ダメージだが、まだ生きている...\", damage);
         }
     }
-    
+
     println!(\"\\n全ての敵を倒した！最強だから当然だね。\");
 }
 ```
@@ -294,10 +294,11 @@ fn main() {
 <div class=\"exercise\">
 
 ### 問題1: 呪力判定システム
+
 呪力値に応じて等級を判定するプログラムを`match`式で作成せよ。
 
 - 0-100: 4級
-- 101-500: 3級  
+- 101-500: 3級
 - 501-1000: 2級
 - 1001-2000: 1級
 - 2001以上: 特級
@@ -321,7 +322,7 @@ fn judge_grade(power: i32) -> &'static str {
 
 fn main() {
     let power_levels = [50, 300, 800, 1500, 3000];
-    
+
     for power in power_levels.iter() {
         let grade = judge_grade(*power);
         println!(\"呪力{}: {} 呪術師\", power, grade);
@@ -335,7 +336,8 @@ fn main() {
 <div class=\"exercise\">
 
 ### 問題2: FizzBuzz呪術版
-1から30まで数えて、3の倍数で「呪\", 5の倍数で「術\", 両方の倍数で「呪術\"と表示するプログラムを作成せよ。
+
+1から30まで数えて、3の倍数で「呪", 5の倍数で「術", 両方の倍数で「呪術"と表示するプログラムを作成せよ。
 
 </div>
 
@@ -364,14 +366,14 @@ fn main() {
 制御構文の習得は完了だ。重要なポイント：
 
 1. **if式** - 条件に応じた分岐、値も返せる
-2. **match式** - パターンマッチング、全パターン網羅必須
-3. **loop** - 無限ループ、値を返せる
-4. **while** - 条件付きループ
-5. **for** - イテレータループ、最も使用頻度が高い
-6. **break/continue** - ループ制御
+1. **match式** - パターンマッチング、全パターン網羅必須
+1. **loop** - 無限ループ、値を返せる
+1. **while** - 条件付きループ
+1. **for** - イテレータループ、最も使用頻度が高い
+1. **break/continue** - ループ制御
 
 次は関数について学ぼう。関数は術式をモジュール化する重要な概念だ。
 
----
+______________________________________________________________________
 
 *「制御の流れを極めれば、どんな複雑な術式も組み立てられる」*
