@@ -34,8 +34,8 @@ cd hello_saikyou
 
 ```rust
 fn main() {
-    println!(\"Hello, 最強!\");
-    println!(\"俺の名前は五条悟。よろしく。\");
+    println!("Hello, 最強!");
+    println!("俺の名前は五条悟。よろしく。");
 }
 ```
 
@@ -83,7 +83,7 @@ fn main() {
         inner + 1  // セミコロンがない！これが式の値になる
     }; // yは4になる
 
-    println!(\"x: {}, y: {}\", x, y);
+    println!("x: {}, y: {}", x, y);
 }
 ```
 
@@ -105,7 +105,7 @@ fn main() {
     // 型推論も使える
     let small_power = 100;  // デフォルトはi32
 
-    println!(\"俺の呪力レベル: {}\", power_level);
+    println!("俺の呪力レベル: {}", power_level);
 }
 ```
 
@@ -116,7 +116,7 @@ fn main() {
     let precision: f64 = 99.999;  // 64ビット浮動小数点
     let speed: f32 = 299792458.0;  // 32ビット浮動小数点
 
-    println!(\"術式の精度: {}%\", precision);
+    println!("術式の精度: {}%", precision);
 }
 ```
 
@@ -128,7 +128,7 @@ fn main() {
     let has_limits = false;
 
     if is_saikyou && !has_limits {
-        println!(\"俺は最強だ\");
+        println!("俺は最強だ");
     }
 }
 ```
@@ -140,7 +140,7 @@ fn main() {
     let technique = '蒼';  // Unicodeスカラー値
     let symbol = '∞';      // 無下限のシンボル
 
-    println!(\"術式: {}\", technique);
+    println!("術式: {}", technique);
 }
 ```
 
@@ -149,13 +149,13 @@ fn main() {
 ```rust
 fn main() {
     // 文字列スライス（&str）- 不変
-    let greeting = \"やあやあ\";
+    let greeting = "やあやあ";
 
     // String型 - 可変長、ヒープに保存
-    let mut technique_name = String::from(\"術式順転\");
-    technique_name.push_str(\"『蒼』\");
+    let mut technique_name = String::from("術式順転");
+    technique_name.push_str("『蒼』");
 
-    println!(\"{}: {}\", greeting, technique_name);
+    println!("{}: {}", greeting, technique_name);
 }
 ```
 
@@ -179,7 +179,7 @@ fn main() {
     let enemy_power = 500;
     let can_defeat = total_power > enemy_power;
 
-    println!(\"呪力: {}, 敵を倒せる: {}\", total_power, can_defeat);
+    println!("呪力: {}, 敵を倒せる: {}", total_power, can_defeat);
 }
 ```
 
@@ -191,11 +191,11 @@ fn main() {
     let power_f64 = power_i32 as f64;  // 明示的な型変換
 
     // 文字列から数値への変換
-    let power_str = \"9999\";
+    let power_str = "9999";
     let power_from_str: i32 = power_str.parse()
-        .expect(\"数値変換に失敗しました\");
+        .expect("数値変換に失敗しました");
 
-    println!(\"変換された呪力: {}\", power_from_str);
+    println!("変換された呪力: {}", power_from_str);
 }
 ```
 
@@ -208,11 +208,11 @@ fn main() {
 ```rust
 // グローバル定数（コンパイル時に決定）
 const INFINITY_POWER: u32 = 999_999_999;
-const TECHNIQUE_NAME: &str = \"無下限呪術\";
+const TECHNIQUE_NAME: &str = "無下限呪術";
 
 fn main() {
-    println!(\"最大呪力: {}\", INFINITY_POWER);
-    println!(\"奥義: {}\", TECHNIQUE_NAME);
+    println!("最大呪力: {}", INFINITY_POWER);
+    println!("奥義: {}", TECHNIQUE_NAME);
 }
 ```
 

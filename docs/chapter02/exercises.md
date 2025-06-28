@@ -18,7 +18,7 @@
 - 呪力を他の呪術師に移譲する関数
 - 移譲後は元の呪術師の呪力は0になる
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 struct Sorcerer {
@@ -29,12 +29,12 @@ struct Sorcerer {
 // ここに実装
 fn main() {
     let mut gojo = Sorcerer {
-        name: String::from(\"五条悟\"),
+        name: String::from("五条悟"),
         power: 2000,
     };
 
     let mut yuji = Sorcerer {
-        name: String::from(\"虎杖悠仁\"),
+        name: String::from("虎杖悠仁"),
         power: 800,
     };
 
@@ -46,7 +46,7 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 struct Sorcerer {
@@ -59,38 +59,38 @@ impl Sorcerer {
         if self.power >= amount {
             self.power -= amount;
             recipient.power += amount;
-            println!(\"{} が {} に {}の呪力を移譲\",
+            println!("{} が {} に {}の呪力を移譲",
                      self.name, recipient.name, amount);
             true
         } else {
-            println!(\"{} の呪力が不足しています\", self.name);
+            println!("{} の呪力が不足しています", self.name);
             false
         }
     }
 
     fn display_status(&self) {
-        println!(\"{}: 呪力 {}\", self.name, self.power);
+        println!("{}: 呪力 {}", self.name, self.power);
     }
 }
 
 fn main() {
     let mut gojo = Sorcerer {
-        name: String::from(\"五条悟\"),
+        name: String::from("五条悟"),
         power: 2000,
     };
 
     let mut yuji = Sorcerer {
-        name: String::from(\"虎杖悠仁\"),
+        name: String::from("虎杖悠仁"),
         power: 800,
     };
 
-    println!(\"=== 移譲前 ===\");
+    println!("=== 移譲前 ===");
     gojo.display_status();
     yuji.display_status();
 
     gojo.transfer_power(500, &mut yuji);
 
-    println!(\"\\n=== 移譲後 ===\");
+    println!("\\n=== 移譲後 ===");
     gojo.display_status();
     yuji.display_status();
 }
@@ -103,24 +103,24 @@ fn main() {
 
 術式名のベクターを管理するシステムで、所有権の移動を正しく処理せよ。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 fn process_techniques(techniques: Vec<String>) -> Vec<String> {
-    // 各術式に \"習得済み:\" を前置
+    // 各術式に "習得済み:" を前置
     // 処理後のベクターを返す
 }
 
 fn count_powerful_techniques(techniques: &Vec<String>) -> usize {
-    // \"術式\"を含む技の数を数える
+    // "術式"を含む技の数を数える
 }
 
 fn main() {
     let techniques = vec![
-        String::from(\"術式順転『蒼』\"),
-        String::from(\"基本攻撃\"),
-        String::from(\"術式反転『赫』\"),
-        String::from(\"防御技\"),
+        String::from("術式順転『蒼』"),
+        String::from("基本攻撃"),
+        String::from("術式反転『赫』"),
+        String::from("防御技"),
     ];
 
     // ここに実装
@@ -131,41 +131,41 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 fn process_techniques(techniques: Vec<String>) -> Vec<String> {
     techniques.into_iter()
-        .map(|tech| format!(\"習得済み: {}\", tech))
+        .map(|tech| format!("習得済み: {}", tech))
         .collect()
 }
 
 fn count_powerful_techniques(techniques: &Vec<String>) -> usize {
     techniques.iter()
-        .filter(|tech| tech.contains(\"術式\"))
+        .filter(|tech| tech.contains("術式"))
         .count()
 }
 
 fn main() {
     let techniques = vec![
-        String::from(\"術式順転『蒼』\"),
-        String::from(\"基本攻撃\"),
-        String::from(\"術式反転『赫』\"),
-        String::from(\"防御技\"),
+        String::from("術式順転『蒼』"),
+        String::from("基本攻撃"),
+        String::from("術式反転『赫』"),
+        String::from("防御技"),
     ];
 
-    println!(\"元の技: {:?}\", techniques);
+    println!("元の技: {:?}", techniques);
 
     // 借用で技の数を数える
     let powerful_count = count_powerful_techniques(&techniques);
-    println!(\"術式の数: {}\", powerful_count);
+    println!("術式の数: {}", powerful_count);
 
     // 所有権を移動して処理
     let processed = process_techniques(techniques);
-    println!(\"処理後: {:?}\", processed);
+    println!("処理後: {:?}", processed);
 
     // techniques はもう使えない（所有権が移動した）
-    // println!(\"{:?}\", techniques); // エラー！
+    // println!("{:?}", techniques); // エラー！
 }
 ```
 
@@ -178,7 +178,7 @@ fn main() {
 
 戦闘ログを分析して統計情報を提供するシステムを作成せよ。借用を適切に使用すること。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 struct BattleLog {
@@ -205,9 +205,9 @@ impl BattleLog {
 
 fn main() {
     let mut log = BattleLog::new();
-    log.add_entry(String::from(\"五条悟が術式順転『蒼』を使用\"));
-    log.add_entry(String::from(\"宿儺が解を発動\"));
-    log.add_entry(String::from(\"五条悟が術式反転『赫』を使用\"));
+    log.add_entry(String::from("五条悟が術式順転『蒼』を使用"));
+    log.add_entry(String::from("宿儺が解を発動"));
+    log.add_entry(String::from("五条悟が術式反転『赫』を使用"));
 
     // テスト用コード
 }
@@ -217,7 +217,7 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 struct BattleLog {
@@ -257,7 +257,7 @@ fn get_recent_entries(log: &BattleLog, count: usize) -> &[String] {
 // 4. すべてのエントリに接頭辞を追加（可変借用）
 fn add_prefix_to_all(log: &mut BattleLog, prefix: &str) {
     for entry in &mut log.entries {
-        *entry = format!(\"{}: {}\", prefix, entry);
+        *entry = format!("{}: {}", prefix, entry);
     }
 }
 
@@ -270,37 +270,37 @@ fn find_entries_by_user<'a>(log: &'a BattleLog, user: &str) -> Vec<&'a String> {
 
 fn main() {
     let mut log = BattleLog::new();
-    log.add_entry(String::from(\"五条悟が術式順転『蒼』を使用\"));
-    log.add_entry(String::from(\"宿儺が解を発動\"));
-    log.add_entry(String::from(\"五条悟が術式反転『赫』を使用\"));
-    log.add_entry(String::from(\"虎杖悠仁が黒閃を発動\"));
+    log.add_entry(String::from("五条悟が術式順転『蒼』を使用"));
+    log.add_entry(String::from("宿儺が解を発動"));
+    log.add_entry(String::from("五条悟が術式反転『赫』を使用"));
+    log.add_entry(String::from("虎杖悠仁が黒閃を発動"));
 
-    println!(\"=== 戦闘ログ分析 ===\");
+    println!("=== 戦闘ログ分析 ===");
 
     // 統計情報
-    println!(\"総エントリ数: {}\", count_entries(&log));
-    println!(\"五条悟の行動: {}回\", count_entries_with_keyword(&log, \"五条悟\"));
-    println!(\"術式使用: {}回\", count_entries_with_keyword(&log, \"術式\"));
+    println!("総エントリ数: {}", count_entries(&log));
+    println!("五条悟の行動: {}回", count_entries_with_keyword(&log, "五条悟"));
+    println!("術式使用: {}回", count_entries_with_keyword(&log, "術式"));
 
     // 最近のエントリ
     let recent = get_recent_entries(&log, 2);
-    println!(\"\\n最近の2件:\");
+    println!("\\n最近の2件:");
     for (i, entry) in recent.iter().enumerate() {
-        println!(\"  {}. {}\", i + 1, entry);
+        println!("  {}. {}", i + 1, entry);
     }
 
     // 五条悟の行動のみ
-    let gojo_entries = find_entries_by_user(&log, \"五条悟\");
-    println!(\"\\n五条悟の行動:\");
+    let gojo_entries = find_entries_by_user(&log, "五条悟");
+    println!("\\n五条悟の行動:");
     for entry in gojo_entries {
-        println!(\"  - {}\", entry);
+        println!("  - {}", entry);
     }
 
     // 接頭辞追加
-    add_prefix_to_all(&mut log, \"[戦闘記録]\");
-    println!(\"\\n接頭辞追加後の最初のエントリ:\");
+    add_prefix_to_all(&mut log, "[戦闘記録]");
+    println!("\\n接頭辞追加後の最初のエントリ:");
     if let Some(first) = log.entries.first() {
-        println!(\"  {}\", first);
+        println!("  {}", first);
     }
 }
 ```
@@ -312,22 +312,22 @@ fn main() {
 
 文字列スライスを使って術式名を解析する関数群を作成せよ。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 // 以下の関数を実装せよ：
-// 1. 術式名から種類を抽出（\"術式順転『蒼』\" → \"順転\"）
-// 2. 術式名から技名を抽出（\"術式順転『蒼』\" → \"蒼\"）
+// 1. 術式名から種類を抽出（"術式順転『蒼』" → "順転"）
+// 2. 術式名から技名を抽出（"術式順転『蒼』" → "蒼"）
 // 3. 複数の術式名の中から最も長いものを返す
 // 4. 術式名が有効かチェック（「術式」と「『』」を含む）
 
 fn main() {
     let techniques = [
-        \"術式順転『蒼』\",
-        \"術式反転『赫』\",
-        \"虚式『茈』\",
-        \"無効な技名\",
-        \"基本攻撃\",
+        "術式順転『蒼』",
+        "術式反転『赫』",
+        "虚式『茈』",
+        "無効な技名",
+        "基本攻撃",
     ];
 
     // テスト用コード
@@ -338,14 +338,14 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 // 1. 術式の種類を抽出
 fn extract_technique_type(technique: &str) -> Option<&str> {
-    if let Some(start) = technique.find(\"術式\") {
-        let after_jutsu = &technique[start + 6..]; // \"術式\"の後
-        if let Some(end) = after_jutsu.find(\"『\") {
+    if let Some(start) = technique.find("術式") {
+        let after_jutsu = &technique[start + 6..]; // "術式"の後
+        if let Some(end) = after_jutsu.find("『") {
             return Some(&after_jutsu[..end]);
         }
     }
@@ -354,8 +354,8 @@ fn extract_technique_type(technique: &str) -> Option<&str> {
 
 // 2. 技名を抽出
 fn extract_technique_name(technique: &str) -> Option<&str> {
-    if let Some(start) = technique.find(\"『\") {
-        if let Some(end) = technique.find(\"』\") {
+    if let Some(start) = technique.find("『") {
+        if let Some(end) = technique.find("』") {
             if start < end {
                 return Some(&technique[start + 3..end]); // 『の後から』の前まで
             }
@@ -373,23 +373,23 @@ fn find_longest_technique<'a>(techniques: &[&'a str]) -> Option<&'a str> {
 
 // 4. 術式名の有効性チェック
 fn is_valid_technique(technique: &str) -> bool {
-    technique.contains(\"術式\") && technique.contains(\"『\") && technique.contains(\"』\")
+    technique.contains("術式") && technique.contains("『") && technique.contains("』")
 }
 
 // 5. 術式を詳細分析
 fn analyze_technique(technique: &str) -> String {
     let mut analysis = String::new();
 
-    analysis.push_str(&format!(\"技名: {}\\n\", technique));
-    analysis.push_str(&format!(\"文字数: {}\\n\", technique.chars().count()));
-    analysis.push_str(&format!(\"有効: {}\\n\", is_valid_technique(technique)));
+    analysis.push_str(&format!("技名: {}\\n", technique));
+    analysis.push_str(&format!("文字数: {}\\n", technique.chars().count()));
+    analysis.push_str(&format!("有効: {}\\n", is_valid_technique(technique)));
 
     if let Some(tech_type) = extract_technique_type(technique) {
-        analysis.push_str(&format!(\"種類: {}\\n\", tech_type));
+        analysis.push_str(&format!("種類: {}\\n", tech_type));
     }
 
     if let Some(name) = extract_technique_name(technique) {
-        analysis.push_str(&format!(\"技名: {}\\n\", name));
+        analysis.push_str(&format!("技名: {}\\n", name));
     }
 
     analysis
@@ -412,44 +412,44 @@ fn generate_technique_stats(techniques: &[&str]) -> String {
     };
 
     format!(
-        \"技数: {}\\n有効技数: {}\\n平均文字数: {:.1}\\n最長技: {}\",
+        "技数: {}\\n有効技数: {}\\n平均文字数: {:.1}\\n最長技: {}",
         techniques.len(),
         valid_count,
         avg_length,
-        find_longest_technique(techniques).unwrap_or(\"なし\")
+        find_longest_technique(techniques).unwrap_or("なし")
     )
 }
 
 fn main() {
     let techniques = [
-        \"術式順転『蒼』\",
-        \"術式反転『赫』\",
-        \"虚式『茈』\",
-        \"無効な技名\",
-        \"基本攻撃\",
-        \"無下限呪術『紫』\",
+        "術式順転『蒼』",
+        "術式反転『赫』",
+        "虚式『茈』",
+        "無効な技名",
+        "基本攻撃",
+        "無下限呪術『紫』",
     ];
 
-    println!(\"=== 術式分析システム ===\");
+    println!("=== 術式分析システム ===");
 
     // 各技の詳細分析
     for technique in &techniques {
-        println!(\"\\n--- {} ---\", technique);
+        println!("\\n--- {} ---", technique);
 
         if let Some(tech_type) = extract_technique_type(technique) {
-            println!(\"種類: {}\", tech_type);
+            println!("種類: {}", tech_type);
         }
 
         if let Some(name) = extract_technique_name(technique) {
-            println!(\"技名: {}\", name);
+            println!("技名: {}", name);
         }
 
-        println!(\"有効: {}\", is_valid_technique(technique));
+        println!("有効: {}", is_valid_technique(technique));
     }
 
     // 統計情報
-    println!(\"\\n=== 統計情報 ===\");
-    println!(\"{}\", generate_technique_stats(&techniques));
+    println!("\\n=== 統計情報 ===");
+    println!("{}", generate_technique_stats(&techniques));
 
     // 有効な技のみフィルタ
     let valid_techniques: Vec<&str> = techniques.iter()
@@ -457,9 +457,9 @@ fn main() {
         .copied()
         .collect();
 
-    println!(\"\\n=== 有効な術式一覧 ===\");
+    println!("\\n=== 有効な術式一覧 ===");
     for (i, technique) in valid_techniques.iter().enumerate() {
-        println!(\"{}. {}\", i + 1, technique);
+        println!("{}. {}", i + 1, technique);
     }
 }
 ```
@@ -473,7 +473,7 @@ fn main() {
 
 ライフタイム注釈を使って、呪術師の情報を管理するデータベースシステムを作成せよ。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 // 呪術師の参照を保持する構造体
@@ -497,12 +497,12 @@ struct SorcererDatabase<'a> {
 
 fn main() {
     // テスト用データ
-    let names = [\"五条悟\", \"両面宿儺\", \"虎杖悠仁\"];
-    let grades = [\"特級\", \"特級\", \"1級\"];
+    let names = ["五条悟", "両面宿儺", "虎杖悠仁"];
+    let grades = ["特級", "特級", "1級"];
     let techniques = [
-        vec![\"無下限呪術\", \"術式順転『蒼』\", \"術式反転『赫』\"],
-        vec![\"解\", \"捌\", \"伏魔御廚子\"],
-        vec![\"黒閃\", \"発散\"],
+        vec!["無下限呪術", "術式順転『蒼』", "術式反転『赫』"],
+        vec!["解", "捌", "伏魔御廚子"],
+        vec!["黒閃", "発散"],
     ];
 
     // データベース操作のテスト
@@ -513,7 +513,7 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 #[derive(Debug)]
@@ -626,18 +626,18 @@ impl<'a> DatabaseStats<'a> {
     fn generate_report(&self) -> String {
         let mut report = String::new();
 
-        report.push_str(\"=== 呪術師データベース統計 ===\\n\");
-        report.push_str(&format!(\"総呪術師数: {}\\n\", self.total_sorcerers()));
-        report.push_str(&format!(\"平均技数: {:.1}\\n\", self.average_techniques()));
+        report.push_str("=== 呪術師データベース統計 ===\\n");
+        report.push_str(&format!("総呪術師数: {}\\n", self.total_sorcerers()));
+        report.push_str(&format!("平均技数: {:.1}\\n", self.average_techniques()));
 
         if let Some(most_skilled) = self.database.find_most_skilled() {
-            report.push_str(&format!(\"最多技保有者: {} ({}技)\\n\",
+            report.push_str(&format!("最多技保有者: {} ({}技)\\n",
                 most_skilled.name, most_skilled.technique_count()));
         }
 
-        report.push_str(\"\\n等級分布:\\n\");
+        report.push_str("\\n等級分布:\\n");
         for (grade, count) in self.grade_distribution() {
-            report.push_str(&format!(\"  {}: {}人\\n\", grade, count));
+            report.push_str(&format!("  {}: {}人\\n", grade, count));
         }
 
         report
@@ -646,67 +646,67 @@ impl<'a> DatabaseStats<'a> {
 
 fn main() {
     // テスト用データ
-    let names = [\"五条悟\", \"両面宿儺\", \"虎杖悠仁\", \"伏黒恵\", \"釘崎野薔薇\"];
-    let grades = [\"特級\", \"特級\", \"1級\", \"2級\", \"3級\"];
+    let names = ["五条悟", "両面宿儺", "虎杖悠仁", "伏黒恵", "釘崎野薔薇"];
+    let grades = ["特級", "特級", "1級", "2級", "3級"];
 
     let mut database = SorcererDatabase::new();
 
     // 呪術師データの追加
     let mut gojo = SorcererRef::new(names[0], grades[0]);
-    gojo.add_technique(\"無下限呪術\");
-    gojo.add_technique(\"術式順転『蒼』\");
-    gojo.add_technique(\"術式反転『赫』\");
-    gojo.add_technique(\"虚式『茈』\");
+    gojo.add_technique("無下限呪術");
+    gojo.add_technique("術式順転『蒼』");
+    gojo.add_technique("術式反転『赫』");
+    gojo.add_technique("虚式『茈』");
     database.add_sorcerer(gojo);
 
     let mut sukuna = SorcererRef::new(names[1], grades[1]);
-    sukuna.add_technique(\"解\");
-    sukuna.add_technique(\"捌\");
-    sukuna.add_technique(\"伏魔御廚子\");
+    sukuna.add_technique("解");
+    sukuna.add_technique("捌");
+    sukuna.add_technique("伏魔御廚子");
     database.add_sorcerer(sukuna);
 
     let mut yuji = SorcererRef::new(names[2], grades[2]);
-    yuji.add_technique(\"黒閃\");
-    yuji.add_technique(\"発散\");
+    yuji.add_technique("黒閃");
+    yuji.add_technique("発散");
     database.add_sorcerer(yuji);
 
     let mut megumi = SorcererRef::new(names[3], grades[3]);
-    megumi.add_technique(\"十種影法術\");
-    megumi.add_technique(\"玉犬\");
+    megumi.add_technique("十種影法術");
+    megumi.add_technique("玉犬");
     database.add_sorcerer(megumi);
 
     let mut nobara = SorcererRef::new(names[4], grades[4]);
-    nobara.add_technique(\"芻霊呪法\");
+    nobara.add_technique("芻霊呪法");
     database.add_sorcerer(nobara);
 
     // データベース操作のテスト
-    println!(\"=== 呪術師データベーステスト ===\");
+    println!("=== 呪術師データベーステスト ===");
 
     // 名前検索
-    if let Some(gojo) = database.find_by_name(\"五条悟\") {
-        println!(\"\\n五条悟の情報:\");
-        println!(\"  等級: {}\", gojo.grade);
-        println!(\"  技数: {}\", gojo.technique_count());
-        println!(\"  技: {:?}\", gojo.techniques);
+    if let Some(gojo) = database.find_by_name("五条悟") {
+        println!("\\n五条悟の情報:");
+        println!("  等級: {}", gojo.grade);
+        println!("  技数: {}", gojo.technique_count());
+        println!("  技: {:?}", gojo.techniques);
     }
 
     // 等級検索
-    let special_grade = database.find_by_grade(\"特級\");
-    println!(\"\\n特級呪術師:\");
+    let special_grade = database.find_by_grade("特級");
+    println!("\\n特級呪術師:");
     for sorcerer in special_grade {
-        println!(\"  {}\", sorcerer.name);
+        println!("  {}", sorcerer.name);
     }
 
     // 技検索
-    let black_flash_users = database.find_by_technique(\"黒閃\");
-    println!(\"\\n黒閃使い:\");
+    let black_flash_users = database.find_by_technique("黒閃");
+    println!("\\n黒閃使い:");
     for sorcerer in black_flash_users {
-        println!(\"  {}\", sorcerer.name);
+        println!("  {}", sorcerer.name);
     }
 
     // 統計情報
     let stats = database.generate_statistics();
-    println!(\"\\n{}\", stats.generate_report());
+    println!("\\n{}", stats.generate_report());
 }
 ```
 
@@ -717,7 +717,7 @@ fn main() {
 
 複数の構造体間で参照を持つ複雑なシステムを実装せよ。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 // 学校、クラス、生徒の関係を表現
@@ -749,7 +749,7 @@ struct Student<'a> {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 #[derive(Debug)]
@@ -818,23 +818,23 @@ impl<'a> School<'a> {
     fn generate_school_report(&self) -> String {
         let mut report = String::new();
 
-        report.push_str(&format!(\"=== {} 学校レポート ===\\n\", self.name));
-        report.push_str(&format!(\"クラス数: {}\\n\", self.classes.len()));
+        report.push_str(&format!("=== {} 学校レポート ===\\n", self.name));
+        report.push_str(&format!("クラス数: {}\\n", self.classes.len()));
 
         let total_students: usize = self.classes.iter()
             .map(|class| class.students.len())
             .sum();
-        report.push_str(&format!(\"総生徒数: {}\\n\", total_students));
+        report.push_str(&format!("総生徒数: {}\\n", total_students));
 
         if total_students > 0 {
             let total_grade: i32 = self.get_all_students().iter()
                 .map(|student| student.grade)
                 .sum();
             let avg_grade = total_grade as f64 / total_students as f64;
-            report.push_str(&format!(\"平均成績: {:.1}\\n\", avg_grade));
+            report.push_str(&format!("平均成績: {:.1}\\n", avg_grade));
         }
 
-        report.push_str(\"\\nクラス別詳細:\\n\");
+        report.push_str("\\nクラス別詳細:\\n");
         for class in &self.classes {
             report.push_str(&class.generate_class_summary());
         }
@@ -881,12 +881,12 @@ impl<'a> Class<'a> {
     fn generate_class_summary(&self) -> String {
         let mut summary = String::new();
 
-        summary.push_str(&format!(\"  {} (担任: {})\\n\", self.name, self.teacher));
-        summary.push_str(&format!(\"    生徒数: {}\\n\", self.students.len()));
-        summary.push_str(&format!(\"    平均成績: {:.1}\\n\", self.get_average_grade()));
+        summary.push_str(&format!("  {} (担任: {})\\n", self.name, self.teacher));
+        summary.push_str(&format!("    生徒数: {}\\n", self.students.len()));
+        summary.push_str(&format!("    平均成績: {:.1}\\n", self.get_average_grade()));
 
         if let Some(top_student) = self.get_top_student() {
-            summary.push_str(&format!(\"    トップ: {} ({}点)\\n\",
+            summary.push_str(&format!("    トップ: {} ({}点)\\n",
                 top_student.name, top_student.grade));
         }
 
@@ -904,68 +904,68 @@ impl<'a> Student<'a> {
     }
 
     fn get_class_name(&self) -> &str {
-        self.class.unwrap_or(\"未所属\")
+        self.class.unwrap_or("未所属")
     }
 
     fn get_grade_level(&self) -> &str {
         match self.grade {
-            90..=100 => \"優秀\",
-            80..=89 => \"良好\",
-            70..=79 => \"普通\",
-            60..=69 => \"要努力\",
-            _ => \"要指導\",
+            90..=100 => "優秀",
+            80..=89 => "良好",
+            70..=79 => "普通",
+            60..=69 => "要努力",
+            _ => "要指導",
         }
     }
 }
 
 fn main() {
     // 学校データの作成
-    let mut jujutsu_school = School::new(\"東京呪術高等専門学校\");
+    let mut jujutsu_school = School::new("東京呪術高等専門学校");
 
     // 1年生クラス
-    let mut first_year = Class::new(\"1年A組\", \"五条悟\");
-    first_year.add_student(Student::new(\"虎杖悠仁\", 85));
-    first_year.add_student(Student::new(\"伏黒恵\", 92));
-    first_year.add_student(Student::new(\"釘崎野薔薇\", 88));
+    let mut first_year = Class::new("1年A組", "五条悟");
+    first_year.add_student(Student::new("虎杖悠仁", 85));
+    first_year.add_student(Student::new("伏黒恵", 92));
+    first_year.add_student(Student::new("釘崎野薔薇", 88));
 
     // 2年生クラス
-    let mut second_year = Class::new(\"2年A組\", \"夜蛾正道\");
-    second_year.add_student(Student::new(\"禪院真希\", 94));
-    second_year.add_student(Student::new(\"狗巻棘\", 90));
-    second_year.add_student(Student::new(\"パンダ\", 78));
+    let mut second_year = Class::new("2年A組", "夜蛾正道");
+    second_year.add_student(Student::new("禪院真希", 94));
+    second_year.add_student(Student::new("狗巻棘", 90));
+    second_year.add_student(Student::new("パンダ", 78));
 
     jujutsu_school.add_class(first_year);
     jujutsu_school.add_class(second_year);
 
     // 学校システムのテスト
-    println!(\"=== 呪術高専管理システム ===\");
+    println!("=== 呪術高専管理システム ===");
 
     // 学校レポート
-    println!(\"{}\", jujutsu_school.generate_school_report());
+    println!("{}", jujutsu_school.generate_school_report());
 
     // 生徒検索
-    if let Some((class, student)) = jujutsu_school.find_student(\"虎杖悠仁\") {
-        println!(\"\\n生徒情報:\");
-        println!(\"  名前: {}\", student.name);
-        println!(\"  成績: {} ({})\", student.grade, student.get_grade_level());
-        println!(\"  クラス: {}\", class.name);
-        println!(\"  担任: {}\", class.teacher);
+    if let Some((class, student)) = jujutsu_school.find_student("虎杖悠仁") {
+        println!("\\n生徒情報:");
+        println!("  名前: {}", student.name);
+        println!("  成績: {} ({})", student.grade, student.get_grade_level());
+        println!("  クラス: {}", class.name);
+        println!("  担任: {}", class.teacher);
     }
 
     // 優秀な生徒一覧
     let top_students = jujutsu_school.get_top_students(90);
-    println!(\"\\n優秀な生徒 (90点以上):\");
+    println!("\\n優秀な生徒 (90点以上):");
     for student in top_students {
-        println!(\"  {} - {}点 ({})\",
+        println!("  {} - {}点 ({})",
             student.name, student.grade, student.get_class_name());
     }
 
     // クラス別詳細
-    println!(\"\\n=== クラス別詳細 ===\");
+    println!("\\n=== クラス別詳細 ===");
     for class in &jujutsu_school.classes {
-        println!(\"{}:\", class.name);
+        println!("{}:", class.name);
         for student in &class.students {
-            println!(\"  {} - {}点 ({})\",
+            println!("  {} - {}点 ({})",
                 student.name, student.grade, student.get_grade_level());
         }
         println!();
@@ -990,7 +990,7 @@ fn main() {
 - リアルタイム統計
 - メモリ効率的な設計
 
-<div class=\"exercise\">
+<div class="exercise">
 
 自由に設計して実装してみよう！所有権、借用、ライフタイムを適切に使い分けること。
 
@@ -998,7 +998,7 @@ fn main() {
 
 <details>
 <summary>解答例を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 use std::collections::HashMap;
@@ -1077,7 +1077,7 @@ impl<'a> Battle<'a> {
 
     fn start_battle(&mut self) {
         self.is_active = true;
-        self.log_action(format!(\"戦闘開始: {}\", self.name));
+        self.log_action(format!("戦闘開始: {}", self.name));
     }
 
     fn log_action(&mut self, action: String) {
@@ -1094,7 +1094,7 @@ impl<'a> Battle<'a> {
             return false;
         }
 
-        self.log_action(format!(\"--- ラウンド {} ---\", self.current_round));
+        self.log_action(format!("--- ラウンド {} ---", self.current_round));
 
         // 生存者のみで戦闘
         let alive_combatants: Vec<_> = self.combatants.iter()
@@ -1127,7 +1127,7 @@ impl<'a> Battle<'a> {
                     }
                 }
 
-                self.log_action(format!(\"{} が {} を攻撃！ {}ダメージ\",
+                self.log_action(format!("{} が {} を攻撃！ {}ダメージ",
                     attacker_name, target_name, damage));
             }
         }
@@ -1144,9 +1144,9 @@ impl<'a> Battle<'a> {
             .map(|c| c.name.clone());
 
         if let Some(winner_name) = winner {
-            self.log_action(format!(\"{} の勝利！\", winner_name));
+            self.log_action(format!("{} の勝利！", winner_name));
         } else {
-            self.log_action(\"引き分け\".to_string());
+            self.log_action("引き分け".to_string());
         }
     }
 
@@ -1227,25 +1227,25 @@ impl BattleManager {
     fn generate_overall_stats(&self) -> String {
         let mut stats = String::new();
 
-        stats.push_str(\"=== 全体統計 ===\\n\");
-        stats.push_str(&format!(\"登録戦闘者数: {}\\n\", self.combatants.len()));
+        stats.push_str("=== 全体統計 ===\\n");
+        stats.push_str(&format!("登録戦闘者数: {}\\n", self.combatants.len()));
 
         let alive_count = self.combatants.values()
             .filter(|c| c.is_alive())
             .count();
-        stats.push_str(&format!(\"生存者数: {}\\n\", alive_count));
+        stats.push_str(&format!("生存者数: {}\\n", alive_count));
 
         if let Some(strongest) = self.combatants.values()
             .filter(|c| c.is_alive())
             .max_by_key(|c| c.power) {
-            stats.push_str(&format!(\"最強戦闘者: {} (呪力: {})\\n\",
+            stats.push_str(&format!("最強戦闘者: {} (呪力: {})\\n",
                 strongest.name, strongest.power));
         }
 
-        stats.push_str(\"\\n=== 戦闘者一覧 ===\\n\");
+        stats.push_str("\\n=== 戦闘者一覧 ===\\n");
         for combatant in self.combatants.values() {
-            let status = if combatant.is_alive() { \"生存\" } else { \"戦闘不能\" };
-            stats.push_str(&format!(\"{}: HP {}/{} ({}%) - {}\\n\",
+            let status = if combatant.is_alive() { "生存" } else { "戦闘不能" };
+            stats.push_str(&format!("{}: HP {}/{} ({}%) - {}\\n",
                 combatant.name,
                 combatant.hp,
                 combatant.max_hp,
@@ -1259,24 +1259,24 @@ impl BattleManager {
 }
 
 fn main() {
-    println!(\"=== 呪術戦闘管理システム ===\");
+    println!("=== 呪術戦闘管理システム ===");
 
     let mut manager = BattleManager::new();
 
     // 戦闘者の登録
-    let mut gojo = Combatant::new(\"五条悟\", 2000, 1800);
-    gojo.add_technique(\"無下限呪術\".to_string());
-    gojo.add_technique(\"術式順転『蒼』\".to_string());
+    let mut gojo = Combatant::new("五条悟", 2000, 1800);
+    gojo.add_technique("無下限呪術".to_string());
+    gojo.add_technique("術式順転『蒼』".to_string());
 
-    let mut sukuna = Combatant::new(\"両面宿儺\", 1800, 1700);
-    sukuna.add_technique(\"解\".to_string());
-    sukuna.add_technique(\"捌\".to_string());
+    let mut sukuna = Combatant::new("両面宿儺", 1800, 1700);
+    sukuna.add_technique("解".to_string());
+    sukuna.add_technique("捌".to_string());
 
-    let mut yuji = Combatant::new(\"虎杖悠仁\", 1200, 900);
-    yuji.add_technique(\"黒閃\".to_string());
+    let mut yuji = Combatant::new("虎杖悠仁", 1200, 900);
+    yuji.add_technique("黒閃".to_string());
 
-    let mut megumi = Combatant::new(\"伏黒恵\", 1000, 800);
-    megumi.add_technique(\"十種影法術\".to_string());
+    let mut megumi = Combatant::new("伏黒恵", 1000, 800);
+    megumi.add_technique("十種影法術".to_string());
 
     manager.register_combatant(gojo);
     manager.register_combatant(sukuna);
@@ -1284,33 +1284,33 @@ fn main() {
     manager.register_combatant(megumi);
 
     // 初期状態表示
-    println!(\"{}\", manager.generate_overall_stats());
+    println!("{}", manager.generate_overall_stats());
 
     // 模擬戦闘（簡易版）
-    println!(\"\\n=== 模擬戦闘実行 ===\");
+    println!("\\n=== 模擬戦闘実行 ===");
 
     // 五条 vs 宿儺
-    if let Some(gojo) = manager.get_combatant_mut(\"五条悟\") {
+    if let Some(gojo) = manager.get_combatant_mut("五条悟") {
         gojo.take_damage(300);
     }
 
-    if let Some(sukuna) = manager.get_combatant_mut(\"両面宿儺\") {
+    if let Some(sukuna) = manager.get_combatant_mut("両面宿儺") {
         sukuna.take_damage(400);
     }
 
-    println!(\"戦闘後の状態:\");
-    if let Some(gojo) = manager.get_combatant(\"五条悟\") {
-        println!(\"五条悟: HP {}/2000 ({:.1}%)\",
+    println!("戦闘後の状態:");
+    if let Some(gojo) = manager.get_combatant("五条悟") {
+        println!("五条悟: HP {}/2000 ({:.1}%)",
             gojo.hp, gojo.get_hp_percentage());
     }
 
-    if let Some(sukuna) = manager.get_combatant(\"両面宿儺\") {
-        println!(\"両面宿儺: HP {}/1800 ({:.1}%)\",
+    if let Some(sukuna) = manager.get_combatant("両面宿儺") {
+        println!("両面宿儺: HP {}/1800 ({:.1}%)",
             sukuna.hp, sukuna.get_hp_percentage());
     }
 
     // 最終統計
-    println!(\"\\n{}\", manager.generate_overall_stats());
+    println!("\\n{}", manager.generate_overall_stats());
 }
 ```
 

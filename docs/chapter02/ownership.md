@@ -18,7 +18,7 @@
 
 ```rust
 fn main() {
-    let technique = String::from(\"術式順転『蒼』\");  // techniqueが所有者
+    let technique = String::from("術式順転『蒼』");  // techniqueが所有者
     // この時点で、techniqueが文字列データの唯一の所有者
 }
 ```
@@ -27,11 +27,11 @@ fn main() {
 
 ```rust
 fn main() {
-    let technique = String::from(\"術式順転『蒼』\");
+    let technique = String::from("術式順転『蒼』");
     let other_technique = technique;  // 所有権がother_techniqueに移動
 
-    // println!(\"{}\", technique);  // エラー！もう使えない
-    println!(\"{}\", other_technique);  // これはOK
+    // println!("{}", technique);  // エラー！もう使えない
+    println!("{}", other_technique);  // これはOK
 }
 ```
 
@@ -40,11 +40,11 @@ fn main() {
 ```rust
 fn main() {
     {
-        let technique = String::from(\"術式順転『蒼』\");
-        println!(\"{}\", technique);
+        let technique = String::from("術式順転『蒼』");
+        println!("{}", technique);
     }  // ここでtechniqueは自動的に破棄される
 
-    // println!(\"{}\", technique);  // エラー！スコープ外
+    // println!("{}", technique);  // エラー！スコープ外
 }
 ```
 
@@ -54,11 +54,11 @@ fn main() {
 
 ```rust
 fn main() {
-    let original = String::from(\"無下限呪術\");
+    let original = String::from("無下限呪術");
     let transferred = original;  // 所有権が移動
 
-    println!(\"移譲後: {}\", transferred);
-    // println!(\"{}\", original);  // エラー！使用不可
+    println!("移譲後: {}", transferred);
+    // println!("{}", original);  // エラー！使用不可
 }
 ```
 
@@ -66,14 +66,14 @@ fn main() {
 
 ```rust
 fn cast_technique(spell: String) {
-    println!(\"{}を発動！\", spell);
+    println!("{}を発動！", spell);
 }  // ここでspellが破棄される
 
 fn main() {
-    let my_technique = String::from(\"術式順転『蒼』\");
+    let my_technique = String::from("術式順転『蒼』");
     cast_technique(my_technique);  // 所有権が関数に移動
 
-    // println!(\"{}\", my_technique);  // エラー！もう使えない
+    // println!("{}", my_technique);  // エラー！もう使えない
 }
 ```
 
@@ -81,13 +81,13 @@ fn main() {
 
 ```rust
 fn create_technique() -> String {
-    let technique = String::from(\"虚式『茈』\");
+    let technique = String::from("虚式『茈』");
     technique  // 所有権を呼び出し元に移動
 }
 
 fn main() {
     let my_technique = create_technique();  // 所有権を受け取る
-    println!(\"習得した技: {}\", my_technique);
+    println!("習得した技: {}", my_technique);
 }
 ```
 
@@ -101,15 +101,15 @@ fn main() {
     let power = 1000;
     let copied_power = power;  // コピーが発生
 
-    println!(\"元の呪力: {}\", power);         // 使える！
-    println!(\"コピーした呪力: {}\", copied_power);  // これも使える！
+    println!("元の呪力: {}", power);         // 使える！
+    println!("コピーした呪力: {}", copied_power);  // これも使える！
 
     // タプルも要素がすべてCopyならCopy
     let coordinates = (10, 20);
     let copied_coords = coordinates;
 
-    println!(\"元の座標: {:?}\", coordinates);
-    println!(\"コピーした座標: {:?}\", copied_coords);
+    println!("元の座標: {:?}", coordinates);
+    println!("コピーした座標: {:?}", copied_coords);
 }
 ```
 
@@ -122,11 +122,11 @@ fn main() {
     let y = x;  // 自動的にコピー
 
     // Clone - 明示的な複製（ヒープ上の値も可能）
-    let technique = String::from(\"術式順転『蒼』\");
+    let technique = String::from("術式順転『蒼』");
     let cloned_technique = technique.clone();  // 明示的にクローン
 
-    println!(\"元の技: {}\", technique);
-    println!(\"クローンした技: {}\", cloned_technique);
+    println!("元の技: {}", technique);
+    println!("クローンした技: {}", cloned_technique);
 }
 ```
 
@@ -151,7 +151,7 @@ impl Sorcerer {
 
     // 技を習得（所有権を受け取る）
     fn learn_technique(&mut self, technique: String) {
-        println!(\"{} が {} を習得！\", self.name, technique);
+        println!("{} が {} を習得！", self.name, technique);
         self.techniques.push(technique);
         self.power += 200;
     }
@@ -173,7 +173,7 @@ impl Sorcerer {
     // 技を他の呪術師に移譲
     fn transfer_technique(&mut self, other: &mut Sorcerer, index: usize) {
         if let Some(technique) = self.forget_technique(index) {
-            println!(\"{} が {} に {} を移譲\",
+            println!("{} が {} に {} を移譲",
                      self.name, other.name, technique);
             other.learn_technique(technique);
         }
@@ -182,28 +182,28 @@ impl Sorcerer {
 
 fn main() {
     // 呪術師作成
-    let mut gojo = Sorcerer::new(String::from(\"五条悟\"));
-    let mut megumi = Sorcerer::new(String::from(\"伏黒恵\"));
+    let mut gojo = Sorcerer::new(String::from("五条悟"));
+    let mut megumi = Sorcerer::new(String::from("伏黒恵"));
 
     // 技の習得
-    gojo.learn_technique(String::from(\"術式順転『蒼』\"));
-    gojo.learn_technique(String::from(\"術式反転『赫』\"));
-    gojo.learn_technique(String::from(\"虚式『茈』\"));
+    gojo.learn_technique(String::from("術式順転『蒼』"));
+    gojo.learn_technique(String::from("術式反転『赫』"));
+    gojo.learn_technique(String::from("虚式『茈』"));
 
-    megumi.learn_technique(String::from(\"玉犬\"));
-    megumi.learn_technique(String::from(\"大蛇\"));
+    megumi.learn_technique(String::from("玉犬"));
+    megumi.learn_technique(String::from("大蛇"));
 
     // 技の使用
     if let Some(technique) = gojo.use_technique(0) {
-        println!(\"{} が {} を使用！\", gojo.name, technique);
+        println!("{} が {} を使用！", gojo.name, technique);
     }
 
     // 技の移譲（基本術式を教える）
     gojo.transfer_technique(&mut megumi, 0);  // 蒼を移譲
 
-    println!(\"\\n=== 最終状態 ===\");
-    println!(\"{}: 呪力 {}, 技数 {}\", gojo.name, gojo.power, gojo.techniques.len());
-    println!(\"{}: 呪力 {}, 技数 {}\", megumi.name, megumi.power, megumi.techniques.len());
+    println!("\\n=== 最終状態 ===");
+    println!("{}: 呪力 {}, 技数 {}", gojo.name, gojo.power, gojo.techniques.len());
+    println!("{}: 呪力 {}, 技数 {}", megumi.name, megumi.power, megumi.techniques.len());
 }
 ```
 
@@ -214,15 +214,15 @@ fn main() {
 ```rust
 // 文字列を受け取って加工し、新しい文字列を返す
 fn enhance_technique(mut technique: String) -> String {
-    technique.push_str(\" - 強化版\");
+    technique.push_str(" - 強化版");
     technique
 }
 
 fn main() {
-    let basic = String::from(\"術式順転『蒼』\");
+    let basic = String::from("術式順転『蒼』");
     let enhanced = enhance_technique(basic);  // 所有権移動
 
-    println!(\"{}\", enhanced);
+    println!("{}", enhanced);
     // basicはもう使えない
 }
 ```
@@ -236,10 +236,10 @@ fn analyze_and_return(technique: String) -> (String, usize) {
 }
 
 fn main() {
-    let technique = String::from(\"無下限呪術\");
+    let technique = String::from("無下限呪術");
     let (returned_technique, length) = analyze_and_return(technique);
 
-    println!(\"{} の文字数: {}\", returned_technique, length);
+    println!("{} の文字数: {}", returned_technique, length);
 }
 ```
 
@@ -252,10 +252,10 @@ fn get_technique_info(technique: &String) -> usize {
 }
 
 fn main() {
-    let technique = String::from(\"術式順転『蒼』\");
+    let technique = String::from("術式順転『蒼』");
     let info = get_technique_info(&technique);  // 借用
 
-    println!(\"{} の情報: {}\", technique, info);  // まだ使える！
+    println!("{} の情報: {}", technique, info);  // まだ使える！
 }
 ```
 
@@ -267,27 +267,27 @@ Rustの所有権システムは、データ競合を防ぐ：
 use std::thread;
 
 fn main() {
-    let technique = String::from(\"術式順転『蒼』\");
+    let technique = String::from("術式順転『蒼』");
 
     // 複数のスレッドで同じデータを使うとエラー
     /*
     let handle1 = thread::spawn(|| {
-        println!(\"スレッド1: {}\", technique);  // エラー！
+        println!("スレッド1: {}", technique);  // エラー！
     });
 
     let handle2 = thread::spawn(|| {
-        println!(\"スレッド2: {}\", technique);  // エラー！
+        println!("スレッド2: {}", technique);  // エラー！
     });
     */
 
     // 正しい方法は次章で学ぶ（Clone、Arc、Mutexなど）
-    println!(\"メインスレッド: {}\", technique);
+    println!("メインスレッド: {}", technique);
 }
 ```
 
 ## 練習問題
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ### 問題1: 呪力の移譲
 
@@ -297,29 +297,29 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 fn make_strongest(mut technique: String) -> String {
-    technique.insert_str(0, \"最強の\");
+    technique.insert_str(0, "最強の");
     technique
 }
 
 fn main() {
-    let basic_technique = String::from(\"呪術師\");
-    println!(\"元: {}\", basic_technique);
+    let basic_technique = String::from("呪術師");
+    println!("元: {}", basic_technique);
 
     let strongest = make_strongest(basic_technique);
-    println!(\"変換後: {}\", strongest);
+    println!("変換後: {}", strongest);
 
-    // println!(\"{}\", basic_technique);  // エラー！所有権が移動した
+    // println!("{}", basic_technique);  // エラー！所有権が移動した
 }
 ```
 
 </div>
 </details>
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ### 問題2: 技のコレクション管理
 
@@ -329,7 +329,7 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 fn add_technique(mut techniques: Vec<String>, new_technique: String) -> Vec<String> {
@@ -344,20 +344,20 @@ fn combine_techniques(mut tech1: Vec<String>, mut tech2: Vec<String>) -> Vec<Str
 
 fn main() {
     let gojo_techniques = vec![
-        String::from(\"術式順転『蒼』\"),
-        String::from(\"術式反転『赫』\")
+        String::from("術式順転『蒼』"),
+        String::from("術式反転『赫』")
     ];
 
     let megumi_techniques = vec![
-        String::from(\"玉犬\"),
-        String::from(\"大蛇\")
+        String::from("玉犬"),
+        String::from("大蛇")
     ];
 
-    let enhanced_gojo = add_technique(gojo_techniques, String::from(\"虚式『茈』\"));
+    let enhanced_gojo = add_technique(gojo_techniques, String::from("虚式『茈』"));
     let all_techniques = combine_techniques(enhanced_gojo, megumi_techniques);
 
-    println!(\"全技術: {:?}\", all_techniques);
-    println!(\"技数: {}\", all_techniques.len());
+    println!("全技術: {:?}", all_techniques);
+    println!("技数: {}", all_techniques.len());
 }
 ```
 

@@ -20,12 +20,12 @@ fn display_value<T>(value: T)
 where
     T: std::fmt::Display,
 {
-    println!(\"値: {}\", value);
+    println!("値: {}", value);
 }
 
 fn main() {
     display_value(42);              // i32
-    display_value(\"五条悟\");       // &str
+    display_value("五条悟");       // &str
     display_value(3.14);            // f64
     display_value(true);            // bool
 }
@@ -39,12 +39,12 @@ where
     T: std::fmt::Display,
     U: std::fmt::Display,
 {
-    println!(\"比較: {} vs {}\", first, second);
+    println!("比較: {} vs {}", first, second);
 }
 
 fn main() {
-    compare_and_display(\"五条悟\", 3000);
-    compare_and_display(1500, \"虎杖悠仁\");
+    compare_and_display("五条悟", 3000);
+    compare_and_display(1500, "虎杖悠仁");
     compare_and_display(true, false);
 }
 ```
@@ -61,10 +61,10 @@ where
 
 fn main() {
     let max_power = get_maximum(2000, 3000);
-    let max_name = get_maximum(\"虎杖\", \"五条\");  // 辞書順
+    let max_name = get_maximum("虎杖", "五条");  // 辞書順
 
-    println!(\"最大呪力: {}\", max_power);
-    println!(\"後の名前: {}\", max_name);
+    println!("最大呪力: {}", max_power);
+    println!("後の名前: {}", max_name);
 }
 ```
 
@@ -104,17 +104,17 @@ impl<T> Container<T> {
 
 fn main() {
     let mut power_container = Container::new(1500);
-    println!(\"呪力: {:?}\", power_container.get());
+    println!("呪力: {:?}", power_container.get());
 
     power_container.set(2000);
-    println!(\"強化後: {:?}\", power_container);
+    println!("強化後: {:?}", power_container);
 
     // 型変換
     let name_container = power_container.map(|power| {
-        format!(\"呪力値: {}\", power)
+        format!("呪力値: {}", power)
     });
 
-    println!(\"変換後: {:?}\", name_container);
+    println!("変換後: {:?}", name_container);
 }
 ```
 
@@ -162,18 +162,18 @@ impl<T, U> Pair<T, U> {
 }
 
 fn main() {
-    let sorcerer_info = Pair::new(\"五条悟\", 3000);
-    println!(\"呪術師情報: {:?}\", sorcerer_info);
+    let sorcerer_info = Pair::new("五条悟", 3000);
+    println!("呪術師情報: {:?}", sorcerer_info);
 
     let swapped = sorcerer_info.swap();
-    println!(\"入れ替え後: {:?}\", swapped);
+    println!("入れ替え後: {:?}", swapped);
 
-    let processed = Pair::new(\"虎杖悠仁\", 1200).map(
-        |name| format!(\"呪術師: {}\", name),
+    let processed = Pair::new("虎杖悠仁", 1200).map(
+        |name| format!("呪術師: {}", name),
         |power| power * 2,
     );
 
-    println!(\"処理後: {:?}\", processed);
+    println!("処理後: {:?}", processed);
 }
 ```
 
@@ -238,7 +238,7 @@ impl SorcererData {
 
 impl Display for SorcererData {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-        write!(f, \"{} (呪力: {}, 等級: {}, 技数: {})\",
+        write!(f, "{} (呪力: {}, 等級: {}, 技数: {})",
                self.name, self.power, self.grade, self.techniques.len())
     }
 }
@@ -264,7 +264,7 @@ where
 
     fn add(&mut self, id: ID, data: DATA) -> Result<(), String> {
         if self.entities.contains_key(&id) {
-            return Err(format!(\"ID {:?} は既に存在します\", id));
+            return Err(format!("ID {:?} は既に存在します", id));
         }
 
         let entity = Entity::new(id.clone(), data);
@@ -304,7 +304,7 @@ where
                 updater(&mut entity.data);
                 Ok(())
             },
-            None => Err(format!(\"ID {:?} が見つかりません\", id)),
+            None => Err(format!("ID {:?} が見つかりません", id)),
         }
     }
 
@@ -374,81 +374,81 @@ struct TechniqueData {
 
 impl Display for TechniqueData {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-        write!(f, \"{} (威力: {}, 属性: {}, 難易度: {})\",
+        write!(f, "{} (威力: {}, 属性: {}, 難易度: {})",
                self.name, self.power, self.element, self.difficulty)
     }
 }
 
 fn main() {
-    println!(\"=== 汎用的な呪術師管理システム ===\");
+    println!("=== 汎用的な呪術師管理システム ===");
 
     // 呪術師リポジトリ
     let mut sorcerer_repo: Repository<String, SorcererData> = Repository::new();
 
     // データの追加
-    let mut gojo_data = SorcererData::new(\"五条悟\".to_string(), 3000, \"特級\".to_string());
-    gojo_data.add_technique(\"無下限呪術\".to_string());
-    gojo_data.add_technique(\"領域展開\".to_string());
+    let mut gojo_data = SorcererData::new("五条悟".to_string(), 3000, "特級".to_string());
+    gojo_data.add_technique("無下限呪術".to_string());
+    gojo_data.add_technique("領域展開".to_string());
 
-    let mut yuji_data = SorcererData::new(\"虎杖悠仁\".to_string(), 1200, \"1級\".to_string());
-    yuji_data.add_technique(\"黒閃\".to_string());
+    let mut yuji_data = SorcererData::new("虎杖悠仁".to_string(), 1200, "1級".to_string());
+    yuji_data.add_technique("黒閃".to_string());
 
-    let mut megumi_data = SorcererData::new(\"伏黒恵\".to_string(), 1000, \"2級\".to_string());
-    megumi_data.add_technique(\"十種影法術\".to_string());
+    let mut megumi_data = SorcererData::new("伏黒恵".to_string(), 1000, "2級".to_string());
+    megumi_data.add_technique("十種影法術".to_string());
 
     // リポジトリに追加
-    sorcerer_repo.add(\"gojo\".to_string(), gojo_data).unwrap();
-    sorcerer_repo.add(\"yuji\".to_string(), yuji_data).unwrap();
-    sorcerer_repo.add(\"megumi\".to_string(), megumi_data).unwrap();
+    sorcerer_repo.add("gojo".to_string(), gojo_data).unwrap();
+    sorcerer_repo.add("yuji".to_string(), yuji_data).unwrap();
+    sorcerer_repo.add("megumi".to_string(), megumi_data).unwrap();
 
     // 検索とフィルタリング
-    println!(\"\\n=== 検索結果 ===\");
+    println!("\\n=== 検索結果 ===");
 
     // 特級呪術師を検索
-    let special_grade = sorcerer_repo.find_by_grade(\"特級\");
-    println!(\"特級呪術師: {}\", special_grade.len());
+    let special_grade = sorcerer_repo.find_by_grade("特級");
+    println!("特級呪術師: {}", special_grade.len());
     for sorcerer in special_grade {
-        println!(\"  {}: {}\", sorcerer.id(), sorcerer.data());
+        println!("  {}: {}", sorcerer.id(), sorcerer.data());
     }
 
     // 呪力範囲で検索
     let mid_power = sorcerer_repo.find_by_power_range(1000, 2000);
-    println!(\"\\n呪力1000-2000の呪術師: {}\", mid_power.len());
+    println!("\\n呪力1000-2000の呪術師: {}", mid_power.len());
     for sorcerer in mid_power {
-        println!(\"  {}: {}\", sorcerer.id(), sorcerer.data());
+        println!("  {}: {}", sorcerer.id(), sorcerer.data());
     }
 
     // 統計情報
-    println!(\"\\n=== 統計情報 ===\");
-    println!(\"総呪術師数: {}\", sorcerer_repo.count());
-    println!(\"平均呪力: {:.1}\", sorcerer_repo.get_average_power());
+    println!("\\n=== 統計情報 ===");
+    println!("総呪術師数: {}", sorcerer_repo.count());
+    println!("平均呪力: {:.1}", sorcerer_repo.get_average_power());
 
     if let Some(strongest) = sorcerer_repo.get_most_powerful() {
-        println!(\"最強: {}: {}\", strongest.id(), strongest.data());
+        println!("最強: {}: {}", strongest.id(), strongest.data());
     }
 
     // 呪術師データの更新
-    sorcerer_repo.update(&\"yuji\".to_string(), |data| {
+    sorcerer_repo.update(&"yuji".to_string(), |data| {
         data.power += 300;  // パワーアップ
-        data.add_technique(\"発散\".to_string());
+        data.add_technique("発散".to_string());
     }).unwrap();
 
-    println!(\"\\n=== 更新後の虎杖悠仁 ===\");
-    if let Some(yuji) = sorcerer_repo.get(&\"yuji\".to_string()) {
-        println!(\"{}: {}\", yuji.id(), yuji.data());
+    println!("\\n=== 更新後の虎杖悠仁 ===");
+    if let Some(yuji) = sorcerer_repo.get(&"yuji".to_string()) {
+        println!("{}: {}", yuji.id(), yuji.data());
     }
 
     // レポート生成
     let report = sorcerer_repo.generate_report(|entities| {
-        let mut report = String::from(\"=== 呪術師リポート ===\\n\");
+        let mut report = String::from("=== 呪術師リポート ===\\n");
 
         let total = entities.len();
         let avg_power: f64 = entities.iter()
             .map(|e| e.data().power)
             .sum::<i32>() as f64 / total as f64;
 
-        report.push_str(&format!(\"総数: {}\\n\", total));
-        report.push_str(&format!(\"平均呪力: {:.1}\\n\", avg_power));
+        report.push_str(&format!("総数: {}\\n", total));
+        report.push_str(&format!("平均呪力: {:.1}\\n", avg_power));
 
         // 等級分布
         let mut grade_counts = std::collections::HashMap::new();
@@ -456,38 +456,38 @@ fn main() {
             *grade_counts.entry(&entity.data().grade).or_insert(0) += 1;
         }
 
-        report.push_str(\"\\n等級分布:\\n\");
+        report.push_str("\\n等級分布:\\n");
         for (grade, count) in grade_counts {
-            report.push_str(&format!(\"  {}: {}人\\n\", grade, count));
+            report.push_str(&format!("  {}: {}人\\n", grade, count));
         }
 
         report
     });
 
-    println!(\"\\n{}\", report);
+    println!("\\n{}", report);
 
     // 術式リポジトリの例
-    println!(\"\\n=== 術式リポジトリ ===\");
+    println!("\\n=== 術式リポジトリ ===");
 
     let mut technique_repo: Repository<u32, TechniqueData> = Repository::new();
 
     technique_repo.add(1, TechniqueData {
-        name: \"術式順転『蒼』\".to_string(),
+        name: "術式順転『蒼』".to_string(),
         power: 1000,
-        element: \"無下限\".to_string(),
+        element: "無下限".to_string(),
         difficulty: 8,
     }).unwrap();
 
     technique_repo.add(2, TechniqueData {
-        name: \"黒閃\".to_string(),
+        name: "黒閃".to_string(),
         power: 800,
-        element: \"物理\".to_string(),
+        element: "物理".to_string(),
         difficulty: 6,
     }).unwrap();
 
-    println!(\"登録された術式:\");
+    println!("登録された術式:");
     for technique in technique_repo.list_all() {
-        println!(\"  ID {}: {}\", technique.id(), technique.data());
+        println!("  ID {}: {}", technique.id(), technique.data());
     }
 }
 ```
@@ -587,7 +587,7 @@ impl<T, E> Outcome<T, E> {
 }
 
 fn main() {
-    println!(\"=== カスタムジェネリック型 ===\");
+    println!("=== カスタムジェネリック型 ===");
 
     // Maybe型の使用例
     let power: Maybe<i32> = Maybe::Some(1500);
@@ -596,25 +596,25 @@ fn main() {
     let doubled_power = power.map(|p| p * 2);
     let doubled_no_power = no_power.map(|p| p * 2);
 
-    println!(\"倍増した呪力: {:?}\", doubled_power);      // Some(3000)
-    println!(\"倍増した空の呪力: {:?}\", doubled_no_power); // None
+    println!("倍増した呪力: {:?}", doubled_power);      // Some(3000)
+    println!("倍増した空の呪力: {:?}", doubled_no_power); // None
 
     // チェーン操作
-    let result = Maybe::Some(\"五条悟\")
-        .map(|name| format!(\"呪術師: {}\", name))
+    let result = Maybe::Some("五条悟")
+        .map(|name| format!("呪術師: {}", name))
         .map(|formatted| formatted.len());
 
-    println!(\"チェーン結果: {:?}\", result);
+    println!("チェーン結果: {:?}", result);
 
     // Outcome型の使用例
-    let success: Outcome<String, &str> = Outcome::Success(\"術式発動成功\".to_string());
-    let failure: Outcome<String, &str> = Outcome::Failure(\"呪力不足\");
+    let success: Outcome<String, &str> = Outcome::Success("術式発動成功".to_string());
+    let failure: Outcome<String, &str> = Outcome::Failure("呪力不足");
 
-    let success_result = success.map(|msg| format!(\"[LOG] {}\", msg));
-    let failure_result = failure.map_err(|err| format!(\"[ERROR] {}\", err));
+    let success_result = success.map(|msg| format!("[LOG] {}", msg));
+    let failure_result = failure.map_err(|err| format!("[ERROR] {}", err));
 
-    println!(\"成功結果: {:?}\", success_result);
-    println!(\"失敗結果: {:?}\", failure_result);
+    println!("成功結果: {:?}", success_result);
+    println!("失敗結果: {:?}", failure_result);
 }
 ```
 
@@ -622,36 +622,36 @@ fn main() {
 
 ```rust
 fn main() {
-    println!(\"=== 型推論とターボフィッシュ ===\");
+    println!("=== 型推論とターボフィッシュ ===");
 
     // 型推論が効く場合
     let numbers = vec![1, 2, 3, 4, 5];
     let doubled: Vec<i32> = numbers.iter().map(|x| x * 2).collect();
 
     // 型推論が効かない場合 - ターボフィッシュ構文が必要
-    let parsed_numbers: Vec<i32> = vec![\"1\", \"2\", \"3\"]
+    let parsed_numbers: Vec<i32> = vec!["1", "2", "3"]
         .iter()
         .map(|s| s.parse::<i32>().unwrap())
         .collect();
 
     // または
-    let parsed_numbers2 = vec![\"4\", \"5\", \"6\"]
+    let parsed_numbers2 = vec!["4", "5", "6"]
         .iter()
         .map(|s| s.parse().unwrap())
         .collect::<Vec<i32>>();
 
-    println!(\"倍増: {:?}\", doubled);
-    println!(\"パース1: {:?}\", parsed_numbers);
-    println!(\"パース2: {:?}\", parsed_numbers2);
+    println!("倍増: {:?}", doubled);
+    println!("パース1: {:?}", parsed_numbers);
+    println!("パース2: {:?}", parsed_numbers2);
 
     // より複雑な例
     let sorcerer_powers: std::collections::HashMap<String, i32> =
-        [(\"五条悟\", 3000), (\"虎杖悠仁\", 1200)]
+        [("五条悟", 3000), ("虎杖悠仁", 1200)]
         .iter()
         .map(|(name, power)| (name.to_string(), *power))
         .collect();
 
-    println!(\"呪術師の呪力: {:?}\", sorcerer_powers);
+    println!("呪術師の呪力: {:?}", sorcerer_powers);
 }
 ```
 

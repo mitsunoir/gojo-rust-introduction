@@ -14,7 +14,7 @@
 
 様々な型の値を安全に管理できる汎用コンテナシステムを作成せよ。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 // 以下の要件を満たすコンテナを実装せよ：
@@ -45,7 +45,7 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 use std::collections::VecDeque;
@@ -192,50 +192,50 @@ where
 {
     fn display_all(&self) {
         for (i, item) in self.items.iter().enumerate() {
-            println!(\"{}: {}\", i, item);
+            println!("{}: {}", i, item);
         }
     }
 }
 
 fn main() {
-    println!(\"=== 汎用コンテナシステム ===\");
+    println!("=== 汎用コンテナシステム ===");
 
     // 呪力値の管理
     let mut power_container = Container::with_capacity(5);
 
-    println!(\"呪力値を追加:\");
+    println!("呪力値を追加:");
     for power in [1000, 1500, 800, 2000, 3000] {
         match power_container.push(power) {
-            Ok(_) => println!(\"  {}を追加\", power),
-            Err(rejected) => println!(\"  {}は容量オーバーで拒否\", rejected),
+            Ok(_) => println!("  {}を追加", power),
+            Err(rejected) => println!("  {}は容量オーバーで拒否", rejected),
         }
     }
 
-    println!(\"\\n呪力値一覧:\");
+    println!("\\n呪力値一覧:");
     power_container.display_all();
 
-    println!(\"\\n統計情報:\");
+    println!("\\n統計情報:");
     if let Some(max_power) = power_container.max() {
-        println!(\"最大呪力: {}\", max_power);
+        println!("最大呪力: {}", max_power);
     }
     if let Some(min_power) = power_container.min() {
-        println!(\"最小呪力: {}\", min_power);
+        println!("最小呪力: {}", min_power);
     }
 
     // 呪術師名の管理
     let mut name_container = Container::new();
-    let names = [\"五条悟\", \"虎杖悠仁\", \"伏黒恵\", \"釘崎野薔薇\"];
+    let names = ["五条悟", "虎杖悠仁", "伏黒恵", "釘崎野薔薇"];
 
     for name in names {
         name_container.push(name.to_string()).unwrap();
     }
 
-    println!(\"\\n呪術師名一覧:\");
+    println!("\\n呪術師名一覧:");
     name_container.display_all();
 
     // 変換操作
-    let formatted_names = name_container.map(|name| format!(\"{}先輩\", name));
-    println!(\"\\n敬称付き名前:\");
+    let formatted_names = name_container.map(|name| format!("{}先輩", name));
+    println!("\\n敬称付き名前:");
     formatted_names.display_all();
 
     // フィルタリング
@@ -245,13 +245,13 @@ fn main() {
     }
 
     let filtered = long_names.filter(|name| name.len() >= 4);
-    println!(\"\\n4文字以上の名前:\");
+    println!("\\n4文字以上の名前:");
     filtered.display_all();
 
     // イテレータ使用
-    println!(\"\\n呪力値の2倍計算:\");
+    println!("\\n呪力値の2倍計算:");
     for power in power_container.iter() {
-        println!(\"{} -> {}\", power, power * 2);
+        println!("{} -> {}", power, power * 2);
     }
 }
 ```
@@ -263,7 +263,7 @@ fn main() {
 
 数値計算を汎用的に行うシステムを作成せよ。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 // 以下の機能を持つ計算システムを実装せよ：
@@ -283,7 +283,7 @@ struct Calculator<T> {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 use std::ops::{Add, Sub, Mul, Div};
@@ -462,34 +462,34 @@ where
     T: Display,
 {
     fn display(&self, label: &str) {
-        println!(\"{}: [{}]\", label,
+        println!("{}: [{}]", label,
                  self.values.iter()
                      .map(|x| x.to_string())
                      .collect::<Vec<_>>()
-                     .join(\", \"));
+                     .join(", "));
     }
 
     fn display_stats(&self)
     where
         T: Add<Output = T> + Div<Output = T> + PartialOrd + Copy + From<usize>,
     {
-        println!(\"統計情報:\");
-        println!(\"  要素数: {}\", self.len());
+        println!("統計情報:");
+        println!("  要素数: {}", self.len());
 
         if let Some(sum) = self.sum() {
-            println!(\"  合計: {}\", sum);
+            println!("  合計: {}", sum);
         }
 
         if let Some(avg) = self.average() {
-            println!(\"  平均: {}\", avg);
+            println!("  平均: {}", avg);
         }
 
         if let Some(max) = self.max() {
-            println!(\"  最大: {}\", max);
+            println!("  最大: {}", max);
         }
 
         if let Some(min) = self.min() {
-            println!(\"  最小: {}\", min);
+            println!("  最小: {}", min);
         }
     }
 }
@@ -528,7 +528,7 @@ impl Calculator<f64> {
 }
 
 fn main() {
-    println!(\"=== ジェネリック計算システム ===\");
+    println!("=== ジェネリック計算システム ===");
 
     // 整数での計算
     let mut int_calc = Calculator::new();
@@ -538,22 +538,22 @@ fn main() {
         int_calc.add_value(power);
     }
 
-    int_calc.display(\"呪力値\");
+    int_calc.display("呪力値");
     int_calc.display_stats();
 
     println!();
 
     // 浮動小数点での計算
     let float_calc = Calculator::with_values(vec![1000.0, 1500.5, 800.3, 2000.7, 1200.1]);
-    float_calc.display(\"精密呪力値\");
+    float_calc.display("精密呪力値");
     float_calc.display_stats();
 
     if let Some(std_dev) = float_calc.standard_deviation() {
-        println!(\"  標準偏差: {:.2}\", std_dev);
+        println!("  標準偏差: {:.2}", std_dev);
     }
 
     if let Some(median) = float_calc.median() {
-        println!(\"  中央値: {:.2}\", median);
+        println!("  中央値: {:.2}", median);
     }
 
     println!();
@@ -562,49 +562,49 @@ fn main() {
     let calc1 = Calculator::with_values(vec![100, 200, 300]);
     let calc2 = Calculator::with_values(vec![50, 100, 150]);
 
-    calc1.display(\"計算1\");
-    calc2.display(\"計算2\");
+    calc1.display("計算1");
+    calc2.display("計算2");
 
     let sum_result = calc1.element_wise_add(&calc2);
-    sum_result.display(\"要素ごとの和\");
+    sum_result.display("要素ごとの和");
 
     let diff_result = calc1.element_wise_sub(&calc2);
-    diff_result.display(\"要素ごとの差\");
+    diff_result.display("要素ごとの差");
 
     let scaled = calc1.scalar_multiply(2);
-    scaled.display(\"2倍\");
+    scaled.display("2倍");
 
     println!();
 
     // 変換操作
     let power_calc = Calculator::with_values(vec![1000, 1500, 2000]);
-    power_calc.display(\"元の呪力\");
+    power_calc.display("元の呪力");
 
     // 整数から文字列への変換
     let string_calc = power_calc.convert(|x| {
         match x {
-            x if x >= 2000 => format!(\"{}（特級）\", x),
-            x if x >= 1500 => format!(\"{}（1級）\", x),
-            x if x >= 1000 => format!(\"{}（2級）\", x),
-            x => format!(\"{}（下級）\", x),
+            x if x >= 2000 => format!("{}（特級）", x),
+            x if x >= 1500 => format!("{}（1級）", x),
+            x if x >= 1000 => format!("{}（2級）", x),
+            x => format!("{}（下級）", x),
         }
     });
 
-    string_calc.display(\"等級付き呪力\");
+    string_calc.display("等級付き呪力");
 
     // フィルタリング
     let high_powers = Calculator::with_values(vec![500, 1000, 1500, 2000, 3000]);
-    high_powers.display(\"全呪力値\");
+    high_powers.display("全呪力値");
 
     let filtered = high_powers.filter(|&x| x >= 1500);
-    filtered.display(\"1500以上の呪力\");
+    filtered.display("1500以上の呪力");
 
     // カスタム計算
     let doubled = high_powers.map(|x| x * 2);
-    doubled.display(\"2倍した呪力\");
+    doubled.display("2倍した呪力");
 
     let power_sum = high_powers.reduce(0, |acc, x| acc + x);
-    println!(\"\\nカスタム合計計算: {}\", power_sum);
+    println!("\\nカスタム合計計算: {}", power_sum);
 }
 ```
 
@@ -617,7 +617,7 @@ fn main() {
 
 複数のトレイトを組み合わせた戦闘システムを実装せよ。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 // 以下のトレイトを定義し、戦闘システムを実装せよ：
@@ -639,7 +639,7 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 use std::collections::HashMap;
@@ -723,8 +723,8 @@ impl Sorcerer {
         };
 
         // デフォルト術式
-        sorcerer.learn_technique(\"基本攻撃\", 10);
-        sorcerer.learn_technique(\"強化攻撃\", 25);
+        sorcerer.learn_technique("基本攻撃", 10);
+        sorcerer.learn_technique("強化攻撃", 25);
 
         sorcerer
     }
@@ -741,7 +741,7 @@ impl Entity for Sorcerer {
     }
 
     fn entity_type(&self) -> &str {
-        \"呪術師\"
+        "呪術師"
     }
 
     fn level(&self) -> u32 {
@@ -792,32 +792,32 @@ impl TechniqueUser for Sorcerer {
 
     fn use_technique(&mut self, technique_name: &str, target: &mut dyn Combatant) -> Result<String, String> {
         let cost = self.technique_costs.get(technique_name)
-            .ok_or_else(|| format!(\"{}は{}を知りません\", self.name, technique_name))?;
+            .ok_or_else(|| format!("{}は{}を知りません", self.name, technique_name))?;
 
         if self.current_mana < *cost {
-            return Err(format!(\"{}のマナが不足しています（必要: {}, 現在: {}）\",
+            return Err(format!("{}のマナが不足しています（必要: {}, 現在: {}）",
                              self.name, cost, self.current_mana));
         }
 
         self.current_mana -= cost;
 
         let damage = match technique_name {
-            \"基本攻撃\" => self.calculate_damage(target),
-            \"強化攻撃\" => self.calculate_damage(target) * 2,
-            \"回復術\" => {
+            "基本攻撃" => self.calculate_damage(target),
+            "強化攻撃" => self.calculate_damage(target) * 2,
+            "回復術" => {
                 if let Some(healable_target) = (target as &mut dyn std::any::Any).downcast_mut::<Sorcerer>() {
                     let heal_amount = self.attack_power() / 2;
                     healable_target.heal(heal_amount);
-                    return Ok(format!(\"{}が{}を{}回復させた\", self.name, target.name(), heal_amount));
+                    return Ok(format!("{}が{}を{}回復させた", self.name, target.name(), heal_amount));
                 } else {
-                    return Err(\"回復対象が無効です\".to_string());
+                    return Err("回復対象が無効です".to_string());
                 }
             },
             _ => self.calculate_damage(target),
         };
 
         let actual_damage = target.take_damage(damage);
-        Ok(format!(\"{}が{}で{}に{}ダメージ\",
+        Ok(format!("{}が{}で{}に{}ダメージ",
                   self.name, technique_name, target.name(), actual_damage))
     }
 
@@ -837,7 +837,7 @@ impl Healable for Sorcerer {
 impl Displayable for Sorcerer {
     fn display_status(&self) -> String {
         format!(
-            \"=== {} ===\\nレベル: {}\\nHP: {}/{}\\nマナ: {}/{}\\n攻撃力: {}\\n防御力: {}\\n習得術式: {:?}\\n状態: {}\",
+            "=== {} ===\\nレベル: {}\\nHP: {}/{}\\nマナ: {}/{}\\n攻撃力: {}\\n防御力: {}\\n習得術式: {:?}\\n状態: {}",
             self.name,
             self.level,
             self.current_health, self.max_health,
@@ -845,12 +845,12 @@ impl Displayable for Sorcerer {
             self.attack_power,
             self.defense_power,
             self.techniques,
-            if self.is_alive() { \"生存\" } else { \"戦闘不能\" }
+            if self.is_alive() { "生存" } else { "戦闘不能" }
         )
     }
 
     fn display_summary(&self) -> String {
-        format!(\"{} (Lv.{}, HP: {}/{}, マナ: {}/{})\",
+        format!("{} (Lv.{}, HP: {}/{}, マナ: {}/{})",
                 self.name, self.level,
                 self.current_health, self.max_health,
                 self.current_mana, self.max_mana)
@@ -859,7 +859,7 @@ impl Displayable for Sorcerer {
 
 impl fmt::Display for Sorcerer {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, \"{}\", self.display_summary())
+        write!(f, "{}", self.display_summary())
     }
 }
 
@@ -895,7 +895,7 @@ impl Entity for Curse {
     }
 
     fn entity_type(&self) -> &str {
-        \"呪霊\"
+        "呪霊"
     }
 
     fn level(&self) -> u32 {
@@ -934,19 +934,19 @@ impl Combatant for Curse {
 impl Displayable for Curse {
     fn display_status(&self) -> String {
         format!(
-            \"=== {} ===\\n等級: {}\\nレベル: {}\\nHP: {}/{}\\n攻撃力: {}\\n防御力: {}\\n状態: {}\",
+            "=== {} ===\\n等級: {}\\nレベル: {}\\nHP: {}/{}\\n攻撃力: {}\\n防御力: {}\\n状態: {}",
             self.name,
             self.grade,
             self.level,
             self.current_health, self.max_health,
             self.attack_power,
             self.defense_power,
-            if self.is_alive() { \"生存\" } else { \"祓われた\" }
+            if self.is_alive() { "生存" } else { "祓われた" }
         )
     }
 
     fn display_summary(&self) -> String {
-        format!(\"{} ({}級, Lv.{}, HP: {}/{})\",
+        format!("{} ({}級, Lv.{}, HP: {}/{})",
                 self.name, self.grade, self.level,
                 self.current_health, self.max_health)
     }
@@ -954,7 +954,7 @@ impl Displayable for Curse {
 
 impl fmt::Display for Curse {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, \"{}\", self.display_summary())
+        write!(f, "{}", self.display_summary())
     }
 }
 
@@ -969,21 +969,21 @@ impl BattleSystem {
         let mut log = String::new();
         let mut round = 1;
 
-        log.push_str(&format!(\"=== 1対1戦闘: {} vs {} ===\\n\",
+        log.push_str(&format!("=== 1対1戦闘: {} vs {} ===\\n",
                              fighter1.name(), fighter2.name()));
 
         while fighter1.is_alive() && fighter2.is_alive() && round <= 10 {
-            log.push_str(&format!(\"\\n--- ラウンド {} ---\\n\", round));
+            log.push_str(&format!("\\n--- ラウンド {} ---\\n", round));
 
             // ファイター1の攻撃
             if fighter1.is_alive() {
                 let damage = fighter1.calculate_damage(fighter2);
                 let actual_damage = fighter2.take_damage(damage);
-                log.push_str(&format!(\"{}が{}を攻撃！{}ダメージ\\n\",
+                log.push_str(&format!("{}が{}を攻撃！{}ダメージ\\n",
                                      fighter1.name(), fighter2.name(), actual_damage));
 
                 if !fighter2.is_alive() {
-                    log.push_str(&format!(\"{}が倒れた！\\n\", fighter2.name()));
+                    log.push_str(&format!("{}が倒れた！\\n", fighter2.name()));
                     break;
                 }
             }
@@ -992,11 +992,11 @@ impl BattleSystem {
             if fighter2.is_alive() {
                 let damage = fighter2.calculate_damage(fighter1);
                 let actual_damage = fighter1.take_damage(damage);
-                log.push_str(&format!(\"{}が{}を攻撃！{}ダメージ\\n\",
+                log.push_str(&format!("{}が{}を攻撃！{}ダメージ\\n",
                                      fighter2.name(), fighter1.name(), actual_damage));
 
                 if !fighter1.is_alive() {
-                    log.push_str(&format!(\"{}が倒れた！\\n\", fighter1.name()));
+                    log.push_str(&format!("{}が倒れた！\\n", fighter1.name()));
                     break;
                 }
             }
@@ -1006,13 +1006,13 @@ impl BattleSystem {
 
         // 勝者の発表
         if fighter1.is_alive() && !fighter2.is_alive() {
-            log.push_str(&format!(\"\\n勝者: {}！\\n\", fighter1.name()));
+            log.push_str(&format!("\\n勝者: {}！\\n", fighter1.name()));
         } else if fighter2.is_alive() && !fighter1.is_alive() {
-            log.push_str(&format!(\"\\n勝者: {}！\\n\", fighter2.name()));
+            log.push_str(&format!("\\n勝者: {}！\\n", fighter2.name()));
         } else if round > 10 {
-            log.push_str(\"\\n時間切れで引き分け！\\n\");
+            log.push_str("\\n時間切れで引き分け！\\n");
         } else {
-            log.push_str(\"\\n両者戦闘不能...\\n\");
+            log.push_str("\\n両者戦闘不能...\\n");
         }
 
         log
@@ -1035,37 +1035,37 @@ impl BattleSystem {
 }
 
 fn main() {
-    println!(\"=== 呪術戦闘システム ===\");
+    println!("=== 呪術戦闘システム ===");
 
     // キャラクター作成
-    let mut gojo = Sorcerer::new(\"五条悟\", 10, 2000, 300, 200, 500);
-    gojo.learn_technique(\"無下限術式\", 50);
-    gojo.learn_technique(\"領域展開\", 200);
+    let mut gojo = Sorcerer::new("五条悟", 10, 2000, 300, 200, 500);
+    gojo.learn_technique("無下限術式", 50);
+    gojo.learn_technique("領域展開", 200);
 
-    let mut yuji = Sorcerer::new(\"虎杖悠仁\", 5, 1500, 250, 150, 300);
-    yuji.learn_technique(\"黒閃\", 40);
+    let mut yuji = Sorcerer::new("虎杖悠仁", 5, 1500, 250, 150, 300);
+    yuji.learn_technique("黒閃", 40);
 
-    let mut special_curse = Curse::new(\"特級呪霊\", \"特級\", 8, 1800, 280, 180);
+    let mut special_curse = Curse::new("特級呪霊", "特級", 8, 1800, 280, 180);
 
     // ステータス表示
-    println!(\"{}\", gojo.display_status());
+    println!("{}", gojo.display_status());
     println!();
-    println!(\"{}\", yuji.display_status());
+    println!("{}", yuji.display_status());
     println!();
-    println!(\"{}\", special_curse.display_status());
+    println!("{}", special_curse.display_status());
     println!();
 
     // 術式戦闘
-    println!(\"=== 術式使用テスト ===\");
-    let result = BattleSystem::technique_battle(&mut gojo, &mut special_curse, \"無下限術式\");
-    println!(\"{}\", result);
+    println!("=== 術式使用テスト ===");
+    let result = BattleSystem::technique_battle(&mut gojo, &mut special_curse, "無下限術式");
+    println!("{}", result);
 
-    let result = BattleSystem::technique_battle(&mut yuji, &mut gojo, \"黒閃\");
-    println!(\"{}\", result);
+    let result = BattleSystem::technique_battle(&mut yuji, &mut gojo, "黒閃");
+    println!("{}", result);
 
     // マナ不足のテスト
-    let result = BattleSystem::technique_battle(&mut gojo, &mut special_curse, \"領域展開\");
-    println!(\"{}\", result);
+    let result = BattleSystem::technique_battle(&mut gojo, &mut special_curse, "領域展開");
+    println!("{}", result);
 
     println!();
 
@@ -1074,23 +1074,23 @@ fn main() {
     let mut curse_clone = special_curse.clone();
 
     let battle_log = BattleSystem::one_vs_one(&mut gojo_clone, &mut curse_clone);
-    println!(\"{}\", battle_log);
+    println!("{}", battle_log);
 
     // 戦闘後ステータス
-    println!(\"=== 戦闘後ステータス ===\");
-    println!(\"{}\", gojo_clone.display_summary());
-    println!(\"{}\", curse_clone.display_summary());
+    println!("=== 戦闘後ステータス ===");
+    println!("{}", gojo_clone.display_summary());
+    println!("{}", curse_clone.display_summary());
 
     // 回復テスト
     if gojo_clone.can_heal() {
         let healed = gojo_clone.heal(200);
-        println!(\"\\n{}が{}回復した\", gojo_clone.name(), healed);
-        println!(\"{}\", gojo_clone.display_summary());
+        println!("\\n{}が{}回復した", gojo_clone.name(), healed);
+        println!("{}", gojo_clone.display_summary());
     }
 
     // マナ回復
     gojo_clone.recover_mana(100);
-    println!(\"マナ回復後: {}\", gojo_clone.display_summary());
+    println!("マナ回復後: {}", gojo_clone.display_summary());
 }
 ```
 
@@ -1101,7 +1101,7 @@ fn main() {
 
 異なる型の設定値を安全に管理するシステムを作成せよ。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 // 以下の要件を満たす設定管理システムを実装せよ：
@@ -1125,7 +1125,7 @@ struct ConfigManager {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 use std::collections::HashMap;
@@ -1202,21 +1202,21 @@ impl ConfigManager {
                 if let Some(default) = self.defaults.get(key) {
                     Some(&ConfigEntry {
                         value: default.clone_box(),
-                        description: \"Default value\".to_string(),
+                        description: "Default value".to_string(),
                         required: false,
                     })
                 } else {
                     None
                 }
             })
-            .ok_or_else(|| format!(\"設定 '{}' が見つかりません\", key))?;
+            .ok_or_else(|| format!("設定 '{}' が見つかりません", key))?;
 
         entry.value.as_any()
             .downcast_ref::<T>()
-            .ok_or_else(|| format!(\"設定 '{}' の型が一致しません\", key))?
+            .ok_or_else(|| format!("設定 '{}' の型が一致しません", key))?
             .clone()
             .validate()
-            .map_err(|e| format!(\"設定 '{}' の検証エラー: {}\", key, e))?;
+            .map_err(|e| format!("設定 '{}' の検証エラー: {}", key, e))?;
 
         Ok(entry.value.as_any()
             .downcast_ref::<T>()
@@ -1237,10 +1237,10 @@ impl ConfigManager {
     // 設定の削除
     fn remove(&mut self, key: &str) -> Result<(), String> {
         let entry = self.configs.get(key)
-            .ok_or_else(|| format!(\"設定 '{}' が見つかりません\", key))?;
+            .ok_or_else(|| format!("設定 '{}' が見つかりません", key))?;
 
         if entry.required {
-            return Err(format!(\"必須設定 '{}' は削除できません\", key));
+            return Err(format!("必須設定 '{}' は削除できません", key));
         }
 
         self.configs.remove(key);
@@ -1253,7 +1253,7 @@ impl ConfigManager {
 
         for (key, entry) in &self.configs {
             if let Err(e) = entry.value.validate() {
-                errors.push(format!(\"{}: {}\", key, e));
+                errors.push(format!("{}: {}", key, e));
             }
         }
 
@@ -1291,12 +1291,12 @@ impl ConfigManager {
 
     // 設定のエクスポート（簡易版）
     fn export_config(&self) -> String {
-        let mut output = String::from(\"# 設定ファイル\\n\\n\");
+        let mut output = String::from("# 設定ファイル\\n\\n");
 
         for (key, entry) in &self.configs {
-            output.push_str(&format!(\"# {}\\n\", entry.description));
-            output.push_str(&format!(\"# 必須: {}\\n\", entry.required));
-            output.push_str(&format!(\"{} = {:?}\\n\\n\", key, entry.value));
+            output.push_str(&format!("# {}\\n", entry.description));
+            output.push_str(&format!("# 必須: {}\\n", entry.required));
+            output.push_str(&format!("{} = {:?}\\n\\n", key, entry.value));
         }
 
         output
@@ -1305,7 +1305,7 @@ impl ConfigManager {
 
 impl fmt::Debug for ConfigManager {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, \"ConfigManager {{ configs: {} entries }}\", self.configs.len())
+        write!(f, "ConfigManager {{ configs: {} entries }}", self.configs.len())
     }
 }
 
@@ -1330,16 +1330,16 @@ impl PowerSettings {
 impl ConfigValue for PowerSettings {
     fn validate(&self) -> Result<(), String> {
         if self.max_power <= 0 {
-            return Err(\"最大呪力は正の値である必要があります\".to_string());
+            return Err("最大呪力は正の値である必要があります".to_string());
         }
 
         if self.regeneration_rate < 0.0 || self.regeneration_rate > 1.0 {
-            return Err(\"回復率は0.0から1.0の間である必要があります\".to_string());
+            return Err("回復率は0.0から1.0の間である必要があります".to_string());
         }
 
-        let valid_types = [\"物理\", \"呪術\", \"特殊\"];
+        let valid_types = ["物理", "呪術", "特殊"];
         if !valid_types.contains(&self.power_type.as_str()) {
-            return Err(format!(\"無効な呪力タイプ: {}。有効: {:?}\",
+            return Err(format!("無効な呪力タイプ: {}。有効: {:?}",
                              self.power_type, valid_types));
         }
 
@@ -1372,7 +1372,7 @@ impl ValidatedInt {
 impl ConfigValue for ValidatedInt {
     fn validate(&self) -> Result<(), String> {
         if self.value < self.min || self.value > self.max {
-            Err(format!(\"値{}は範囲{}..{}を超えています\",
+            Err(format!("値{}は範囲{}..{}を超えています",
                        self.value, self.min, self.max))
         } else {
             Ok(())
@@ -1389,90 +1389,90 @@ impl ConfigValue for ValidatedInt {
 }
 
 fn main() {
-    println!(\"=== 型安全設定管理システム ===\");
+    println!("=== 型安全設定管理システム ===");
 
     let mut config = ConfigManager::new();
 
     // デフォルト値の設定
-    config.set_default(\"debug_mode\", false);
-    config.set_default(\"max_connections\", 100i32);
-    config.set_default(\"timeout\", 30.0f64);
+    config.set_default("debug_mode", false);
+    config.set_default("max_connections", 100i32);
+    config.set_default("timeout", 30.0f64);
 
     // 基本設定の登録
-    config.set(\"debug_mode\", true, \"デバッグモードの有効/無効\", false).unwrap();
-    config.set(\"max_connections\", 200i32, \"最大接続数\", true).unwrap();
-    config.set(\"server_name\", \"呪術高専サーバー\".to_string(), \"サーバー名\", true).unwrap();
-    config.set(\"timeout\", 45.5f64, \"タイムアウト（秒）\", false).unwrap();
+    config.set("debug_mode", true, "デバッグモードの有効/無効", false).unwrap();
+    config.set("max_connections", 200i32, "最大接続数", true).unwrap();
+    config.set("server_name", "呪術高専サーバー".to_string(), "サーバー名", true).unwrap();
+    config.set("timeout", 45.5f64, "タイムアウト（秒）", false).unwrap();
 
     // カスタム設定型の登録
-    let power_config = PowerSettings::new(3000, 0.1, \"呪術\");
-    config.set(\"gojo_power\", power_config, \"五条悟の呪力設定\", true).unwrap();
+    let power_config = PowerSettings::new(3000, 0.1, "呪術");
+    config.set("gojo_power", power_config, "五条悟の呪力設定", true).unwrap();
 
     let validated_level = ValidatedInt::new(10, 1, 100);
-    config.set(\"player_level\", validated_level, \"プレイヤーレベル（1-100）\", false).unwrap();
+    config.set("player_level", validated_level, "プレイヤーレベル（1-100）", false).unwrap();
 
     // 設定値の取得
-    println!(\"=== 設定値の取得 ===\");
+    println!("=== 設定値の取得 ===");
 
-    let debug: bool = config.get(\"debug_mode\").unwrap();
-    println!(\"デバッグモード: {}\", debug);
+    let debug: bool = config.get("debug_mode").unwrap();
+    println!("デバッグモード: {}", debug);
 
-    let max_conn: i32 = config.get(\"max_connections\").unwrap();
-    println!(\"最大接続数: {}\", max_conn);
+    let max_conn: i32 = config.get("max_connections").unwrap();
+    println!("最大接続数: {}", max_conn);
 
-    let server_name: String = config.get(\"server_name\").unwrap();
-    println!(\"サーバー名: {}\", server_name);
+    let server_name: String = config.get("server_name").unwrap();
+    println!("サーバー名: {}", server_name);
 
-    let gojo_power: PowerSettings = config.get(\"gojo_power\").unwrap();
-    println!(\"五条悟の呪力設定: {:?}\", gojo_power);
+    let gojo_power: PowerSettings = config.get("gojo_power").unwrap();
+    println!("五条悟の呪力設定: {:?}", gojo_power);
 
     // デフォルト値の取得テスト
-    let default_timeout: f64 = config.get(\"default_timeout\").unwrap_or(60.0);
-    println!(\"デフォルトタイムアウト: {}\", default_timeout);
+    let default_timeout: f64 = config.get("default_timeout").unwrap_or(60.0);
+    println!("デフォルトタイムアウト: {}", default_timeout);
 
     println!();
 
     // 設定一覧
-    println!(\"=== 設定一覧 ===\");
+    println!("=== 設定一覧 ===");
     for (key, description, required) in config.list_configs() {
-        let req_mark = if required { \"[必須]\" } else { \"[任意]\" };
-        println!(\"{} {}: {}\", req_mark, key, description);
+        let req_mark = if required { "[必須]" } else { "[任意]" };
+        println!("{} {}: {}", req_mark, key, description);
     }
 
     println!();
 
     // 型別設定取得
-    println!(\"=== 整数型設定 ===\");
+    println!("=== 整数型設定 ===");
     let int_configs: HashMap<String, i32> = config.get_configs_of_type();
     for (key, value) in int_configs {
-        println!(\"{}: {}\", key, value);
+        println!("{}: {}", key, value);
     }
 
     println!();
 
     // バリデーションテスト
-    println!(\"=== バリデーションテスト ===\");
+    println!("=== バリデーションテスト ===");
 
     // 無効な設定の登録を試行
-    let invalid_power = PowerSettings::new(-100, 1.5, \"無効タイプ\");
-    match config.set(\"invalid_power\", invalid_power, \"無効な呪力設定\", false) {
-        Ok(_) => println!(\"無効設定が登録されました（予期しない）\"),
-        Err(e) => println!(\"予期されたエラー: {}\", e),
+    let invalid_power = PowerSettings::new(-100, 1.5, "無効タイプ");
+    match config.set("invalid_power", invalid_power, "無効な呪力設定", false) {
+        Ok(_) => println!("無効設定が登録されました（予期しない）"),
+        Err(e) => println!("予期されたエラー: {}", e),
     }
 
     let invalid_level = ValidatedInt::new(150, 1, 100);
-    match config.set(\"invalid_level\", invalid_level, \"無効レベル\", false) {
-        Ok(_) => println!(\"無効レベルが登録されました（予期しない）\"),
-        Err(e) => println!(\"予期されたエラー: {}\", e),
+    match config.set("invalid_level", invalid_level, "無効レベル", false) {
+        Ok(_) => println!("無効レベルが登録されました（予期しない）"),
+        Err(e) => println!("予期されたエラー: {}", e),
     }
 
     // 全設定の検証
     match config.validate_all() {
-        Ok(_) => println!(\"✓ 全設定が有効です\"),
+        Ok(_) => println!("✓ 全設定が有効です"),
         Err(errors) => {
-            println!(\"✗ 設定エラー:\");
+            println!("✗ 設定エラー:");
             for error in errors {
-                println!(\"  {}\", error);
+                println!("  {}", error);
             }
         }
     }
@@ -1480,31 +1480,31 @@ fn main() {
     println!();
 
     // 設定のエクスポート
-    println!(\"=== 設定エクスポート ===\");
-    println!(\"{}\", config.export_config());
+    println!("=== 設定エクスポート ===");
+    println!("{}", config.export_config());
 
     // 型安全性のテスト
-    println!(\"=== 型安全性テスト ===\");
+    println!("=== 型安全性テスト ===");
 
     // 正しい型での取得
-    match config.get::<bool>(\"debug_mode\") {
-        Ok(value) => println!(\"✓ bool取得成功: {}\", value),
-        Err(e) => println!(\"✗ bool取得失敗: {}\", e),
+    match config.get::<bool>("debug_mode") {
+        Ok(value) => println!("✓ bool取得成功: {}", value),
+        Err(e) => println!("✗ bool取得失敗: {}", e),
     }
 
     // 間違った型での取得
-    match config.get::<String>(\"debug_mode\") {
-        Ok(value) => println!(\"✓ String取得成功: {}\", value),
-        Err(e) => println!(\"✗ 予期されたエラー: {}\", e),
+    match config.get::<String>("debug_mode") {
+        Ok(value) => println!("✓ String取得成功: {}", value),
+        Err(e) => println!("✗ 予期されたエラー: {}", e),
     }
 
     // 存在しない設定の取得
-    match config.get::<i32>(\"nonexistent\") {
-        Ok(value) => println!(\"✓ 存在しない設定取得: {}\", value),
-        Err(e) => println!(\"✗ 予期されたエラー: {}\", e),
+    match config.get::<i32>("nonexistent") {
+        Ok(value) => println!("✓ 存在しない設定取得: {}", value),
+        Err(e) => println!("✗ 予期されたエラー: {}", e),
     }
 
-    println!(\"\\n=== 設定管理システムテスト完了 ===\");
+    println!("\\n=== 設定管理システムテスト完了 ===");
 }
 ```
 
@@ -1517,7 +1517,7 @@ fn main() {
 
 関数型プログラミングの概念を取り入れた汎用ライブラリを実装せよ。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 // 以下の関数型プログラミング概念を実装せよ：
@@ -1534,7 +1534,7 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 // Functor trait - map操作が可能
@@ -1958,15 +1958,15 @@ fn validate_power(power: i32) -> Either<String, i32> {
     if power >= 0 {
         Either::Right(power)
     } else {
-        Either::Left(\"呪力は負の値にできません\".to_string())
+        Either::Left("呪力は負の値にできません".to_string())
     }
 }
 
 fn main() {
-    println!(\"=== 関数型プログラミングライブラリ ===\");
+    println!("=== 関数型プログラミングライブラリ ===");
 
     // Maybe型の使用例
-    println!(\"=== Maybe型の例 ===\");
+    println!("=== Maybe型の例 ===");
 
     let just_value = Maybe::Just(1000);
     let nothing_value: Maybe<i32> = Maybe::Nothing;
@@ -1974,80 +1974,80 @@ fn main() {
     let doubled = just_value.map(|x| x * 2);
     let doubled_nothing = nothing_value.map(|x| x * 2);
 
-    println!(\"Just(1000) * 2 = {:?}\", doubled);
-    println!(\"Nothing * 2 = {:?}\", doubled_nothing);
+    println!("Just(1000) * 2 = {:?}", doubled);
+    println!("Nothing * 2 = {:?}", doubled_nothing);
 
     // モナドチェーンの例
     let result = Maybe::Just(15)
         .flat_map(|x| if x > 10 { Maybe::Just(x * 2) } else { Maybe::Nothing })
         .map(|x| x + 5);
 
-    println!(\"モナドチェーン結果: {:?}\", result);
+    println!("モナドチェーン結果: {:?}", result);
 
     // List型の使用例
-    println!(\"\\n=== List型の例 ===\");
+    println!("\\n=== List型の例 ===");
 
     let powers = List::from_vec(vec![1000, 1500, 800, 2000]);
     let doubled_powers = powers.map_fn(|&x| x * 2);
 
-    println!(\"元の呪力: {:?}\", powers);
-    println!(\"2倍の呪力: {:?}\", doubled_powers);
+    println!("元の呪力: {:?}", powers);
+    println!("2倍の呪力: {:?}", doubled_powers);
 
     // フィルタリング
     let high_powers = powers.filter(|&&x| x >= 1500);
-    println!(\"高い呪力のみ: {:?}\", high_powers);
+    println!("高い呪力のみ: {:?}", high_powers);
 
     // 畳み込み
     let total_power = powers.clone().fold(0, |acc, x| acc + x);
-    println!(\"合計呪力: {}\", total_power);
+    println!("合計呪力: {}", total_power);
 
     // Either型の使用例
-    println!(\"\\n=== Either型の例 ===\");
+    println!("\\n=== Either型の例 ===");
 
     let valid_power = validate_power(1500);
     let invalid_power = validate_power(-100);
 
-    println!(\"有効な呪力: {:?}\", valid_power);
-    println!(\"無効な呪力: {:?}\", invalid_power);
+    println!("有効な呪力: {:?}", valid_power);
+    println!("無効な呪力: {:?}", invalid_power);
 
     let processed_valid = valid_power.map(|x| x * 2);
     let processed_invalid = invalid_power.map(|x| x * 2);
 
-    println!(\"処理後（有効）: {:?}\", processed_valid);
-    println!(\"処理後（無効）: {:?}\", processed_invalid);
+    println!("処理後（有効）: {:?}", processed_valid);
+    println!("処理後（無効）: {:?}", processed_invalid);
 
     // 呪術師システムでの応用
-    println!(\"\\n=== 呪術師システムでの応用 ===\");
+    println!("\\n=== 呪術師システムでの応用 ===");
 
     let sorcerers = vec![
-        Sorcerer::new(\"五条悟\", 3000),
-        Sorcerer::new(\"虎杖悠仁\", 1200),
-        Sorcerer::new(\"伏黒恵\", 1000),
+        Sorcerer::new("五条悟", 3000),
+        Sorcerer::new("虎杖悠仁", 1200),
+        Sorcerer::new("伏黒恵", 1000),
     ];
 
     // 呪術師検索
-    let found_sorcerer = find_sorcerer(&sorcerers, \"五条悟\");
-    let not_found = find_sorcerer(&sorcerers, \"存在しない呪術師\");
+    let found_sorcerer = find_sorcerer(&sorcerers, "五条悟");
+    let not_found = find_sorcerer(&sorcerers, "存在しない呪術師");
 
     match found_sorcerer {
-        Maybe::Just(sorcerer) => println!(\"見つかった: {} (呪力: {})\", sorcerer.name, sorcerer.power),
-        Maybe::Nothing => println!(\"見つからない\"),
+        Maybe::Just(sorcerer) => println!("見つかった: {} (呪力: {})", sorcerer.name, sorcerer.power),
+        Maybe::Nothing => println!("見つからない"),
     }
 
     match not_found {
-        Maybe::Just(sorcerer) => println!(\"見つかった: {} (呪力: {})\", sorcerer.name, sorcerer.power),
-        Maybe::Nothing => println!(\"存在しない呪術師は見つからない（当然）\"),
+        Maybe::Just(sorcerer) => println!("見つかった: {} (呪力: {})", sorcerer.name, sorcerer.power),
+        Maybe::Nothing => println!("存在しない呪術師は見つからない（当然）"),
     }
 
     // 関数合成の例
-    println!(\"\\n=== 関数合成の例 ===\");
+    println!("\\n=== 関数合成の例 ===");
 
     let double = |x: i32| x * 2;
     let add_ten = |x: i32| x + 10;
     let double_then_add_ten = compose(double, add_ten);
 
     let result = double_then_add_ten(5);
-    println!(\"5を2倍してから10足す: {}\", result);  // (5 * 2) + 10 = 20
+    println!("5を2倍してから10足す: {}", result);  // (5 * 2) + 10 = 20
 
     // カリー化の例
     let add = |x: i32, y: i32| x + y;
@@ -2055,33 +2055,33 @@ fn main() {
     let add_five = add_curried(5);
 
     let result = add_five(3);
-    println!(\"カリー化された加算 5 + 3: {}\", result);
+    println!("カリー化された加算 5 + 3: {}", result);
 
     // リストの高度な操作
-    println!(\"\\n=== リストの高度な操作 ===\");
+    println!("\\n=== リストの高度な操作 ===");
 
     let sorcerer_powers = List::from_vec(vec![3000, 1200, 1000, 800]);
 
     // 呪力を等級に変換
     let grades = sorcerer_powers.map_fn(|&power| {
         match power {
-            p if p >= 3000 => \"特級\",
-            p if p >= 2000 => \"1級\",
-            p if p >= 1000 => \"2級\",
-            _ => \"3級以下\",
+            p if p >= 3000 => "特級",
+            p if p >= 2000 => "1級",
+            p if p >= 1000 => "2級",
+            _ => "3級以下",
         }
     });
 
-    println!(\"呪力から等級: {:?}\", grades);
+    println!("呪力から等級: {:?}", grades);
 
     // 平均呪力の計算
     let total = sorcerer_powers.clone().fold(0, |acc, x| acc + x);
     let count = sorcerer_powers.len();
     let average = if count > 0 { total / count as i32 } else { 0 };
 
-    println!(\"平均呪力: {}\", average);
+    println!("平均呪力: {}", average);
 
-    println!(\"\\n=== 関数型プログラミングライブラリテスト完了 ===\");
+    println!("\\n=== 関数型プログラミングライブラリテスト完了 ===");
 }
 ```
 
@@ -2092,7 +2092,7 @@ fn main() {
 
 これまで学んだすべての技術を統合した大規模システムを実装せよ。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 **要件:**
 
@@ -2111,7 +2111,7 @@ fn main() {
 
 <details>
 <summary>解答例を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 // （コードが非常に長くなるため、主要部分のみ表示）
@@ -2153,7 +2153,7 @@ impl<T: Entity> Repository<T> {
     fn add(&mut self, entity: T) -> Result<(), String> {
         let id = entity.id().clone();
         if self.entities.contains_key(&id) {
-            return Err(format!(\"ID {:?} は既に存在します\", id));
+            return Err(format!("ID {:?} は既に存在します", id));
         }
 
         self.entities.insert(id, entity);
@@ -2230,7 +2230,7 @@ impl Entity for Student {
     }
 
     fn entity_type(&self) -> &str {
-        \"学生\"
+        "学生"
     }
 }
 
@@ -2263,7 +2263,7 @@ impl JujutsuAcademy {
     }
 
     fn enroll_student(&mut self, student: Student) -> Result<(), String> {
-        println!(\"{}を学園に入学させます\", student.name());
+        println!("{}を学園に入学させます", student.name());
         self.students.add(student)
     }
 
@@ -2276,10 +2276,10 @@ impl JujutsuAcademy {
     }
 
     fn generate_report(&self) -> String {
-        let mut report = String::from(\"=== 東京呪術高等専門学校 統計レポート ===\\n\\n\");
+        let mut report = String::from("=== 東京呪術高等専門学校 統計レポート ===\\n\\n");
 
         let total_students = self.students.count();
-        report.push_str(&format!(\"総学生数: {}\\n\", total_students));
+        report.push_str(&format!("総学生数: {}\\n", total_students));
 
         if total_students > 0 {
             let all_students = self.students.list_all();
@@ -2290,9 +2290,9 @@ impl JujutsuAcademy {
                 *grade_stats.entry(student.grade).or_insert(0) += 1;
             }
 
-            report.push_str(\"\\n学年別分布:\\n\");
+            report.push_str("\\n学年別分布:\\n");
             for (grade, count) in grade_stats {
-                report.push_str(&format!(\"  {}年生: {}人\\n\", grade, count));
+                report.push_str(&format!("  {}年生: {}人\\n", grade, count));
             }
 
             // 呪力統計
@@ -2301,14 +2301,14 @@ impl JujutsuAcademy {
             let max_power = all_students.iter().map(|s| s.power_level).max().unwrap_or(0);
             let min_power = all_students.iter().map(|s| s.power_level).min().unwrap_or(0);
 
-            report.push_str(&format!(\"\\n呪力統計:\\n\"));
-            report.push_str(&format!(\"  平均呪力: {}\\n\", avg_power));
-            report.push_str(&format!(\"  最大呪力: {}\\n\", max_power));
-            report.push_str(&format!(\"  最小呪力: {}\\n\", min_power));
+            report.push_str(&format!("\\n呪力統計:\\n"));
+            report.push_str(&format!("  平均呪力: {}\\n", avg_power));
+            report.push_str(&format!("  最大呪力: {}\\n", max_power));
+            report.push_str(&format!("  最小呪力: {}\\n", min_power));
 
             // 最強の学生
             if let Some(strongest) = all_students.iter().max_by_key(|s| s.power_level) {
-                report.push_str(&format!(\"\\n最強の学生: {} (呪力: {})\\n\",
+                report.push_str(&format!("\\n最強の学生: {} (呪力: {})\\n",
                                strongest.name(), strongest.power_level));
             }
 
@@ -2317,11 +2317,11 @@ impl JujutsuAcademy {
                 .map(|s| s.techniques.len())
                 .sum();
 
-            report.push_str(&format!(\"\\n習得済み術式総数: {}\\n\", total_techniques));
+            report.push_str(&format!("\\n習得済み術式総数: {}\\n", total_techniques));
 
             if total_students > 0 {
                 let avg_techniques = total_techniques as f64 / total_students as f64;
-                report.push_str(&format!(\"学生あたり平均術式数: {:.1}\\n\", avg_techniques));
+                report.push_str(&format!("学生あたり平均術式数: {:.1}\\n", avg_techniques));
             }
         }
 
@@ -2330,19 +2330,19 @@ impl JujutsuAcademy {
 }
 
 fn main() {
-    println!(\"=== 呪術学園総合管理システム ===\");
+    println!("=== 呪術学園総合管理システム ===");
 
     let mut academy = JujutsuAcademy::new();
 
     // 学生の登録
     let students_data = [
-        (\"S001\", \"五条悟\", 3, 3000),
-        (\"S002\", \"虎杖悠仁\", 1, 1200),
-        (\"S003\", \"伏黒恵\", 1, 1000),
-        (\"S004\", \"釘崎野薔薇\", 1, 900),
-        (\"S005\", \"禪院真希\", 2, 800),
-        (\"S006\", \"狗巻棘\", 2, 700),
-        (\"S007\", \"パンダ\", 2, 600),
+        ("S001", "五条悟", 3, 3000),
+        ("S002", "虎杖悠仁", 1, 1200),
+        ("S003", "伏黒恵", 1, 1000),
+        ("S004", "釘崎野薔薇", 1, 900),
+        ("S005", "禪院真希", 2, 800),
+        ("S006", "狗巻棘", 2, 700),
+        ("S007", "パンダ", 2, 600),
     ];
 
     for (id, name, grade, power) in students_data {
@@ -2350,35 +2350,35 @@ fn main() {
 
         // 術式の追加
         match name {
-            \"五条悟\" => {
-                student.add_technique(\"無下限呪術\".to_string());
-                student.add_technique(\"領域展開・無量空処\".to_string());
+            "五条悟" => {
+                student.add_technique("無下限呪術".to_string());
+                student.add_technique("領域展開・無量空処".to_string());
             },
-            \"虎杖悠仁\" => {
-                student.add_technique(\"黒閃\".to_string());
-                student.add_technique(\"発散\".to_string());
+            "虎杖悠仁" => {
+                student.add_technique("黒閃".to_string());
+                student.add_technique("発散".to_string());
             },
-            \"伏黒恵\" => {
-                student.add_technique(\"十種影法術\".to_string());
+            "伏黒恵" => {
+                student.add_technique("十種影法術".to_string());
             },
-            \"釘崎野薔薇\" => {
-                student.add_technique(\"芻霊呪法\".to_string());
+            "釘崎野薔薇" => {
+                student.add_technique("芻霊呪法".to_string());
             },
             _ => {},
         }
 
         match academy.enroll_student(student) {
-            Ok(_) => println!(\"✓ {}の入学完了\", name),
-            Err(e) => println!(\"✗ {}の入学失敗: {}\", name, e),
+            Ok(_) => println!("✓ {}の入学完了", name),
+            Err(e) => println!("✗ {}の入学失敗: {}", name, e),
         }
     }
 
     println!();
 
     // 学生情報の表示
-    println!(\"=== 登録学生一覧 ===\");
+    println!("=== 登録学生一覧 ===");
     for student in academy.students.list_all() {
-        println!(\"{}: {} ({}年生, 呪力: {}, 術式数: {})\",
+        println!("{}: {} ({}年生, 呪力: {}, 術式数: {})",
                  student.id(), student.name(), student.grade,
                  student.power_level, student.techniques.len());
     }
@@ -2386,65 +2386,65 @@ fn main() {
     println!();
 
     // 特定学生の詳細情報
-    if let Some(gojo) = academy.get_student(\"S001\") {
-        println!(\"=== {}の詳細情報 ===\", gojo.name());
-        println!(\"学生ID: {}\", gojo.id());
-        println!(\"学年: {}年生\", gojo.grade);
-        println!(\"呪力: {}\", gojo.power_level);
-        println!(\"習得術式: {:?}\", gojo.techniques);
-        println!(\"入学日: {}\", gojo.enrollment_date);
-        println!(\"最終更新: {}\", gojo.last_updated);
+    if let Some(gojo) = academy.get_student("S001") {
+        println!("=== {}の詳細情報 ===", gojo.name());
+        println!("学生ID: {}", gojo.id());
+        println!("学年: {}年生", gojo.grade);
+        println!("呪力: {}", gojo.power_level);
+        println!("習得術式: {:?}", gojo.techniques);
+        println!("入学日: {}", gojo.enrollment_date);
+        println!("最終更新: {}", gojo.last_updated);
     }
 
     println!();
 
     // 学生の成長シミュレーション
-    println!(\"=== 成長シミュレーション ===\");
+    println!("=== 成長シミュレーション ===");
 
-    if let Some(yuji) = academy.get_student_mut(\"S002\") {
-        println!(\"{}の訓練前: 呪力 {}\", yuji.name(), yuji.power_level);
+    if let Some(yuji) = academy.get_student_mut("S002") {
+        println!("{}の訓練前: 呪力 {}", yuji.name(), yuji.power_level);
         yuji.power_up(300);
-        yuji.add_technique(\"簡易領域\".to_string());
-        println!(\"{}の訓練後: 呪力 {}, 新術式: 簡易領域\", yuji.name(), yuji.power_level);
+        yuji.add_technique("簡易領域".to_string());
+        println!("{}の訓練後: 呪力 {}, 新術式: 簡易領域", yuji.name(), yuji.power_level);
     }
 
     println!();
 
     // 統計レポートの生成
-    println!(\"{}\", academy.generate_report());
+    println!("{}", academy.generate_report());
 
     // 呪力レベル別グループ化
-    println!(\"=== 呪力レベル別分類 ===\");
+    println!("=== 呪力レベル別分類 ===");
 
     let all_students = academy.students.list_all();
     let mut power_groups: HashMap<&str, Vec<&Student>> = HashMap::new();
 
     for student in all_students {
         let group = match student.power_level {
-            3000.. => \"最強級\",
-            2000..=2999 => \"特級\",
-            1500..=1999 => \"1級\",
-            1000..=1499 => \"2級\",
-            500..=999 => \"3級\",
-            _ => \"4級\",
+            3000.. => "最強級",
+            2000..=2999 => "特級",
+            1500..=1999 => "1級",
+            1000..=1499 => "2級",
+            500..=999 => "3級",
+            _ => "4級",
         };
 
         power_groups.entry(group).or_insert_with(Vec::new).push(student);
     }
 
     for (group, students) in power_groups {
-        println!(\"{}:\", group);
+        println!("{}:", group);
         for student in students {
-            println!(\"  {} (呪力: {})\", student.name(), student.power_level);
+            println!("  {} (呪力: {})", student.name(), student.power_level);
         }
     }
 
-    println!(\"\\n=== 呪術学園管理システム完了 ===\");
+    println!("\\n=== 呪術学園管理システム完了 ===");
 }
 
 // 注意: chrono クレートを使用する場合は Cargo.toml に以下を追加:
 // [dependencies]
-// chrono = { version = \"0.4\", features = [\"serde\"] }
+// chrono = { version = "0.4", features = ["serde"] }
 ```
 
 </div>

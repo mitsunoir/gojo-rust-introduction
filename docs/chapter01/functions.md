@@ -8,7 +8,7 @@
 
 ```rust
 fn greet() {
-    println!(\"やあやあ、俺は五条悟だ\");
+    println!("やあやあ、俺は五条悟だ");
 }
 
 fn main() {
@@ -21,13 +21,13 @@ fn main() {
 
 ```rust
 fn cast_technique(name: &str, power: i32) {
-    println!(\"{}を発動！威力: {}\", name, power);
+    println!("{}を発動！威力: {}", name, power);
 }
 
 fn main() {
-    cast_technique(\"術式順転『蒼』\", 1000);
-    cast_technique(\"術式反転『赫』\", 1500);
-    cast_technique(\"虚式『茈』\", 3000);
+    cast_technique("術式順転『蒼』", 1000);
+    cast_technique("術式反転『赫』", 1500);
+    cast_technique("虚式『茈』", 3000);
 }
 ```
 
@@ -43,11 +43,11 @@ fn calculate_damage(base_power: i32, multiplier: f64) -> i32 {
 
 fn get_technique_name(level: i32) -> &'static str {
     if level >= 3000 {
-        \"虚式『茈』\"
+        "虚式『茈』"
     } else if level >= 1500 {
-        \"術式反転『赫』\"
+        "術式反転『赫』"
     } else {
-        \"術式順転『蒼』\"
+        "術式順転『蒼』"
     }
 }
 
@@ -55,8 +55,8 @@ fn main() {
     let damage = calculate_damage(1000, 2.5);
     let technique = get_technique_name(damage);
 
-    println!(\"ダメージ: {}\", damage);
-    println!(\"推奨術式: {}\", technique);
+    println!("ダメージ: {}", damage);
+    println!("推奨術式: {}", technique);
 }
 ```
 
@@ -65,21 +65,21 @@ fn main() {
 ```rust
 fn check_enemy_threat(enemy_power: i32) -> String {
     if enemy_power <= 0 {
-        return String::from(\"敵がいない\");  // 早期リターン
+        return String::from("敵がいない");  // 早期リターン
     }
 
     if enemy_power > 5000 {
-        return String::from(\"ちょっと本気出すかな\");
+        return String::from("ちょっと本気出すかな");
     }
 
-    String::from(\"雑魚だね\")  // 最後の式が戻り値
+    String::from("雑魚だね")  // 最後の式が戻り値
 }
 
 fn main() {
     let threats = [0, 1000, 6000];
 
     for power in threats.iter() {
-        println!(\"敵の力: {} -> {}\", power, check_enemy_threat(*power));
+        println!("敵の力: {} -> {}", power, check_enemy_threat(*power));
     }
 }
 ```
@@ -96,7 +96,7 @@ fn power_calculation() -> i32 {
 }
 
 fn technique_analysis() -> (String, i32, bool) {
-    let name = String::from(\"無下限呪術\");
+    let name = String::from("無下限呪術");
     let power = 9999;
     let is_defensive = false;
 
@@ -108,8 +108,8 @@ fn main() {
     let total_power = power_calculation();
     let (tech_name, tech_power, is_def) = technique_analysis();
 
-    println!(\"総呪力: {}\", total_power);
-    println!(\"技: {} (威力: {}, 防御: {})\", tech_name, tech_power, is_def);
+    println!("総呪力: {}", total_power);
+    println!("技: {} (威力: {}, 防御: {})", tech_name, tech_power, is_def);
 }
 ```
 
@@ -119,14 +119,14 @@ fn main() {
 
 ```rust
 fn take_ownership(technique: String) {
-    println!(\"{}を受け取った\", technique);
+    println!("{}を受け取った", technique);
 }  // ここでtechniqueがドロップされる
 
 fn main() {
-    let my_technique = String::from(\"術式順転『蒼』\");
+    let my_technique = String::from("術式順転『蒼』");
     take_ownership(my_technique);
 
-    // println!(\"{}\", my_technique);  // エラー！所有権が移動した
+    // println!("{}", my_technique);  // エラー！所有権が移動した
 }
 ```
 
@@ -138,11 +138,11 @@ fn analyze_technique(technique: &String) -> usize {
 }
 
 fn main() {
-    let my_technique = String::from(\"術式順転『蒼』\");
+    let my_technique = String::from("術式順転『蒼』");
     let length = analyze_technique(&my_technique);
 
-    println!(\"技名: {}\", my_technique);  // まだ使える！
-    println!(\"文字数: {}\", length);
+    println!("技名: {}", my_technique);  // まだ使える！
+    println!("文字数: {}", length);
 }
 ```
 
@@ -150,15 +150,15 @@ fn main() {
 
 ```rust
 fn power_up(technique: &mut String) {
-    technique.push_str(\" - 最大出力\");
+    technique.push_str(" - 最大出力");
 }
 
 fn main() {
-    let mut my_technique = String::from(\"術式順転『蒼』\");
-    println!(\"変更前: {}\", my_technique);
+    let mut my_technique = String::from("術式順転『蒼』");
+    println!("変更前: {}", my_technique);
 
     power_up(&mut my_technique);
-    println!(\"変更後: {}\", my_technique);
+    println!("変更後: {}", my_technique);
 }
 ```
 
@@ -180,7 +180,7 @@ fn main() {
 
     for (i, technique) in techniques.iter().enumerate() {
         let damage = execute_technique(*technique);
-        println!(\"術式{}: ダメージ {}\", i + 1, damage);
+        println!("術式{}: ダメージ {}", i + 1, damage);
     }
 }
 ```
@@ -200,12 +200,12 @@ fn main() {
     let normal_damage = calculate_damage(1.0);
     let critical_damage = calculate_damage(2.5);
 
-    println!(\"通常ダメージ: {}\", normal_damage);
-    println!(\"クリティカル: {}\", critical_damage);
+    println!("通常ダメージ: {}", normal_damage);
+    println!("クリティカル: {}", critical_damage);
 
     // より簡潔な書き方
     let quick_calc = |x| x * 2;
-    println!(\"倍率計算: {}\", quick_calc(500));
+    println!("倍率計算: {}", quick_calc(500));
 }
 ```
 
@@ -227,10 +227,10 @@ fn main() {
     let squared = apply_multiplier(base_power, |x| x * x);
     let boosted = apply_multiplier(base_power, |x| x + 500);
 
-    println!(\"基本威力: {}\", base_power);
-    println!(\"2倍: {}\", doubled);
-    println!(\"2乗: {}\", squared);
-    println!(\"強化: {}\", boosted);
+    println!("基本威力: {}", base_power);
+    println!("2倍: {}", doubled);
+    println!("2乗: {}", squared);
+    println!("強化: {}", boosted);
 }
 ```
 
@@ -259,19 +259,19 @@ fn attack(attacker: &Sorcerer, target: &mut Sorcerer, technique_name: &str) {
     let damage = calculate_technique_damage(&attacker, technique_name);
     target.health = (target.health - damage).max(0);
 
-    println!(\"{} が {} で {} を攻撃！\",
+    println!("{} が {} で {} を攻撃！",
              attacker.name, technique_name, target.name);
-    println!(\"{}ダメージ！{}の残りHP: {}\",
+    println!("{}ダメージ！{}の残りHP: {}",
              damage, target.name, target.health);
 }
 
 // 術式ダメージ計算
 fn calculate_technique_damage(sorcerer: &Sorcerer, technique: &str) -> i32 {
     let base_damage = match technique {
-        \"術式順転『蒼』\" => sorcerer.power,
-        \"術式反転『赫』\" => (sorcerer.power as f64 * 1.5) as i32,
-        \"虚式『茈』\" => sorcerer.power * 2,
-        \"無下限呪術『紫』\" => sorcerer.power * 10,
+        "術式順転『蒼』" => sorcerer.power,
+        "術式反転『赫』" => (sorcerer.power as f64 * 1.5) as i32,
+        "虚式『茈』" => sorcerer.power * 2,
+        "無下限呪術『紫』" => sorcerer.power * 10,
         _ => sorcerer.power / 2,
     };
 
@@ -289,29 +289,29 @@ fn is_battle_over(participants: &[Sorcerer]) -> bool {
 fn announce_winner(participants: &[Sorcerer]) {
     for sorcerer in participants {
         if sorcerer.health > 0 {
-            println!(\"勝者: {} (残りHP: {})\", sorcerer.name, sorcerer.health);
+            println!("勝者: {} (残りHP: {})", sorcerer.name, sorcerer.health);
             return;
         }
     }
-    println!(\"引き分け！\");
+    println!("引き分け！");
 }
 
 fn main() {
-    let mut gojo = Sorcerer::new(\"五条悟\", 2000);
-    let mut sukuna = Sorcerer::new(\"両面宿儺\", 1800);
+    let mut gojo = Sorcerer::new("五条悟", 2000);
+    let mut sukuna = Sorcerer::new("両面宿儺", 1800);
 
-    println!(\"=== 最強対決開始！ ===\");
-    println!(\"{} (HP: {}) vs {} (HP: {})\",
+    println!("=== 最強対決開始！ ===");
+    println!("{} (HP: {}) vs {} (HP: {})",
              gojo.name, gojo.health, sukuna.name, sukuna.health);
 
     // 戦闘ループ
     let mut round = 1;
     loop {
-        println!(\"\\n--- ラウンド {} ---\", round);
+        println!("\\n--- ラウンド {} ---", round);
 
         // 五条の攻撃
         if gojo.health > 0 {
-            let technique = if round >= 3 { \"無下限呪術『紫』\" } else { \"術式順転『蒼』\" };
+            let technique = if round >= 3 { "無下限呪術『紫』" } else { "術式順転『蒼』" };
             attack(&gojo, &mut sukuna, technique);
         }
 
@@ -321,7 +321,7 @@ fn main() {
 
         // 宿儺の攻撃
         if sukuna.health > 0 {
-            attack(&sukuna, &mut gojo, \"解\");
+            attack(&sukuna, &mut gojo, "解");
         }
 
         if is_battle_over(&[gojo.clone(), sukuna.clone()]) {
@@ -334,7 +334,7 @@ fn main() {
         }
     }
 
-    println!(\"\\n=== 戦闘終了 ===\");
+    println!("\\n=== 戦闘終了 ===");
     announce_winner(&[gojo, sukuna]);
 }
 
@@ -352,7 +352,7 @@ impl Clone for Sorcerer {
 
 ## 練習問題
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ### 問題1: 呪力変換関数
 
@@ -366,7 +366,7 @@ impl Clone for Sorcerer {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 fn convert_power(power: i32) -> i32 {
@@ -384,7 +384,7 @@ fn main() {
 
     for power in test_powers.iter() {
         let converted = convert_power(*power);
-        println!(\"元の呪力: {} -> 変換後: {}\", power, converted);
+        println!("元の呪力: {} -> 変換後: {}", power, converted);
     }
 }
 ```
@@ -392,7 +392,7 @@ fn main() {
 </div>
 </details>
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ### 問題2: 術式コンボ関数
 
@@ -402,31 +402,31 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 fn combo_technique(tech1: &str, tech2: &str) -> (String, i32) {
     match (tech1, tech2) {
-        (\"蒼\", \"赫\") | (\"赫\", \"蒼\") => (String::from(\"虚式『茈』\"), 3000),
-        (\"蒼\", \"蒼\") => (String::from(\"強化『蒼』\"), 1500),
-        (\"赫\", \"赫\") => (String::from(\"強化『赫』\"), 2000),
-        (\"茈\", _) | (_, \"茈\") => (String::from(\"超虚式『茈』\"), 5000),
-        _ => (format!(\"{} + {}\", tech1, tech2), 800),
+        ("蒼", "赫") | ("赫", "蒼") => (String::from("虚式『茈』"), 3000),
+        ("蒼", "蒼") => (String::from("強化『蒼』"), 1500),
+        ("赫", "赫") => (String::from("強化『赫』"), 2000),
+        ("茈", _) | (_, "茈") => (String::from("超虚式『茈』"), 5000),
+        _ => (format!("{} + {}", tech1, tech2), 800),
     }
 }
 
 fn main() {
     let combinations = [
-        (\"蒼\", \"赫\"),
-        (\"蒼\", \"蒼\"),
-        (\"赫\", \"赫\"),
-        (\"茈\", \"蒼\"),
-        (\"基本\", \"基本\"),
+        ("蒼", "赫"),
+        ("蒼", "蒼"),
+        ("赫", "赫"),
+        ("茈", "蒼"),
+        ("基本", "基本"),
     ];
 
     for (tech1, tech2) in combinations.iter() {
         let (combo_name, damage) = combo_technique(tech1, tech2);
-        println!(\"{} + {} = {} (ダメージ: {})\",
+        println!("{} + {} = {} (ダメージ: {})",
                  tech1, tech2, combo_name, damage);
     }
 }

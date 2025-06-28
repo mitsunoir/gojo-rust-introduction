@@ -9,7 +9,7 @@
 ```rust
 fn main() {
     let power = 1000;  // 不変な変数（デフォルト）
-    println!(\"俺の基本呪力: {}\", power);
+    println!("俺の基本呪力: {}", power);
 
     // power = 2000;  // エラー！不変な変数は変更できない
 }
@@ -24,13 +24,13 @@ fn main() {
 ```rust
 fn main() {
     let mut power = 1000;  // 可変な変数
-    println!(\"初期呪力: {}\", power);
+    println!("初期呪力: {}", power);
 
     power = 2000;  // OK！可変だから変更できる
-    println!(\"増強後の呪力: {}\", power);
+    println!("増強後の呪力: {}", power);
 
     power += 1000;  // さらに増加
-    println!(\"最終呪力: {}\", power);
+    println!("最終呪力: {}", power);
 }
 ```
 
@@ -38,14 +38,14 @@ fn main() {
 
 ```rust
 fn main() {
-    let technique = \"基本術式\";
-    println!(\"現在の技: {}\", technique);
+    let technique = "基本術式";
+    println!("現在の技: {}", technique);
 
-    let technique = \"上級術式\";  // 同じ名前で新しい変数を作成
-    println!(\"進化した技: {}\", technique);
+    let technique = "上級術式";  // 同じ名前で新しい変数を作成
+    println!("進化した技: {}", technique);
 
     let technique = technique.len();  // 型も変更可能
-    println!(\"技名の文字数: {}\", technique);
+    println!("技名の文字数: {}", technique);
 }
 ```
 
@@ -59,14 +59,14 @@ fn main() {
 fn main() {
     // 明示的な型指定
     let power_level: i64 = 999_999_999;
-    let technique_name: &str = \"無下限呪術\";
+    let technique_name: &str = "無下限呪術";
     let is_active: bool = true;
 
     // 型推論（コンパイラが推論）
     let enemy_count = 10;        // i32と推論される
     let damage_rate = 99.9;      // f64と推論される
 
-    println!(\"呪力: {}, 技名: {}\", power_level, technique_name);
+    println!("呪力: {}, 技名: {}", power_level, technique_name);
 }
 ```
 
@@ -78,12 +78,12 @@ fn main() {
 
     {
         let inner_power = 500;  // 内側のスコープ
-        println!(\"内側の呪力: {}\", inner_power);
-        println!(\"外側の呪力: {}\", outer_power);  // 外側の変数も使える
+        println!("内側の呪力: {}", inner_power);
+        println!("外側の呪力: {}", outer_power);  // 外側の変数も使える
     }  // inner_powerはここで解放される
 
-    // println!(\"{}\", inner_power);  // エラー！スコープ外
-    println!(\"外側の呪力: {}\", outer_power);  // まだ使える
+    // println!("{}", inner_power);  // エラー！スコープ外
+    println!("外側の呪力: {}", outer_power);  // まだ使える
 }
 ```
 
@@ -92,15 +92,15 @@ fn main() {
 ```rust
 fn main() {
     // タプルの作成
-    let technique_info = (\"術式順転『蒼』\", 9999, true);
+    let technique_info = ("術式順転『蒼』", 9999, true);
 
     // 分解して取得
     let (name, power, is_offensive) = technique_info;
-    println!(\"技名: {}, 威力: {}, 攻撃技: {}\", name, power, is_offensive);
+    println!("技名: {}, 威力: {}, 攻撃技: {}", name, power, is_offensive);
 
     // インデックスでアクセス
-    println!(\"技名: {}\", technique_info.0);
-    println!(\"威力: {}\", technique_info.1);
+    println!("技名: {}", technique_info.0);
+    println!("威力: {}", technique_info.1);
 
     // 空のタプル（ユニット型）
     let unit = ();  // 値を返さない関数の戻り値型
@@ -111,16 +111,16 @@ fn main() {
 
 ```rust
 fn get_technique_stats() -> (String, i32, bool) {
-    (String::from(\"術式順転『蒼』\"), 9999, true)
+    (String::from("術式順転『蒼』"), 9999, true)
 }
 
 fn main() {
     let (technique, power, is_offensive) = get_technique_stats();
 
     if is_offensive {
-        println!(\"{} - 威力: {} (攻撃技)\", technique, power);
+        println!("{} - 威力: {} (攻撃技)", technique, power);
     } else {
-        println!(\"{} - 威力: {} (防御技)\", technique, power);
+        println!("{} - 威力: {} (防御技)", technique, power);
     }
 }
 ```
@@ -130,7 +130,7 @@ fn main() {
 ```rust
 fn main() {
     // 固定長配列
-    let techniques = [\"蒼\", \"赫\", \"茈\"];
+    let techniques = ["蒼", "赫", "茈"];
     let power_levels = [1000, 1500, 3000];
 
     // 型と長さを明示
@@ -140,11 +140,11 @@ fn main() {
     let damage = [999; 10];  // 999が10個の配列
 
     // 要素へのアクセス
-    println!(\"最初の技: {}\", techniques[0]);
-    println!(\"最後の技: {}\", techniques[2]);
+    println!("最初の技: {}", techniques[0]);
+    println!("最後の技: {}", techniques[2]);
 
     // 配列の長さ
-    println!(\"技の数: {}\", techniques.len());
+    println!("技の数: {}", techniques.len());
 }
 ```
 
@@ -152,21 +152,21 @@ fn main() {
 
 ```rust
 fn main() {
-    let techniques = [\"蒼\", \"赫\", \"茈\", \"紫\"];
+    let techniques = ["蒼", "赫", "茈", "紫"];
 
     // インデックス付きループ
     for i in 0..techniques.len() {
-        println!(\"技{}: {}\", i + 1, techniques[i]);
+        println!("技{}: {}", i + 1, techniques[i]);
     }
 
     // 直接要素をループ
     for technique in techniques.iter() {
-        println!(\"術式: {}\", technique);
+        println!("術式: {}", technique);
     }
 
     // 列挙付きループ
     for (index, technique) in techniques.iter().enumerate() {
-        println!(\"{}番目の技: {}\", index + 1, technique);
+        println!("{}番目の技: {}", index + 1, technique);
     }
 }
 ```
@@ -182,19 +182,19 @@ fn main() {
     let mut power_levels = vec![1000, 1500, 2000];
 
     // 要素の追加
-    enemy_list.push(String::from(\"特級呪霊\"));
-    enemy_list.push(String::from(\"特級呪霊(偽夏油)\"));
+    enemy_list.push(String::from("特級呪霊"));
+    enemy_list.push(String::from("特級呪霊(偽夏油)"));
 
     power_levels.push(9999);
 
     // 要素へのアクセス
-    println!(\"最初の敵: {}\", enemy_list[0]);
-    println!(\"最大呪力: {}\", power_levels[3]);
+    println!("最初の敵: {}", enemy_list[0]);
+    println!("最大呪力: {}", power_levels[3]);
 
     // 安全なアクセス
     match enemy_list.get(1) {
-        Some(enemy) => println!(\"2番目の敵: {}\", enemy),
-        None => println!(\"敵がいない\"),
+        Some(enemy) => println!("2番目の敵: {}", enemy),
+        None => println!("敵がいない"),
     }
 }
 ```
@@ -203,26 +203,26 @@ fn main() {
 
 ```rust
 fn main() {
-    let mut techniques = vec![\"蒼\", \"赫\"];
+    let mut techniques = vec!["蒼", "赫"];
 
     // 要素の追加
-    techniques.push(\"茈\");
-    techniques.push(\"紫\");
+    techniques.push("茈");
+    techniques.push("紫");
 
     // 要素の削除
     let last_technique = techniques.pop();  // Option<T>を返す
     match last_technique {
-        Some(tech) => println!(\"削除した技: {}\", tech),
-        None => println!(\"技がない\"),
+        Some(tech) => println!("削除した技: {}", tech),
+        None => println!("技がない"),
     }
 
     // 長さとキャパシティ
-    println!(\"技の数: {}\", techniques.len());
-    println!(\"容量: {}\", techniques.capacity());
+    println!("技の数: {}", techniques.len());
+    println!("容量: {}", techniques.capacity());
 
     // 全要素の表示
     for technique in &techniques {
-        println!(\"習得済み: {}\", technique);
+        println!("習得済み: {}", technique);
     }
 }
 ```
@@ -234,18 +234,18 @@ fn main() {
 ```rust
 fn main() {
     // 文字列リテラル（&str）
-    let greeting = \"やあやあ\";  // 静的な文字列
+    let greeting = "やあやあ";  // 静的な文字列
 
     // String型（所有権あり）
-    let mut technique_name = String::from(\"術式順転\");
-    technique_name.push_str(\"『蒼』\");
+    let mut technique_name = String::from("術式順転");
+    technique_name.push_str("『蒼』");
 
     // 変換
     let static_str: &str = &technique_name;  // StringからStrへ
     let owned_string: String = greeting.to_string();  // &strからStringへ
 
-    println!(\"挨拶: {}\", greeting);
-    println!(\"技名: {}\", technique_name);
+    println!("挨拶: {}", greeting);
+    println!("技名: {}", technique_name);
 }
 ```
 
@@ -253,24 +253,24 @@ fn main() {
 
 ```rust
 fn main() {
-    let mut spell = String::from(\"術式\");
+    let mut spell = String::from("術式");
 
     // 文字列の結合
-    spell.push_str(\"順転\");
+    spell.push_str("順転");
     spell.push('『');
-    spell.push_str(\"蒼』\");
+    spell.push_str("蒼』");
 
     // format!マクロ
     let power = 9999;
-    let description = format!(\"{}の威力は{}\", spell, power);
+    let description = format!("{}の威力は{}", spell, power);
 
     // 文字列の分割
-    let full_name = \"五条悟\";
-    let parts: Vec<&str> = full_name.split(\"条\").collect();
+    let full_name = "五条悟";
+    let parts: Vec<&str> = full_name.split("条").collect();
 
-    println!(\"呪文: {}\", spell);
-    println!(\"説明: {}\", description);
-    println!(\"名前の分割: {:?}\", parts);
+    println!("呪文: {}", spell);
+    println!("説明: {}", description);
+    println!("名前の分割: {:?}", parts);
 }
 ```
 
@@ -284,28 +284,28 @@ fn main() {
     let power_u32: u32 = power_i32 as u32;  // 注意が必要
 
     // 文字列から数値
-    let power_str = \"9999\";
+    let power_str = "9999";
     let power_num: i32 = power_str.parse()
-        .expect(\"数値変換失敗\");
+        .expect("数値変換失敗");
 
     // 数値から文字列
     let level = 99;
     let level_str = level.to_string();
 
     // より安全な変換
-    let safe_conversion: Result<i32, _> = \"1234\".parse();
+    let safe_conversion: Result<i32, _> = "1234".parse();
     match safe_conversion {
-        Ok(num) => println!(\"変換成功: {}\", num),
-        Err(e) => println!(\"変換失敗: {}\", e),
+        Ok(num) => println!("変換成功: {}", num),
+        Err(e) => println!("変換失敗: {}", e),
     }
 
-    println!(\"変換された呪力: {}\", power_num);
+    println!("変換された呪力: {}", power_num);
 }
 ```
 
 ## 練習問題
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ### 問題1: 呪力計算機
 
@@ -321,7 +321,7 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 fn main() {
@@ -332,18 +332,18 @@ fn main() {
         total_power += power;
     }
 
-    println!(\"合計威力: {}\", total_power);
+    println!("合計威力: {}", total_power);
 
     // またはイテレータのsum()を使用
     let total: i32 = techniques.iter().sum();
-    println!(\"合計威力(sum使用): {}\", total);
+    println!("合計威力(sum使用): {}", total);
 }
 ```
 
 </div>
 </details>
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ### 問題2: 敵リスト管理
 
@@ -353,28 +353,28 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 fn main() {
     let mut enemies = Vec::new();
 
     // 敵を追加
-    enemies.push(\"特級呪霊\");
-    enemies.push(\"1級呪霊\");
-    enemies.push(\"呪詛師\");
+    enemies.push("特級呪霊");
+    enemies.push("1級呪霊");
+    enemies.push("呪詛師");
 
-    println!(\"敵リスト:\");
+    println!("敵リスト:");
     for (i, enemy) in enemies.iter().enumerate() {
-        println!(\"{}. {}\", i + 1, enemy);
+        println!("{}. {}", i + 1, enemy);
     }
 
     // 最後の敵を倒す
     if let Some(defeated) = enemies.pop() {
-        println!(\"\n{}を倒した！\", defeated);
+        println!("\n{}を倒した！", defeated);
     }
 
-    println!(\"\\n残りの敵: {} 体\", enemies.len());
+    println!("\\n残りの敵: {} 体", enemies.len());
 }
 ```
 

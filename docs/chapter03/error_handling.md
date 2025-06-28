@@ -27,16 +27,16 @@ impl fmt::Display for SorceryError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
             SorceryError::InsufficientPower { required, current } => {
-                write!(f, \"呪力不足: {}必要, {}しかありません\", required, current)
+                write!(f, "呪力不足: {}必要, {}しかありません", required, current)
             },
             SorceryError::TechniqueNotFound(name) => {
-                write!(f, \"術式'{}'が見つかりません\", name)
+                write!(f, "術式'{}'が見つかりません", name)
             },
             SorceryError::InvalidTarget(reason) => {
-                write!(f, \"無効な対象: {}\", reason)
+                write!(f, "無効な対象: {}", reason)
             },
             SorceryError::SystemError(msg) => {
-                write!(f, \"システムエラー: {}\", msg)
+                write!(f, "システムエラー: {}", msg)
             },
         }
     }
@@ -53,10 +53,10 @@ fn cast_advanced_technique(
 
     // 呪力チェック
     let required_power = match technique {
-        \"蒼\" => 500,
-        \"赫\" => 800,
-        \"茈\" => 1500,
-        \"紫\" => 3000,
+        "蒼" => 500,
+        "赫" => 800,
+        "茈" => 1500,
+        "紫" => 3000,
         _ => return Err(SorceryError::TechniqueNotFound(technique.to_string())),
     };
 
@@ -69,24 +69,24 @@ fn cast_advanced_technique(
 
     // 対象チェック
     if target.is_empty() {
-        return Err(SorceryError::InvalidTarget(\"対象が指定されていません\".to_string()));
+        return Err(SorceryError::InvalidTarget("対象が指定されていません".to_string()));
     }
 
-    Ok(format!(\"{} を {} に向けて発動！\", technique, target))
+    Ok(format!("{} を {} に向けて発動！", technique, target))
 }
 
 fn main() {
     let test_cases = [
-        (2000, \"蒼\", \"呪霊A\"),
-        (300, \"赫\", \"呪霊B\"),
-        (1000, \"未知の術式\", \"呪霊C\"),
-        (2000, \"茈\", \"\"),
+        (2000, "蒼", "呪霊A"),
+        (300, "赫", "呪霊B"),
+        (1000, "未知の術式", "呪霊C"),
+        (2000, "茈", ""),
     ];
 
     for (power, technique, target) in test_cases.iter() {
         match cast_advanced_technique(*power, technique, target) {
-            Ok(result) => println!(\"✓ {}\", result),
-            Err(error) => println!(\"✗ {}\", error),
+            Ok(result) => println!("✓ {}", result),
+            Err(error) => println!("✗ {}", error),
         }
     }
 }
@@ -120,9 +120,9 @@ enum ApplicationError {
 impl fmt::Display for DatabaseError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            DatabaseError::ConnectionFailed => write!(f, \"データベース接続失敗\"),
-            DatabaseError::QueryFailed(query) => write!(f, \"クエリ失敗: {}\", query),
-            DatabaseError::DataCorrupted => write!(f, \"データが破損しています\"),
+            DatabaseError::ConnectionFailed => write!(f, "データベース接続失敗"),
+            DatabaseError::QueryFailed(query) => write!(f, "クエリ失敗: {}", query),
+            DatabaseError::DataCorrupted => write!(f, "データが破損しています"),
         }
     }
 }
@@ -130,9 +130,9 @@ impl fmt::Display for DatabaseError {
 impl fmt::Display for NetworkError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            NetworkError::Timeout => write!(f, \"ネットワークタイムアウト\"),
-            NetworkError::ConnectionRefused => write!(f, \"接続が拒否されました\"),
-            NetworkError::InvalidResponse(msg) => write!(f, \"無効なレスポンス: {}\", msg),
+            NetworkError::Timeout => write!(f, "ネットワークタイムアウト"),
+            NetworkError::ConnectionRefused => write!(f, "接続が拒否されました"),
+            NetworkError::InvalidResponse(msg) => write!(f, "無効なレスポンス: {}", msg),
         }
     }
 }
@@ -140,10 +140,10 @@ impl fmt::Display for NetworkError {
 impl fmt::Display for ApplicationError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            ApplicationError::Database(err) => write!(f, \"DB: {}\", err),
-            ApplicationError::Network(err) => write!(f, \"Network: {}\", err),
-            ApplicationError::Sorcery(err) => write!(f, \"Sorcery: {}\", err),
-            ApplicationError::ValidationError(msg) => write!(f, \"Validation: {}\", msg),
+            ApplicationError::Database(err) => write!(f, "DB: {}", err),
+            ApplicationError::Network(err) => write!(f, "Network: {}", err),
+            ApplicationError::Sorcery(err) => write!(f, "Sorcery: {}", err),
+            ApplicationError::ValidationError(msg) => write!(f, "Validation: {}", msg),
         }
     }
 }
@@ -190,10 +190,10 @@ enum ConfigError {
 impl fmt::Display for ConfigError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            ConfigError::IoError(err) => write!(f, \"I/O エラー: {}\", err),
-            ConfigError::ParseError(err) => write!(f, \"パースエラー: {}\", err),
-            ConfigError::ValidationError(msg) => write!(f, \"バリデーションエラー: {}\", msg),
-            ConfigError::MissingField(field) => write!(f, \"必須フィールド '{}'がありません\", field),
+            ConfigError::IoError(err) => write!(f, "I/O エラー: {}", err),
+            ConfigError::ParseError(err) => write!(f, "パースエラー: {}", err),
+            ConfigError::ValidationError(msg) => write!(f, "バリデーションエラー: {}", msg),
+            ConfigError::MissingField(field) => write!(f, "必須フィールド '{}'がありません", field),
         }
     }
 }
@@ -228,26 +228,26 @@ impl SorcererConfig {
 
         if lines.len() < 3 {
             return Err(ConfigError::ValidationError(
-                \"設定ファイルの行数が不足しています\".to_string()
+                "設定ファイルの行数が不足しています".to_string()
             ));
         }
 
         let name = lines[0].trim();
         if name.is_empty() {
-            return Err(ConfigError::MissingField(\"name\".to_string()));
+            return Err(ConfigError::MissingField("name".to_string()));
         }
 
         let power: i32 = lines[1].trim().parse()?;  // ?でParseIntErrorを自動変換
 
         if power < 0 {
             return Err(ConfigError::ValidationError(
-                \"呪力は0以上である必要があります\".to_string()
+                "呪力は0以上である必要があります".to_string()
             ));
         }
 
         let grade = lines[2].trim();
         if grade.is_empty() {
-            return Err(ConfigError::MissingField(\"grade\".to_string()));
+            return Err(ConfigError::MissingField("grade".to_string()));
         }
 
         Ok(SorcererConfig {
@@ -260,14 +260,14 @@ impl SorcererConfig {
     fn validate(&self) -> Result<(), ConfigError> {
         if self.name.len() < 2 {
             return Err(ConfigError::ValidationError(
-                \"名前は2文字以上である必要があります\".to_string()
+                "名前は2文字以上である必要があります".to_string()
             ));
         }
 
-        let valid_grades = [\"特級\", \"1級\", \"2級\", \"3級\", \"4級\"];
+        let valid_grades = ["特級", "1級", "2級", "3級", "4級"];
         if !valid_grades.contains(&self.grade.as_str()) {
             return Err(ConfigError::ValidationError(
-                format!(\"無効な等級: {}\", self.grade)
+                format!("無効な等級: {}", self.grade)
             ));
         }
 
@@ -283,34 +283,34 @@ fn load_and_validate_config(filename: &str) -> Result<SorcererConfig, ConfigErro
 
 fn main() {
     // 設定ファイルの作成（テスト用）
-    let test_config = \"五条悟\\n3000\\n特級\";
-    if let Err(e) = fs::write(\"test_config.txt\", test_config) {
-        println!(\"テストファイル作成エラー: {}\", e);
+    let test_config = "五条悟\\n3000\\n特級";
+    if let Err(e) = fs::write("test_config.txt", test_config) {
+        println!("テストファイル作成エラー: {}", e);
         return;
     }
 
     // 正常ケース
-    match load_and_validate_config(\"test_config.txt\") {
-        Ok(config) => println!(\"✓ 設定読み込み成功: {:?}\", config),
-        Err(error) => println!(\"✗ 設定読み込み失敗: {}\", error),
+    match load_and_validate_config("test_config.txt") {
+        Ok(config) => println!("✓ 設定読み込み成功: {:?}", config),
+        Err(error) => println!("✗ 設定読み込み失敗: {}", error),
     }
 
     // エラーケース（存在しないファイル）
-    match load_and_validate_config(\"nonexistent.txt\") {
-        Ok(config) => println!(\"✓ 設定読み込み成功: {:?}\", config),
-        Err(error) => println!(\"✗ 設定読み込み失敗: {}\", error),
+    match load_and_validate_config("nonexistent.txt") {
+        Ok(config) => println!("✓ 設定読み込み成功: {:?}", config),
+        Err(error) => println!("✗ 設定読み込み失敗: {}", error),
     }
 
     // 無効な設定ファイル
-    let invalid_config = \"\\ninvalid_power\\n無効等級\";
-    if let Err(e) = fs::write(\"invalid_config.txt\", invalid_config) {
-        println!(\"テストファイル作成エラー: {}\", e);
+    let invalid_config = "\\ninvalid_power\\n無効等級";
+    if let Err(e) = fs::write("invalid_config.txt", invalid_config) {
+        println!("テストファイル作成エラー: {}", e);
         return;
     }
 
-    match load_and_validate_config(\"invalid_config.txt\") {
-        Ok(config) => println!(\"✓ 設定読み込み成功: {:?}\", config),
-        Err(error) => println!(\"✗ 設定読み込み失敗: {}\", error),
+    match load_and_validate_config("invalid_config.txt") {
+        Ok(config) => println!("✓ 設定読み込み成功: {:?}", config),
+        Err(error) => println!("✗ 設定読み込み失敗: {}", error),
     }
 }
 ```
@@ -322,54 +322,54 @@ fn main() {
 ```rust
 // Cargo.tomlに追加:
 // [dependencies]
-// anyhow = \"1.0\"
-// thiserror = \"1.0\"
+// anyhow = "1.0"
+// thiserror = "1.0"
 
 use thiserror::Error;
 use anyhow::{Context, Result as AnyhowResult};
 
 #[derive(Error, Debug)]
 enum AdvancedSorceryError {
-    #[error(\"呪力不足: {required}必要, {current}しかありません\")]
+    #[error("呪力不足: {required}必要, {current}しかありません")]
     InsufficientPower { required: i32, current: i32 },
 
-    #[error(\"術式'{name}'が見つかりません\")]
+    #[error("術式'{name}'が見つかりません")]
     TechniqueNotFound { name: String },
 
-    #[error(\"IO エラー\")]
+    #[error("IO エラー")]
     Io(#[from] std::io::Error),
 
-    #[error(\"パースエラー\")]
+    #[error("パースエラー")]
     Parse(#[from] std::num::ParseIntError),
 
-    #[error(\"設定エラー: {message}\")]
+    #[error("設定エラー: {message}")]
     Config { message: String },
 }
 
 // anyhowを使った簡単なエラーハンドリング
 fn complex_operation() -> AnyhowResult<String> {
-    let content = std::fs::read_to_string(\"config.txt\")
-        .context(\"設定ファイルの読み込みに失敗しました\")?;
+    let content = std::fs::read_to_string("config.txt")
+        .context("設定ファイルの読み込みに失敗しました")?;
 
     let power: i32 = content.trim().parse()
-        .context(\"呪力の値をパースできませんでした\")?;
+        .context("呪力の値をパースできませんでした")?;
 
     if power < 1000 {
-        anyhow::bail!(\"呪力が低すぎます: {}\", power);
+        anyhow::bail!("呪力が低すぎます: {}", power);
     }
 
-    Ok(format!(\"呪力{}で初期化完了\", power))
+    Ok(format!("呪力{}で初期化完了", power))
 }
 
 fn main() {
     match complex_operation() {
-        Ok(result) => println!(\"✓ {}\", result),
+        Ok(result) => println!("✓ {}", result),
         Err(error) => {
-            println!(\"✗ エラー: {}\", error);
+            println!("✗ エラー: {}", error);
 
             // エラーチェーンの表示
             for cause in error.chain() {
-                println!(\"  原因: {}\", cause);
+                println!("  原因: {}", cause);
             }
         }
     }
@@ -396,12 +396,12 @@ enum SystemError {
 impl fmt::Display for SystemError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            SystemError::FileError(err) => write!(f, \"ファイルエラー: {}\", err),
-            SystemError::ParseError(msg) => write!(f, \"パースエラー: {}\", msg),
-            SystemError::ValidationError(msg) => write!(f, \"バリデーションエラー: {}\", msg),
-            SystemError::NotFound(item) => write!(f, \"{}が見つかりません\", item),
-            SystemError::PermissionDenied(action) => write!(f, \"{}の権限がありません\", action),
-            SystemError::DatabaseCorrupted => write!(f, \"データベースが破損しています\"),
+            SystemError::FileError(err) => write!(f, "ファイルエラー: {}", err),
+            SystemError::ParseError(msg) => write!(f, "パースエラー: {}", msg),
+            SystemError::ValidationError(msg) => write!(f, "バリデーションエラー: {}", msg),
+            SystemError::NotFound(item) => write!(f, "{}が見つかりません", item),
+            SystemError::PermissionDenied(action) => write!(f, "{}の権限がありません", action),
+            SystemError::DatabaseCorrupted => write!(f, "データベースが破損しています"),
         }
     }
 }
@@ -427,16 +427,16 @@ struct Sorcerer {
 impl Sorcerer {
     fn new(id: u32, name: String, power: i32, grade: String) -> Result<Self, SystemError> {
         if name.is_empty() {
-            return Err(SystemError::ValidationError(\"名前が空です\".to_string()));
+            return Err(SystemError::ValidationError("名前が空です".to_string()));
         }
 
         if power < 0 {
-            return Err(SystemError::ValidationError(\"呪力は0以上である必要があります\".to_string()));
+            return Err(SystemError::ValidationError("呪力は0以上である必要があります".to_string()));
         }
 
-        let valid_grades = [\"特級\", \"1級\", \"2級\", \"3級\", \"4級\"];
+        let valid_grades = ["特級", "1級", "2級", "3級", "4級"];
         if !valid_grades.contains(&grade.as_str()) {
-            return Err(SystemError::ValidationError(format!(\"無効な等級: {}\", grade)));
+            return Err(SystemError::ValidationError(format!("無効な等級: {}", grade)));
         }
 
         Ok(Sorcerer {
@@ -451,12 +451,12 @@ impl Sorcerer {
 
     fn add_technique(&mut self, technique: String) -> Result<(), SystemError> {
         if technique.is_empty() {
-            return Err(SystemError::ValidationError(\"術式名が空です\".to_string()));
+            return Err(SystemError::ValidationError("術式名が空です".to_string()));
         }
 
         if self.techniques.contains(&technique) {
             return Err(SystemError::ValidationError(
-                format!(\"術式'{}'は既に習得済みです\", technique)
+                format!("術式'{}'は既に習得済みです", technique)
             ));
         }
 
@@ -465,9 +465,9 @@ impl Sorcerer {
     }
 
     fn to_string(&self) -> String {
-        format!(\"{}|{}|{}|{}|{}|{}\",
+        format!("{}|{}|{}|{}|{}|{}",
                 self.id, self.name, self.power, self.grade,
-                self.techniques.join(\",\"), self.active)
+                self.techniques.join(","), self.active)
     }
 
     fn from_string(line: &str) -> Result<Self, SystemError> {
@@ -475,18 +475,18 @@ impl Sorcerer {
 
         if parts.len() != 6 {
             return Err(SystemError::ParseError(
-                format!(\"無効なフォーマット: {}\", line)
+                format!("無効なフォーマット: {}", line)
             ));
         }
 
         let id: u32 = parts[0].parse()
-            .map_err(|_| SystemError::ParseError(\"IDのパースに失敗\".to_string()))?;
+            .map_err(|_| SystemError::ParseError("IDのパースに失敗".to_string()))?;
 
         let power: i32 = parts[2].parse()
-            .map_err(|_| SystemError::ParseError(\"呪力のパースに失敗\".to_string()))?;
+            .map_err(|_| SystemError::ParseError("呪力のパースに失敗".to_string()))?;
 
         let active: bool = parts[5].parse()
-            .map_err(|_| SystemError::ParseError(\"アクティブ状態のパースに失敗\".to_string()))?;
+            .map_err(|_| SystemError::ParseError("アクティブ状態のパースに失敗".to_string()))?;
 
         let techniques = if parts[4].is_empty() {
             Vec::new()
@@ -568,12 +568,12 @@ impl SorcererManager {
 
     fn get_sorcerer(&self, id: u32) -> Result<&Sorcerer, SystemError> {
         self.sorcerers.get(&id)
-            .ok_or_else(|| SystemError::NotFound(format!(\"呪術師ID: {}\", id)))
+            .ok_or_else(|| SystemError::NotFound(format!("呪術師ID: {}", id)))
     }
 
     fn get_sorcerer_mut(&mut self, id: u32) -> Result<&mut Sorcerer, SystemError> {
         self.sorcerers.get_mut(&id)
-            .ok_or_else(|| SystemError::NotFound(format!(\"呪術師ID: {}\", id)))
+            .ok_or_else(|| SystemError::NotFound(format!("呪術師ID: {}", id)))
     }
 
     fn add_technique_to_sorcerer(&mut self, id: u32, technique: String)
@@ -589,7 +589,7 @@ impl SorcererManager {
 
         if !sorcerer.active {
             return Err(SystemError::ValidationError(
-                \"呪術師は既に非アクティブです\".to_string()
+                "呪術師は既に非アクティブです".to_string()
             ));
         }
 
@@ -635,12 +635,12 @@ impl SorcererManager {
             .filter(|s| s.active)
             .count() as i32;
 
-        stats.insert(\"total_sorcerers\".to_string(), self.sorcerers.len() as i32);
-        stats.insert(\"active_sorcerers\".to_string(), active_count);
+        stats.insert("total_sorcerers".to_string(), self.sorcerers.len() as i32);
+        stats.insert("active_sorcerers".to_string(), active_count);
 
-        for grade in [\"特級\", \"1級\", \"2級\", \"3級\", \"4級\"].iter() {
+        for grade in ["特級", "1級", "2級", "3級", "4級"].iter() {
             let count = self.get_by_grade(grade).len() as i32;
-            stats.insert(format!(\"{}_count\", grade), count);
+            stats.insert(format!("{}_count", grade), count);
         }
 
         if active_count > 0 {
@@ -648,7 +648,7 @@ impl SorcererManager {
                 .filter(|s| s.active)
                 .map(|s| s.power)
                 .sum();
-            stats.insert(\"average_power\".to_string(), total_power / active_count);
+            stats.insert("average_power".to_string(), total_power / active_count);
         }
 
         stats
@@ -656,71 +656,71 @@ impl SorcererManager {
 }
 
 fn run_sorcerer_management_system() -> Result<(), SystemError> {
-    let mut manager = SorcererManager::new(\"sorcerers.db\");
+    let mut manager = SorcererManager::new("sorcerers.db");
 
     // データベースの読み込み
     manager.load_from_file()
         .or_else(|err| {
-            println!(\"警告: データベース読み込み失敗: {}\", err);
-            println!(\"新しいデータベースを作成します\");
+            println!("警告: データベース読み込み失敗: {}", err);
+            println!("新しいデータベースを作成します");
             Ok(())
         })?;
 
-    println!(\"=== 呪術師管理システム ===\");
+    println!("=== 呪術師管理システム ===");
 
     // テストデータの追加
     let gojo_id = manager.add_sorcerer(
-        \"五条悟\".to_string(),
+        "五条悟".to_string(),
         3000,
-        \"特級\".to_string()
+        "特級".to_string()
     )?;
 
     let yuji_id = manager.add_sorcerer(
-        \"虎杖悠仁\".to_string(),
+        "虎杖悠仁".to_string(),
         1200,
-        \"1級\".to_string()
+        "1級".to_string()
     )?;
 
     let megumi_id = manager.add_sorcerer(
-        \"伏黒恵\".to_string(),
+        "伏黒恵".to_string(),
         1000,
-        \"2級\".to_string()
+        "2級".to_string()
     )?;
 
     // 術式の追加
-    manager.add_technique_to_sorcerer(gojo_id, \"無下限呪術\".to_string())?;
-    manager.add_technique_to_sorcerer(gojo_id, \"術式順転『蒼』\".to_string())?;
-    manager.add_technique_to_sorcerer(yuji_id, \"黒閃\".to_string())?;
-    manager.add_technique_to_sorcerer(megumi_id, \"十種影法術\".to_string())?;
+    manager.add_technique_to_sorcerer(gojo_id, "無下限呪術".to_string())?;
+    manager.add_technique_to_sorcerer(gojo_id, "術式順転『蒼』".to_string())?;
+    manager.add_technique_to_sorcerer(yuji_id, "黒閃".to_string())?;
+    manager.add_technique_to_sorcerer(megumi_id, "十種影法術".to_string())?;
 
     // データの検索と表示
-    println!(\"\\n=== 呪術師一覧 ===\");
+    println!("\\n=== 呪術師一覧 ===");
     for id in [gojo_id, yuji_id, megumi_id].iter() {
         let sorcerer = manager.get_sorcerer(*id)?;
-        println!(\"ID {}: {} - 呪力:{} 等級:{} 術式数:{}\",
+        println!("ID {}: {} - 呪力:{} 等級:{} 術式数:{}",
                  sorcerer.id, sorcerer.name, sorcerer.power,
                  sorcerer.grade, sorcerer.techniques.len());
     }
 
     // 統計情報
-    println!(\"\\n=== 統計情報 ===\");
+    println!("\\n=== 統計情報 ===");
     let stats = manager.get_statistics();
     for (key, value) in stats {
-        println!(\"{}: {}\", key, value);
+        println!("{}: {}", key, value);
     }
 
     // バックアップの作成
-    manager.backup_database(\"sorcerers_backup.db\")?;
-    println!(\"\\nバックアップを作成しました\");
+    manager.backup_database("sorcerers_backup.db")?;
+    println!("\\nバックアップを作成しました");
 
     Ok(())
 }
 
 fn main() {
     match run_sorcerer_management_system() {
-        Ok(_) => println!(\"\\n✓ システム終了\"),
+        Ok(_) => println!("\\n✓ システム終了"),
         Err(error) => {
-            println!(\"\\n✗ システムエラー: {}\", error);
+            println!("\\n✗ システムエラー: {}", error);
             std::process::exit(1);
         }
     }

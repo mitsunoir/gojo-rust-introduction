@@ -27,14 +27,14 @@ enum Option<T> {
 ```rust
 fn main() {
     // 値がある場合
-    let technique_name: Option<String> = Some(String::from(\"術式順転『蒼』\"));
+    let technique_name: Option<String> = Some(String::from("術式順転『蒼』"));
 
     // 値がない場合
     let unknown_technique: Option<String> = None;
 
     // Option型の値を表示
-    println!(\"{:?}\", technique_name);  // Some(\"術式順転『蒼』\")
-    println!(\"{:?}\", unknown_technique);  // None
+    println!("{:?}", technique_name);  // Some("術式順転『蒼』")
+    println!("{:?}", unknown_technique);  // None
 }
 ```
 
@@ -47,11 +47,11 @@ fn main() {
     let some_power = Some(1500);
     let no_power: Option<i32> = None;
 
-    let technique = Some(\"無下限呪術\");
+    let technique = Some("無下限呪術");
     let empty_technique: Option<&str> = None;
 
-    println!(\"呪力: {:?}\", some_power);
-    println!(\"技: {:?}\", technique);
+    println!("呪力: {:?}", some_power);
+    println!("技: {:?}", technique);
 }
 ```
 
@@ -60,10 +60,10 @@ fn main() {
 ```rust
 fn find_technique_power(technique_name: &str) -> Option<i32> {
     match technique_name {
-        \"蒼\" => Some(1000),
-        \"赫\" => Some(1500),
-        \"茈\" => Some(3000),
-        \"紫\" => Some(9999),
+        "蒼" => Some(1000),
+        "赫" => Some(1500),
+        "茈" => Some(3000),
+        "紫" => Some(9999),
         _ => None,  // 未知の技
     }
 }
@@ -73,21 +73,21 @@ fn get_strongest_student() -> Option<String> {
     let has_students = true;
 
     if has_students {
-        Some(String::from(\"虎杖悠仁\"))
+        Some(String::from("虎杖悠仁"))
     } else {
         None
     }
 }
 
 fn main() {
-    let blue_power = find_technique_power(\"蒼\");
-    let unknown_power = find_technique_power(\"未知の技\");
+    let blue_power = find_technique_power("蒼");
+    let unknown_power = find_technique_power("未知の技");
 
-    println!(\"蒼の威力: {:?}\", blue_power);      // Some(1000)
-    println!(\"未知技の威力: {:?}\", unknown_power); // None
+    println!("蒼の威力: {:?}", blue_power);      // Some(1000)
+    println!("未知技の威力: {:?}", unknown_power); // None
 
     let strongest = get_strongest_student();
-    println!(\"最強の学生: {:?}\", strongest);
+    println!("最強の学生: {:?}", strongest);
 }
 ```
 
@@ -98,31 +98,31 @@ fn main() {
 ```rust
 fn process_technique_power(power: Option<i32>) {
     match power {
-        Some(p) => println!(\"威力: {}\", p),
-        None => println!(\"技が見つかりません\"),
+        Some(p) => println!("威力: {}", p),
+        None => println!("技が見つかりません"),
     }
 }
 
 fn get_power_level(power: Option<i32>) -> String {
     match power {
-        Some(p) if p >= 3000 => \"超強力\".to_string(),
-        Some(p) if p >= 1500 => \"強力\".to_string(),
-        Some(p) if p >= 1000 => \"普通\".to_string(),
-        Some(p) => format!(\"弱い ({})\", p),
-        None => \"不明\".to_string(),
+        Some(p) if p >= 3000 => "超強力".to_string(),
+        Some(p) if p >= 1500 => "強力".to_string(),
+        Some(p) if p >= 1000 => "普通".to_string(),
+        Some(p) => format!("弱い ({})", p),
+        None => "不明".to_string(),
     }
 }
 
 fn main() {
     let techniques = [
-        (\"蒼\", Some(1000)),
-        (\"赫\", Some(1500)),
-        (\"茈\", Some(3000)),
-        (\"未知\", None),
+        ("蒼", Some(1000)),
+        ("赫", Some(1500)),
+        ("茈", Some(3000)),
+        ("未知", None),
     ];
 
     for (name, power) in techniques.iter() {
-        println!(\"{}: {}\", name, get_power_level(*power));
+        println!("{}: {}", name, get_power_level(*power));
         process_technique_power(*power);
         println!();
     }
@@ -137,13 +137,13 @@ fn main() {
 
     // if let で値がある場合のみ処理
     if let Some(power) = technique_power {
-        println!(\"技の威力: {}\", power);
+        println!("技の威力: {}", power);
 
         if power > 1000 {
-            println!(\"強力な技です！\");
+            println!("強力な技です！");
         }
     } else {
-        println!(\"技が見つかりません\");
+        println!("技が見つかりません");
     }
 
     // より複雑な例
@@ -151,12 +151,12 @@ fn main() {
 
     if let Some(grade) = student_grade {
         let evaluation = match grade {
-            90..=100 => \"優秀\",
-            80..=89 => \"良好\",
-            70..=79 => \"普通\",
-            _ => \"要努力\",
+            90..=100 => "優秀",
+            80..=89 => "良好",
+            70..=79 => "普通",
+            _ => "要努力",
         };
-        println!(\"成績: {}点 - {}\", grade, evaluation);
+        println!("成績: {}点 - {}", grade, evaluation);
     }
 }
 ```
@@ -172,20 +172,20 @@ fn main() {
 
     // unwrap() - 値を取り出すが、Noneの場合はパニック
     let power = some_power.unwrap();
-    println!(\"威力: {}\", power);
+    println!("威力: {}", power);
 
     // no_power.unwrap(); // パニックする！
 
     // unwrap_or() - Noneの場合はデフォルト値を使用
     let safe_power = no_power.unwrap_or(0);
-    println!(\"安全な威力: {}\", safe_power);
+    println!("安全な威力: {}", safe_power);
 
     // unwrap_or_else() - Noneの場合はクロージャを実行
     let calculated_power = no_power.unwrap_or_else(|| {
-        println!(\"デフォルト値を計算中...\");
+        println!("デフォルト値を計算中...");
         500
     });
-    println!(\"計算された威力: {}\", calculated_power);
+    println!("計算された威力: {}", calculated_power);
 }
 ```
 
@@ -197,15 +197,15 @@ fn main() {
 
 ```rust
 fn main() {
-    let technique = Some(\"術式順転『蒼』\");
+    let technique = Some("術式順転『蒼』");
     let empty_technique: Option<&str> = None;
 
     // expect() - unwrap()と同じだが、エラーメッセージを指定できる
-    let tech_name = technique.expect(\"技名が必要です\");
-    println!(\"技: {}\", tech_name);
+    let tech_name = technique.expect("技名が必要です");
+    println!("技: {}", tech_name);
 
     // エラーメッセージ付きでパニック
-    // let empty_name = empty_technique.expect(\"技名が見つかりません！\");
+    // let empty_name = empty_technique.expect("技名が見つかりません！");
 }
 ```
 
@@ -214,22 +214,22 @@ fn main() {
 ```rust
 fn check_technique_availability(technique: Option<&str>) {
     if technique.is_some() {
-        println!(\"技が利用可能です: {:?}\", technique);
+        println!("技が利用可能です: {:?}", technique);
     } else {
-        println!(\"技が利用できません\");
+        println!("技が利用できません");
     }
 
     // ガード節として使用
     if technique.is_none() {
-        println!(\"技がないので早期リターン\");
+        println!("技がないので早期リターン");
         return;
     }
 
-    println!(\"技の処理を続行...\");
+    println!("技の処理を続行...");
 }
 
 fn main() {
-    let available_technique = Some(\"術式順転『蒼』\");
+    let available_technique = Some("術式順転『蒼』");
     let unavailable_technique: Option<&str> = None;
 
     check_technique_availability(available_technique);
@@ -248,23 +248,23 @@ fn main() {
         .map(|power| power.map(|p| p * 2))
         .collect();
 
-    println!(\"元の威力: {:?}\", powers);
-    println!(\"2倍の威力: {:?}\", doubled_powers);
+    println!("元の威力: {:?}", powers);
+    println!("2倍の威力: {:?}", doubled_powers);
 
     // より複雑な変換
     let power_descriptions: Vec<Option<String>> = powers.iter()
         .map(|power| power.map(|p| {
             if p >= 2000 {
-                format!(\"超強力 ({})\", p)
+                format!("超強力 ({})", p)
             } else if p >= 1500 {
-                format!(\"強力 ({})\", p)
+                format!("強力 ({})", p)
             } else {
-                format!(\"普通 ({})\", p)
+                format!("普通 ({})", p)
             }
         }))
         .collect();
 
-    println!(\"威力説明: {:?}\", power_descriptions);
+    println!("威力説明: {:?}", power_descriptions);
 }
 ```
 
@@ -273,9 +273,9 @@ fn main() {
 ```rust
 fn get_technique_power(name: &str) -> Option<i32> {
     match name {
-        \"蒼\" => Some(1000),
-        \"赫\" => Some(1500),
-        \"茈\" => Some(3000),
+        "蒼" => Some(1000),
+        "赫" => Some(1500),
+        "茈" => Some(3000),
         _ => None,
     }
 }
@@ -289,21 +289,21 @@ fn calculate_combo_power(power: i32) -> Option<i32> {
 }
 
 fn main() {
-    let technique_name = \"蒼\";
+    let technique_name = "蒼";
 
     // and_then() でOptionを返す関数をチェーン
     let combo_power = get_technique_power(technique_name)
         .and_then(calculate_combo_power);
 
-    println!(\"{} のコンボ威力: {:?}\", technique_name, combo_power);
+    println!("{} のコンボ威力: {:?}", technique_name, combo_power);
 
     // より複雑なチェーン
-    let result = Some(\"茈\")
+    let result = Some("茈")
         .and_then(get_technique_power)
         .and_then(calculate_combo_power)
-        .map(|power| format!(\"最終威力: {}\", power));
+        .map(|power| format!("最終威力: {}", power));
 
-    println!(\"チェーン結果: {:?}\", result);
+    println!("チェーン結果: {:?}", result);
 }
 ```
 
@@ -318,8 +318,8 @@ fn main() {
         .map(|power| power.filter(|&&p| p >= 1000))
         .collect();
 
-    println!(\"元の威力: {:?}\", powers);
-    println!(\"強力な技のみ: {:?}\", strong_powers);
+    println!("元の威力: {:?}", powers);
+    println!("強力な技のみ: {:?}", strong_powers);
 
     // 実用例：有効な技のみフィルタ
     let technique_levels = vec![
@@ -333,7 +333,7 @@ fn main() {
         .map(|level| level.filter(|&&l| l >= 90))
         .collect();
 
-    println!(\"優秀な技: {:?}\", excellent_techniques);
+    println!("優秀な技: {:?}", excellent_techniques);
 }
 ```
 
@@ -369,12 +369,12 @@ impl Sorcerer {
 
     fn get_power_level(&self) -> &str {
         match self.power {
-            3000.. => \"最強級\",
-            2000..=2999 => \"特級\",
-            1500..=1999 => \"1級\",
-            1000..=1499 => \"2級\",
-            500..=999 => \"3級\",
-            _ => \"4級\",
+            3000.. => "最強級",
+            2000..=2999 => "特級",
+            1500..=1999 => "1級",
+            1000..=1499 => "2級",
+            500..=999 => "3級",
+            _ => "4級",
         }
     }
 }
@@ -431,10 +431,10 @@ impl SorcererDatabase {
             .map(|sorcerer| {
                 let strongest_tech = sorcerer.get_strongest_technique()
                     .map(|tech| tech.as_str())
-                    .unwrap_or(\"なし\");
+                    .unwrap_or("なし");
 
                 format!(
-                    \"名前: {}\\n等級: {}\\n呪力: {} ({})\\n技数: {}\\n最強技: {}\",
+                    "名前: {}\\n等級: {}\\n呪力: {} ({})\\n技数: {}\\n最強技: {}",
                     sorcerer.name,
                     sorcerer.grade,
                     sorcerer.power,
@@ -451,13 +451,13 @@ impl SorcererDatabase {
         let sorcerer2 = self.find_by_name(name2)?;
 
         let comparison = if sorcerer1.power > sorcerer2.power {
-            format!(\"{} の方が強い (呪力差: {})\",
+            format!("{} の方が強い (呪力差: {})",
                 sorcerer1.name, sorcerer1.power - sorcerer2.power)
         } else if sorcerer2.power > sorcerer1.power {
-            format!(\"{} の方が強い (呪力差: {})\",
+            format!("{} の方が強い (呪力差: {})",
                 sorcerer2.name, sorcerer2.power - sorcerer1.power)
         } else {
-            \"互角の実力\".to_string()
+            "互角の実力".to_string()
         };
 
         Some(comparison)
@@ -468,55 +468,55 @@ fn main() {
     let mut db = SorcererDatabase::new();
 
     // データの登録
-    let mut gojo = Sorcerer::new(\"五条悟\", \"特級\", 3000);
-    gojo.add_technique(\"無下限呪術\".to_string());
-    gojo.add_technique(\"術式順転『蒼』\".to_string());
-    gojo.add_technique(\"術式反転『赫』\".to_string());
+    let mut gojo = Sorcerer::new("五条悟", "特級", 3000);
+    gojo.add_technique("無下限呪術".to_string());
+    gojo.add_technique("術式順転『蒼』".to_string());
+    gojo.add_technique("術式反転『赫』".to_string());
 
-    let mut sukuna = Sorcerer::new(\"両面宿儺\", \"特級\", 2800);
-    sukuna.add_technique(\"解\".to_string());
-    sukuna.add_technique(\"捌\".to_string());
+    let mut sukuna = Sorcerer::new("両面宿儺", "特級", 2800);
+    sukuna.add_technique("解".to_string());
+    sukuna.add_technique("捌".to_string());
 
-    let mut yuji = Sorcerer::new(\"虎杖悠仁\", \"1級\", 1200);
-    yuji.add_technique(\"黒閃\".to_string());
+    let mut yuji = Sorcerer::new("虎杖悠仁", "1級", 1200);
+    yuji.add_technique("黒閃".to_string());
 
     db.add_sorcerer(gojo);
     db.add_sorcerer(sukuna);
     db.add_sorcerer(yuji);
 
-    println!(\"=== 呪術師データベース検索 ===\");
+    println!("=== 呪術師データベース検索 ===");
 
     // 名前検索
-    if let Some(details) = db.get_sorcerer_details(\"五条悟\") {
-        println!(\"\\n五条悟の詳細:\\n{}\", details);
+    if let Some(details) = db.get_sorcerer_details("五条悟") {
+        println!("\\n五条悟の詳細:\\n{}", details);
     }
 
     // 存在しない呪術師
-    match db.find_by_name(\"存在しない呪術師\") {
-        Some(sorcerer) => println!(\"見つかりました: {}\", sorcerer.name),
-        None => println!(\"\\n'存在しない呪術師' は見つかりませんでした\"),
+    match db.find_by_name("存在しない呪術師") {
+        Some(sorcerer) => println!("見つかりました: {}", sorcerer.name),
+        None => println!("\\n'存在しない呪術師' は見つかりませんでした"),
     }
 
     // 最強の呪術師
     if let Some(strongest) = db.get_strongest() {
-        println!(\"\\n最強の呪術師: {} (呪力: {})\",
+        println!("\\n最強の呪術師: {} (呪力: {})",
                  strongest.name, strongest.power);
     }
 
     // 実力比較
-    if let Some(comparison) = db.compare_sorcerers(\"五条悟\", \"両面宿儺\") {
-        println!(\"\\n実力比較: {}\", comparison);
+    if let Some(comparison) = db.compare_sorcerers("五条悟", "両面宿儺") {
+        println!("\\n実力比較: {}", comparison);
     }
 
     // 高威力呪術師検索
     match db.find_by_min_power(2000) {
         Some(powerful_sorcerers) => {
-            println!(\"\\n呪力2000以上の呪術師:\");
+            println!("\\n呪力2000以上の呪術師:");
             for sorcerer in powerful_sorcerers {
-                println!(\"  {} - 呪力: {}\", sorcerer.name, sorcerer.power);
+                println!("  {} - 呪力: {}", sorcerer.name, sorcerer.power);
             }
         },
-        None => println!(\"\\n呪力2000以上の呪術師はいません\"),
+        None => println!("\\n呪力2000以上の呪術師はいません"),
     }
 }
 ```
@@ -529,7 +529,7 @@ fn process_sorcerer_data(db: &SorcererDatabase, name: &str) -> Option<String> {
     db.find_by_name(name)                    // Option<&Sorcerer>
         .filter(|s| s.power >= 1000)        // 十分強い場合のみ
         .and_then(|s| s.get_strongest_technique())  // 最強技を取得
-        .map(|tech| format!(\"{}の奥義: {}\", name, tech))  // メッセージ作成
+        .map(|tech| format!("{}の奥義: {}", name, tech))  // メッセージ作成
 }
 
 fn calculate_total_power(db: &SorcererDatabase, names: &[&str]) -> Option<i32> {
@@ -551,13 +551,13 @@ fn main() {
     // データ省略...
 
     // 連鎖操作のテスト
-    let result = process_sorcerer_data(&db, \"五条悟\");
-    println!(\"処理結果: {:?}\", result);
+    let result = process_sorcerer_data(&db, "五条悟");
+    println!("処理結果: {:?}", result);
 
     // 合計呪力計算
-    let team = [\"五条悟\", \"虎杖悠仁\"];
+    let team = ["五条悟", "虎杖悠仁"];
     let total_power = calculate_total_power(&db, &team);
-    println!(\"チーム総呪力: {:?}\", total_power);
+    println!("チーム総呪力: {:?}", total_power);
 }
 ```
 

@@ -12,11 +12,11 @@ fn main() {
     let my_power = 2000;
 
     if my_power > enemy_power {
-        println!(\"楽勝だね\");
+        println!("楽勝だね");
     } else if my_power == enemy_power {
-        println!(\"互角か...面白い\");
+        println!("互角か...面白い");
     } else {
-        println!(\"ちょっと本気出すかな\");
+        println!("ちょっと本気出すかな");
     }
 }
 ```
@@ -28,23 +28,23 @@ fn main() {
 
 ```rust
 fn main() {
-    let enemy_type = \"特級呪霊\";
+    let enemy_type = "特級呪霊";
 
-    let technique = if enemy_type == \"特級呪霊\" {
-        \"術式順転『蒼』\"
-    } else if enemy_type == \"偽夏油\" {
-        \"術式反転『赫』\"
+    let technique = if enemy_type == "特級呪霊" {
+        "術式順転『蒼』"
+    } else if enemy_type == "偽夏油" {
+        "術式反転『赫』"
     } else {
-        \"基本術式\"
+        "基本術式"
     };
 
-    println!(\"使用する技: {}\", technique);
+    println!("使用する技: {}", technique);
 
     // 数値での例
     let power_level = 1000;
     let damage = if power_level > 500 { power_level * 2 } else { power_level };
 
-    println!(\"ダメージ: {}\", damage);
+    println!("ダメージ: {}", damage);
 }
 ```
 
@@ -56,14 +56,14 @@ fn main() {
 
 ```rust
 fn main() {
-    let technique_type = \"蒼\";
+    let technique_type = "蒼";
 
     match technique_type {
-        \"蒼\" => println!(\"術式順転『蒼』 - 引力操作\"),
-        \"赫\" => println!(\"術式反転『赫』 - 斥力操作\"),
-        \"茈\" => println!(\"虚式『茈』 - 仮想質量\"),
-        \"紫\" => println!(\"無下限呪術『紫』 - 最強\"),
-        _ => println!(\"未知の術式\"),  // その他全て
+        "蒼" => println!("術式順転『蒼』 - 引力操作"),
+        "赫" => println!("術式反転『赫』 - 斥力操作"),
+        "茈" => println!("虚式『茈』 - 仮想質量"),
+        "紫" => println!("無下限呪術『紫』 - 最強"),
+        _ => println!("未知の術式"),  // その他全て
     }
 }
 ```
@@ -73,20 +73,20 @@ fn main() {
 ```rust
 fn calculate_damage(technique: &str) -> i32 {
     match technique {
-        \"蒼\" => 1000,
-        \"赫\" => 1500,
-        \"茈\" => 3000,
-        \"紫\" => 9999,
+        "蒼" => 1000,
+        "赫" => 1500,
+        "茈" => 3000,
+        "紫" => 9999,
         _ => 100,
     }
 }
 
 fn main() {
-    let techniques = [\"蒼\", \"赫\", \"茈\", \"紫\"];
+    let techniques = ["蒼", "赫", "茈", "紫"];
 
     for tech in techniques.iter() {
         let damage = calculate_damage(tech);
-        println!(\"{}: ダメージ {}\", tech, damage);
+        println!("{}: ダメージ {}", tech, damage);
     }
 }
 ```
@@ -98,14 +98,14 @@ fn main() {
     let enemy_grade = 2;
 
     let strategy = match enemy_grade {
-        1 | 2 => \"基本術式で十分\",
-        3 => \"少し本気を出そう\",
-        4 => \"特級か...面白い\",
-        0 => \"特級の中でも格が違う\",
-        _ => \"未知の等級\",
+        1 | 2 => "基本術式で十分",
+        3 => "少し本気を出そう",
+        4 => "特級か...面白い",
+        0 => "特級の中でも格が違う",
+        _ => "未知の等級",
     };
 
-    println!(\"戦略: {}\", strategy);
+    println!("戦略: {}", strategy);
 }
 ```
 
@@ -116,14 +116,14 @@ fn main() {
     let power_level = 1500;
 
     let comment = match power_level {
-        0..=500 => \"雑魚だね\",
-        501..=1000 => \"まあまあかな\",
-        1001..=2000 => \"そこそこやるじゃない\",
-        2001..=5000 => \"お、なかなか\",
-        5001.. => \"ほほう、面白い\",
+        0..=500 => "雑魚だね",
+        501..=1000 => "まあまあかな",
+        1001..=2000 => "そこそこやるじゃない",
+        2001..=5000 => "お、なかなか",
+        5001.. => "ほほう、面白い",
     };
 
-    println!(\"評価: {}\", comment);
+    println!("評価: {}", comment);
 }
 ```
 
@@ -137,11 +137,11 @@ fn main() {
 
     loop {
         if curse_count == 0 {
-            println!(\"全ての呪霊を祓った！\");
+            println!("全ての呪霊を祓った！");
             break;  // ループから抜ける
         }
 
-        println!(\"呪霊を祓った。残り: {}\", curse_count);
+        println!("呪霊を祓った。残り: {}", curse_count);
         curse_count -= 1;
     }
 }
@@ -161,7 +161,7 @@ fn main() {
         }
     };
 
-    println!(\"結果: {}\", result);  // 20
+    println!("結果: {}", result);  // 20
 }
 ```
 
@@ -174,10 +174,10 @@ fn main() {
 
     while enemy_hp > 0 {
         enemy_hp -= damage;
-        println!(\"攻撃！残りHP: {}\", enemy_hp.max(0));
+        println!("攻撃！残りHP: {}", enemy_hp.max(0));
     }
 
-    println!(\"敵を倒した！\");
+    println!("敵を倒した！");
 }
 ```
 
@@ -186,24 +186,24 @@ fn main() {
 ```rust
 fn main() {
     // 範囲でのループ
-    println!(\"カウントダウン:\");
+    println!("カウントダウン:");
     for i in (1..=5).rev() {
-        println!(\"{}\", i);
+        println!("{}", i);
     }
-    println!(\"術式発動！\");
+    println!("術式発動！");
 
     // 配列のループ
-    let techniques = [\"蒼\", \"赫\", \"茈\"];
+    let techniques = ["蒼", "赫", "茈"];
     for (index, technique) in techniques.iter().enumerate() {
-        println!(\"技{}: {}\", index + 1, technique);
+        println!("技{}: {}", index + 1, technique);
     }
 
     // ベクターのループ
-    let mut enemies = vec![\"呪霊A\", \"呪霊B\", \"呪霊C\"];
+    let mut enemies = vec!["呪霊A", "呪霊B", "呪霊C"];
     for enemy in enemies.iter_mut() {
-        *enemy = \"撃破済み\";
+        *enemy = "撃破済み";
     }
-    println!(\"敵の状態: {:?}\", enemies);
+    println!("敵の状態: {:?}", enemies);
 }
 ```
 
@@ -211,21 +211,21 @@ fn main() {
 
 ```rust
 fn main() {
-    println!(\"=== break の例 ===\");
+    println!("=== break の例 ===");
     for i in 1..10 {
         if i == 5 {
-            println!(\"{}で中断\", i);
+            println!("{}で中断", i);
             break;
         }
-        println!(\"数値: {}\", i);
+        println!("数値: {}", i);
     }
 
-    println!(\"\\n=== continue の例 ===\");
+    println!("\\n=== continue の例 ===");
     for i in 1..=10 {
         if i % 2 == 0 {
             continue;  // 偶数はスキップ
         }
-        println!(\"奇数: {}\", i);
+        println!("奇数: {}", i);
     }
 }
 ```
@@ -237,13 +237,13 @@ fn main() {
     'outer: for x in 1..=3 {
         'inner: for y in 1..=3 {
             if x == 2 && y == 2 {
-                println!(\"({}, {}) で外側ループを抜ける\", x, y);
+                println!("({}, {}) で外側ループを抜ける", x, y);
                 break 'outer;  // 外側のループを抜ける
             }
-            println!(\"({}, {})\", x, y);
+            println!("({}, {})", x, y);
         }
     }
-    println!(\"完了\");
+    println!("完了");
 }
 ```
 
@@ -252,20 +252,20 @@ fn main() {
 ```rust
 fn main() {
     let mut enemies = vec![
-        (\"1級呪霊\", 500),
-        (\"特級呪霊\", 1500),
-        (\"特級呪霊(偽夏油)\", 3000),
+        ("1級呪霊", 500),
+        ("特級呪霊", 1500),
+        ("特級呪霊(偽夏油)", 3000),
     ];
 
     let techniques = [
-        (\"蒼\", 600),
-        (\"赫\", 800),
-        (\"茈\", 2000),
-        (\"紫\", 9999),
+        ("蒼", 600),
+        ("赫", 800),
+        ("茈", 2000),
+        ("紫", 9999),
     ];
 
     for (enemy_name, enemy_hp) in enemies.iter() {
-        println!(\"\\n{} (HP: {}) が現れた！\", enemy_name, enemy_hp);
+        println!("\\n{} (HP: {}) が現れた！", enemy_name, enemy_hp);
 
         let selected_technique = match *enemy_hp {
             0..=500 => &techniques[0],      // 蒼
@@ -276,22 +276,22 @@ fn main() {
 
         let (tech_name, damage) = selected_technique;
 
-        println!(\"『{}』を使用！\", tech_name);
+        println!("『{}』を使用！", tech_name);
 
         if damage >= enemy_hp {
-            println!(\"{}ダメージ！{} を撃破！\", damage, enemy_name);
+            println!("{}ダメージ！{} を撃破！", damage, enemy_name);
         } else {
-            println!(\"{}ダメージだが、まだ生きている...\", damage);
+            println!("{}ダメージだが、まだ生きている...", damage);
         }
     }
 
-    println!(\"\\n全ての敵を倒した！最強だから当然だね。\");
+    println!("\\n全ての敵を倒した！最強だから当然だね。");
 }
 ```
 
 ## 練習問題
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ### 問題1: 呪力判定システム
 
@@ -307,16 +307,16 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 fn judge_grade(power: i32) -> &'static str {
     match power {
-        0..=100 => \"4級\",
-        101..=500 => \"3級\",
-        501..=1000 => \"2級\",
-        1001..=2000 => \"1級\",
-        2001.. => \"特級\",
+        0..=100 => "4級",
+        101..=500 => "3級",
+        501..=1000 => "2級",
+        1001..=2000 => "1級",
+        2001.. => "特級",
     }
 }
 
@@ -325,7 +325,7 @@ fn main() {
 
     for power in power_levels.iter() {
         let grade = judge_grade(*power);
-        println!(\"呪力{}: {} 呪術師\", power, grade);
+        println!("呪力{}: {} 呪術師", power, grade);
     }
 }
 ```
@@ -333,7 +333,7 @@ fn main() {
 </div>
 </details>
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ### 問題2: FizzBuzz呪術版
 
@@ -343,16 +343,16 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 fn main() {
     for i in 1..=30 {
         match (i % 3, i % 5) {
-            (0, 0) => println!(\"呪術\"),
-            (0, _) => println!(\"呪\"),
-            (_, 0) => println!(\"術\"),
-            _ => println!(\"{}\", i),
+            (0, 0) => println!("呪術"),
+            (0, _) => println!("呪"),
+            (_, 0) => println!("術"),
+            _ => println!("{}", i),
         }
     }
 }

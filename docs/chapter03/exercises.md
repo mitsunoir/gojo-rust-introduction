@@ -14,7 +14,7 @@
 
 呪術師のデータベースからOption型を使って安全に検索するシステムを作成せよ。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 #[derive(Debug, Clone)]
@@ -48,9 +48,9 @@ impl SorcererDatabase {
 fn main() {
     // テスト用データ
     let sorcerers = vec![
-        Sorcerer { name: \"五条悟\".to_string(), power: 3000, grade: \"特級\".to_string() },
-        Sorcerer { name: \"両面宿儺\".to_string(), power: 2800, grade: \"特級\".to_string() },
-        Sorcerer { name: \"虎杖悠仁\".to_string(), power: 1200, grade: \"1級\".to_string() },
+        Sorcerer { name: "五条悟".to_string(), power: 3000, grade: "特級".to_string() },
+        Sorcerer { name: "両面宿儺".to_string(), power: 2800, grade: "特級".to_string() },
+        Sorcerer { name: "虎杖悠仁".to_string(), power: 1200, grade: "1級".to_string() },
     ];
 
     // システムのテスト
@@ -61,7 +61,7 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 #[derive(Debug, Clone)]
@@ -147,63 +147,63 @@ fn main() {
 
     // テスト用データ
     let sorcerers = vec![
-        Sorcerer { name: \"五条悟\".to_string(), power: 3000, grade: \"特級\".to_string() },
-        Sorcerer { name: \"両面宿儺\".to_string(), power: 2800, grade: \"特級\".to_string() },
-        Sorcerer { name: \"虎杖悠仁\".to_string(), power: 1200, grade: \"1級\".to_string() },
-        Sorcerer { name: \"伏黒恵\".to_string(), power: 1000, grade: \"2級\".to_string() },
-        Sorcerer { name: \"釘崎野薔薇\".to_string(), power: 900, grade: \"3級\".to_string() },
+        Sorcerer { name: "五条悟".to_string(), power: 3000, grade: "特級".to_string() },
+        Sorcerer { name: "両面宿儺".to_string(), power: 2800, grade: "特級".to_string() },
+        Sorcerer { name: "虎杖悠仁".to_string(), power: 1200, grade: "1級".to_string() },
+        Sorcerer { name: "伏黒恵".to_string(), power: 1000, grade: "2級".to_string() },
+        Sorcerer { name: "釘崎野薔薇".to_string(), power: 900, grade: "3級".to_string() },
     ];
 
     for sorcerer in sorcerers {
         db.add_sorcerer(sorcerer);
     }
 
-    println!(\"=== 呪術師検索システム ===\");
+    println!("=== 呪術師検索システム ===");
 
     // 1. 完全一致検索
-    match db.find_by_name(\"五条悟\") {
-        Some(sorcerer) => println!(\"✓ 見つかりました: {} (呪力: {})\", sorcerer.name, sorcerer.power),
-        None => println!(\"✗ 見つかりませんでした\"),
+    match db.find_by_name("五条悟") {
+        Some(sorcerer) => println!("✓ 見つかりました: {} (呪力: {})", sorcerer.name, sorcerer.power),
+        None => println!("✗ 見つかりませんでした"),
     }
 
     // 2. 部分一致検索
-    match db.find_by_partial_name(\"虎杖\") {
-        Some(sorcerer) => println!(\"✓ 部分一致: {} (呪力: {})\", sorcerer.name, sorcerer.power),
-        None => println!(\"✗ 部分一致なし\"),
+    match db.find_by_partial_name("虎杖") {
+        Some(sorcerer) => println!("✓ 部分一致: {} (呪力: {})", sorcerer.name, sorcerer.power),
+        None => println!("✗ 部分一致なし"),
     }
 
     // 3. 最強検索
     if let Some(strongest) = db.find_strongest() {
-        println!(\"✓ 最強: {} (呪力: {})\", strongest.name, strongest.power);
+        println!("✓ 最強: {} (呪力: {})", strongest.name, strongest.power);
     }
 
     // 4. 呪力フィルタ
     match db.find_by_min_power(2000) {
         Some(powerful) => {
-            println!(\"✓ 呪力2000以上:\");
+            println!("✓ 呪力2000以上:");
             for sorcerer in powerful {
-                println!(\"  {} (呪力: {})\", sorcerer.name, sorcerer.power);
+                println!("  {} (呪力: {})", sorcerer.name, sorcerer.power);
             }
         },
-        None => println!(\"✗ 該当者なし\"),
+        None => println!("✗ 該当者なし"),
     }
 
     // 5. 等級検索
-    match db.find_by_grade(\"特級\") {
+    match db.find_by_grade("特級") {
         Some(special_grade) => {
-            println!(\"✓ 特級呪術師:\");
+            println!("✓ 特級呪術師:");
             for sorcerer in special_grade {
-                println!(\"  {} (呪力: {})\", sorcerer.name, sorcerer.power);
+                println!("  {} (呪力: {})", sorcerer.name, sorcerer.power);
             }
         },
-        None => println!(\"✗ 特級呪術師なし\"),
+        None => println!("✗ 特級呪術師なし"),
     }
 
     // ボーナス: 複合検索
-    let criteria_result = db.find_by_criteria(Some(1000), Some(\"特級\"));
-    println!(\"\\n複合検索（呪力1000以上 かつ 特級）:\");
+    let criteria_result = db.find_by_criteria(Some(1000), Some("特級"));
+    println!("\\n複合検索（呪力1000以上 かつ 特級）:");
     for sorcerer in criteria_result {
-        println!(\"  {} (呪力: {}, 等級: {})\", sorcerer.name, sorcerer.power, sorcerer.grade);
+        println!("  {} (呪力: {}, 等級: {})", sorcerer.name, sorcerer.power, sorcerer.grade);
     }
 }
 ```
@@ -215,7 +215,7 @@ fn main() {
 
 複数のOption型を組み合わせて、安全にデータを処理するシステムを作成せよ。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 #[derive(Debug)]
@@ -237,9 +237,9 @@ struct TechniqueDatabase {
 
 fn main() {
     let techniques = vec![
-        TechniqueInfo { name: \"蒼\".to_string(), power: 1000, element: \"無下限\".to_string() },
-        TechniqueInfo { name: \"赫\".to_string(), power: 1500, element: \"無下限\".to_string() },
-        TechniqueInfo { name: \"茈\".to_string(), power: 3000, element: \"無下限\".to_string() },
+        TechniqueInfo { name: "蒼".to_string(), power: 1000, element: "無下限".to_string() },
+        TechniqueInfo { name: "赫".to_string(), power: 1500, element: "無下限".to_string() },
+        TechniqueInfo { name: "茈".to_string(), power: 3000, element: "無下限".to_string() },
     ];
 
     // チェーン操作のテスト
@@ -250,7 +250,7 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 #[derive(Debug)]
@@ -283,11 +283,11 @@ impl TechniqueDatabase {
         }
 
         let level = match power {
-            1..=500 => \"初心者\",
-            501..=1000 => \"中級者\",
-            1001..=2000 => \"上級者\",
-            2001..=3000 => \"特級\",
-            _ => \"最強級\",
+            1..=500 => "初心者",
+            501..=1000 => "中級者",
+            1001..=2000 => "上級者",
+            2001..=3000 => "特級",
+            _ => "最強級",
         };
 
         Some(level.to_string())
@@ -311,15 +311,15 @@ impl TechniqueDatabase {
         let power2 = self.get_power(tech2)?;
 
         let (combo_power, combo_name) = match (tech1, tech2) {
-            (\"蒼\", \"赫\") | (\"赫\", \"蒼\") => {
-                (power1 + power2 + 500, \"虚式『茈』\".to_string())
+            ("蒼", "赫") | ("赫", "蒼") => {
+                (power1 + power2 + 500, "虚式『茈』".to_string())
             },
             (a, b) if a == b => {
-                (power1 * 2, format!(\"強化『{}』\", a))
+                (power1 * 2, format!("強化『{}』", a))
             },
             (a, b) => {
                 let base_power = power1 + power2;
-                (base_power + (base_power / 10), format!(\"{}×{}コンボ\", a, b))
+                (base_power + (base_power / 10), format!("{}×{}コンボ", a, b))
             },
         };
 
@@ -330,7 +330,7 @@ impl TechniqueDatabase {
     fn get_technique_analysis(&self, name: &str) -> Option<String> {
         self.get_power(name)
             .and_then(|power| self.calculate_recommended_level(power))
-            .map(|level| format!(\"{}は{}向けの術式です\", name, level))
+            .map(|level| format!("{}は{}向けの術式です", name, level))
     }
 
     // 複雑なチェーン操作
@@ -338,9 +338,9 @@ impl TechniqueDatabase {
         self.calculate_combo_effect(tech1, tech2)
             .and_then(|(power, name)| {
                 if power <= user_level * 10 {
-                    Some(format!(\"{}（威力: {}）は実行可能です\", name, power))
+                    Some(format!("{}（威力: {}）は実行可能です", name, power))
                 } else {
-                    Some(format!(\"{}（威力: {}）は実行には危険すぎます\", name, power))
+                    Some(format!("{}（威力: {}）は実行には危険すぎます", name, power))
                 }
             })
     }
@@ -348,80 +348,80 @@ impl TechniqueDatabase {
 
 fn main() {
     let techniques = vec![
-        TechniqueInfo { name: \"蒼\".to_string(), power: 1000, element: \"無下限\".to_string() },
-        TechniqueInfo { name: \"赫\".to_string(), power: 1500, element: \"無下限\".to_string() },
-        TechniqueInfo { name: \"茈\".to_string(), power: 3000, element: \"無下限\".to_string() },
-        TechniqueInfo { name: \"黒閃\".to_string(), power: 800, element: \"物理\".to_string() },
+        TechniqueInfo { name: "蒼".to_string(), power: 1000, element: "無下限".to_string() },
+        TechniqueInfo { name: "赫".to_string(), power: 1500, element: "無下限".to_string() },
+        TechniqueInfo { name: "茈".to_string(), power: 3000, element: "無下限".to_string() },
+        TechniqueInfo { name: "黒閃".to_string(), power: 800, element: "物理".to_string() },
     ];
 
     let db = TechniqueDatabase::new(techniques);
 
-    println!(\"=== Option型チェーン操作システム ===\");
+    println!("=== Option型チェーン操作システム ===");
 
     // 1. 基本的な威力取得
-    let techniques_to_test = [\"蒼\", \"赫\", \"存在しない術式\"];
+    let techniques_to_test = ["蒼", "赫", "存在しない術式"];
     for tech in techniques_to_test.iter() {
         match db.get_power(tech) {
-            Some(power) => println!(\"✓ {}: 威力 {}\", tech, power),
-            None => println!(\"✗ {}: 見つかりません\", tech),
+            Some(power) => println!("✓ {}: 威力 {}", tech, power),
+            None => println!("✗ {}: 見つかりません", tech),
         }
     }
 
     // 2. 推奨レベル計算のチェーン
-    println!(\"\\n=== 術式分析 ===\");
-    for tech in [\"蒼\", \"茈\", \"黒閃\"].iter() {
+    println!("\\n=== 術式分析 ===");
+    for tech in ["蒼", "茈", "黒閃"].iter() {
         match db.get_technique_analysis(tech) {
-            Some(analysis) => println!(\"✓ {}\", analysis),
-            None => println!(\"✗ {}の分析に失敗\", tech),
+            Some(analysis) => println!("✓ {}", analysis),
+            None => println!("✗ {}の分析に失敗", tech),
         }
     }
 
     // 3. 合計威力計算
-    println!(\"\\n=== 合計威力計算 ===\");
+    println!("\\n=== 合計威力計算 ===");
     let combos = vec![
-        vec![\"蒼\", \"赫\"],
-        vec![\"蒼\", \"赫\", \"茈\"],
-        vec![\"蒼\", \"存在しない術式\"],
+        vec!["蒼", "赫"],
+        vec!["蒼", "赫", "茈"],
+        vec!["蒼", "存在しない術式"],
     ];
 
     for combo in combos {
         match db.calculate_total_power(&combo) {
             Some(total) => {
                 let level = db.calculate_recommended_level(total)
-                    .unwrap_or(\"不明\".to_string());
-                println!(\"✓ {:?}: 合計威力 {} ({}レベル)\", combo, total, level);
+                    .unwrap_or("不明".to_string());
+                println!("✓ {:?}: 合計威力 {} ({}レベル)", combo, total, level);
             },
-            None => println!(\"✗ {:?}: 計算失敗（存在しない術式を含む）\", combo),
+            None => println!("✗ {:?}: 計算失敗（存在しない術式を含む）", combo),
         }
     }
 
     // 4. コンボ効果計算
-    println!(\"\\n=== コンボ効果分析 ===\");
+    println!("\\n=== コンボ効果分析 ===");
     let combo_pairs = vec![
-        (\"蒼\", \"赫\"),
-        (\"蒼\", \"蒼\"),
-        (\"茈\", \"黒閃\"),
+        ("蒼", "赫"),
+        ("蒼", "蒼"),
+        ("茈", "黒閃"),
     ];
 
     for (tech1, tech2) in combo_pairs {
         match db.calculate_combo_effect(tech1, tech2) {
             Some((power, name)) => {
-                println!(\"✓ {} + {} = {} (威力: {})\", tech1, tech2, name, power);
+                println!("✓ {} + {} = {} (威力: {})", tech1, tech2, name, power);
             },
-            None => println!(\"✗ {} + {}: コンボ計算失敗\", tech1, tech2),
+            None => println!("✗ {} + {}: コンボ計算失敗", tech1, tech2),
         }
     }
 
     // 5. 複雑なチェーン操作
-    println!(\"\\n=== コンボ実行可能性分析 ===\");
+    println!("\\n=== コンボ実行可能性分析 ===");
     let user_levels = [100, 200, 300];
 
     for level in user_levels.iter() {
-        println!(\"\\nユーザーレベル: {}\", level);
-        for (tech1, tech2) in [(\"蒼\", \"赫\"), (\"茈\", \"黒閃\")].iter() {
+        println!("\\nユーザーレベル: {}", level);
+        for (tech1, tech2) in [("蒼", "赫"), ("茈", "黒閃")].iter() {
             match db.analyze_combo_viability(tech1, tech2, *level) {
-                Some(analysis) => println!(\"  {}\", analysis),
-                None => println!(\"  {}/{}: 分析失敗\", tech1, tech2),
+                Some(analysis) => println!("  {}", analysis),
+                None => println!("  {}/{}: 分析失敗", tech1, tech2),
             }
         }
     }
@@ -437,7 +437,7 @@ fn main() {
 
 バリデーション機能付きの呪術師登録システムをResult型を使って実装せよ。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 #[derive(Debug)]
@@ -484,7 +484,7 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 use std::fmt;
@@ -501,11 +501,11 @@ enum RegistrationError {
 impl fmt::Display for RegistrationError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            RegistrationError::InvalidName(msg) => write!(f, \"名前エラー: {}\", msg),
-            RegistrationError::InvalidPower(msg) => write!(f, \"呪力エラー: {}\", msg),
-            RegistrationError::InvalidGrade(msg) => write!(f, \"等級エラー: {}\", msg),
-            RegistrationError::DuplicateEntry(name) => write!(f, \"重複エラー: {}は既に登録済みです\", name),
-            RegistrationError::SystemError(msg) => write!(f, \"システムエラー: {}\", msg),
+            RegistrationError::InvalidName(msg) => write!(f, "名前エラー: {}", msg),
+            RegistrationError::InvalidPower(msg) => write!(f, "呪力エラー: {}", msg),
+            RegistrationError::InvalidGrade(msg) => write!(f, "等級エラー: {}", msg),
+            RegistrationError::DuplicateEntry(name) => write!(f, "重複エラー: {}は既に登録済みです", name),
+            RegistrationError::SystemError(msg) => write!(f, "システムエラー: {}", msg),
         }
     }
 }
@@ -545,20 +545,20 @@ impl RegistrationSystem {
     // 1. 名前のバリデーション
     fn validate_name(&self, name: &str) -> Result<(), RegistrationError> {
         if name.is_empty() {
-            return Err(RegistrationError::InvalidName(\"名前が空です\".to_string()));
+            return Err(RegistrationError::InvalidName("名前が空です".to_string()));
         }
 
         if name.len() < 2 {
-            return Err(RegistrationError::InvalidName(\"名前は2文字以上である必要があります\".to_string()));
+            return Err(RegistrationError::InvalidName("名前は2文字以上である必要があります".to_string()));
         }
 
         if name.len() > 50 {
-            return Err(RegistrationError::InvalidName(\"名前は50文字以下である必要があります\".to_string()));
+            return Err(RegistrationError::InvalidName("名前は50文字以下である必要があります".to_string()));
         }
 
         // 特殊文字チェック
         if name.chars().any(|c| c.is_ascii_digit()) {
-            return Err(RegistrationError::InvalidName(\"名前に数字を含めることはできません\".to_string()));
+            return Err(RegistrationError::InvalidName("名前に数字を含めることはできません".to_string()));
         }
 
         Ok(())
@@ -567,11 +567,11 @@ impl RegistrationSystem {
     // 2. 呪力のバリデーション
     fn validate_power(&self, power: i32) -> Result<(), RegistrationError> {
         if power < 0 {
-            return Err(RegistrationError::InvalidPower(\"呪力は0以上である必要があります\".to_string()));
+            return Err(RegistrationError::InvalidPower("呪力は0以上である必要があります".to_string()));
         }
 
         if power > 10000 {
-            return Err(RegistrationError::InvalidPower(\"呪力は10000以下である必要があります\".to_string()));
+            return Err(RegistrationError::InvalidPower("呪力は10000以下である必要があります".to_string()));
         }
 
         Ok(())
@@ -579,11 +579,11 @@ impl RegistrationSystem {
 
     // 3. 等級のバリデーション
     fn validate_grade(&self, grade: &str) -> Result<(), RegistrationError> {
-        let valid_grades = [\"特級\", \"1級\", \"2級\", \"3級\", \"4級\"];
+        let valid_grades = ["特級", "1級", "2級", "3級", "4級"];
 
         if !valid_grades.contains(&grade) {
             return Err(RegistrationError::InvalidGrade(
-                format!(\"無効な等級: {}。有効な等級: {:?}\", grade, valid_grades)
+                format!("無効な等級: {}。有効な等級: {:?}", grade, valid_grades)
             ));
         }
 
@@ -611,17 +611,17 @@ impl RegistrationSystem {
 
         // 等級と呪力の整合性チェック
         let min_power = match grade.as_str() {
-            \"特級\" => 2000,
-            \"1級\" => 1000,
-            \"2級\" => 500,
-            \"3級\" => 200,
-            \"4級\" => 0,
-            _ => return Err(RegistrationError::SystemError(\"想定外の等級\".to_string())),
+            "特級" => 2000,
+            "1級" => 1000,
+            "2級" => 500,
+            "3級" => 200,
+            "4級" => 0,
+            _ => return Err(RegistrationError::SystemError("想定外の等級".to_string())),
         };
 
         if power < min_power {
             return Err(RegistrationError::InvalidPower(
-                format!(\"{}等級には最低{}の呪力が必要です\", grade, min_power)
+                format!("{}等級には最低{}の呪力が必要です", grade, min_power)
             ));
         }
 
@@ -637,31 +637,31 @@ impl RegistrationSystem {
         -> Result<(), RegistrationError> {
 
         if technique.is_empty() {
-            return Err(RegistrationError::SystemError(\"術式名が空です\".to_string()));
+            return Err(RegistrationError::SystemError("術式名が空です".to_string()));
         }
 
         let sorcerer = self.sorcerers.get_mut(sorcerer_index)
-            .ok_or_else(|| RegistrationError::SystemError(\"無効な呪術師インデックス\".to_string()))?;
+            .ok_or_else(|| RegistrationError::SystemError("無効な呪術師インデックス".to_string()))?;
 
         if sorcerer.techniques.contains(&technique) {
             return Err(RegistrationError::SystemError(
-                format!(\"{}は既に{}を習得済みです\", sorcerer.name, technique)
+                format!("{}は既に{}を習得済みです", sorcerer.name, technique)
             ));
         }
 
         // 等級による技数制限
         let max_techniques = match sorcerer.grade.as_str() {
-            \"特級\" => 10,
-            \"1級\" => 5,
-            \"2級\" => 3,
-            \"3級\" => 2,
-            \"4級\" => 1,
-            _ => return Err(RegistrationError::SystemError(\"想定外の等級\".to_string())),
+            "特級" => 10,
+            "1級" => 5,
+            "2級" => 3,
+            "3級" => 2,
+            "4級" => 1,
+            _ => return Err(RegistrationError::SystemError("想定外の等級".to_string())),
         };
 
         if sorcerer.techniques.len() >= max_techniques {
             return Err(RegistrationError::SystemError(
-                format!(\"{}等級は最大{}個の術式しか習得できません\",
+                format!("{}等級は最大{}個の術式しか習得できません",
                         sorcerer.grade, max_techniques)
             ));
         }
@@ -682,13 +682,13 @@ impl RegistrationSystem {
     // 呪術師情報の取得
     fn get_sorcerer(&self, index: usize) -> Result<&Sorcerer, RegistrationError> {
         self.sorcerers.get(index)
-            .ok_or_else(|| RegistrationError::SystemError(\"無効なインデックス\".to_string()))
+            .ok_or_else(|| RegistrationError::SystemError("無効なインデックス".to_string()))
     }
 
     // 統計情報
     fn get_statistics(&self) -> Result<String, RegistrationError> {
         if self.sorcerers.is_empty() {
-            return Err(RegistrationError::SystemError(\"登録された呪術師がいません\".to_string()));
+            return Err(RegistrationError::SystemError("登録された呪術師がいません".to_string()));
         }
 
         let total = self.sorcerers.len();
@@ -699,9 +699,9 @@ impl RegistrationSystem {
             *grade_counts.entry(&sorcerer.grade).or_insert(0) += 1;
         }
 
-        let mut stats = format!(\"登録呪術師数: {}\\n平均呪力: {}\\n\\n等級分布:\\n\", total, avg_power);
+        let mut stats = format!("登録呪術師数: {}\\n平均呪力: {}\\n\\n等級分布:\\n", total, avg_power);
         for (grade, count) in grade_counts {
-            stats.push_str(&format!(\"{}: {}人\\n\", grade, count));
+            stats.push_str(&format!("{}: {}人\\n", grade, count));
         }
 
         Ok(stats)
@@ -711,79 +711,79 @@ impl RegistrationSystem {
 fn main() {
     let mut system = RegistrationSystem::new();
 
-    println!(\"=== 呪術師登録システム ===\");
+    println!("=== 呪術師登録システム ===");
 
     // 正常ケース
     let valid_registrations = vec![
-        (\"五条悟\".to_string(), 3000, \"特級\".to_string()),
-        (\"虎杖悠仁\".to_string(), 1200, \"1級\".to_string()),
-        (\"伏黒恵\".to_string(), 800, \"2級\".to_string()),
+        ("五条悟".to_string(), 3000, "特級".to_string()),
+        ("虎杖悠仁".to_string(), 1200, "1級".to_string()),
+        ("伏黒恵".to_string(), 800, "2級".to_string()),
     ];
 
     for (name, power, grade) in valid_registrations {
         match system.register_sorcerer(name.clone(), power, grade) {
             Ok(index) => {
-                println!(\"✓ {}を登録しました (ID: {})\", name, index);
+                println!("✓ {}を登録しました (ID: {})", name, index);
 
                 // 術式の追加テスト
                 let techniques = match name.as_str() {
-                    \"五条悟\" => vec![\"無下限呪術\", \"術式順転『蒼』\"],
-                    \"虎杖悠仁\" => vec![\"黒閃\"],
-                    \"伏黒恵\" => vec![\"十種影法術\"],
+                    "五条悟" => vec!["無下限呪術", "術式順転『蒼』"],
+                    "虎杖悠仁" => vec!["黒閃"],
+                    "伏黒恵" => vec!["十種影法術"],
                     _ => vec![],
                 };
 
                 for technique in techniques {
                     match system.add_technique(index, technique.to_string()) {
-                        Ok(_) => println!(\"  ✓ {}を習得\", technique),
-                        Err(e) => println!(\"  ✗ 術式追加エラー: {}\", e),
+                        Ok(_) => println!("  ✓ {}を習得", technique),
+                        Err(e) => println!("  ✗ 術式追加エラー: {}", e),
                     }
                 }
             },
-            Err(error) => println!(\"✗ {}の登録失敗: {}\", name, error),
+            Err(error) => println!("✗ {}の登録失敗: {}", name, error),
         }
     }
 
     // エラーケース
-    println!(\"\\n=== エラーケーステスト ===\");
+    println!("\\n=== エラーケーステスト ===");
 
     let error_cases = vec![
-        (\"\".to_string(), 1000, \"1級\".to_string()),           // 空の名前
-        (\"テスト1\".to_string(), 1000, \"1級\".to_string()),      // 数字を含む名前
-        (\"テスト\".to_string(), -100, \"1級\".to_string()),       // 負の呪力
-        (\"テスト\".to_string(), 1000, \"無効等級\".to_string()),   // 無効な等級
-        (\"五条悟\".to_string(), 2000, \"特級\".to_string()),      // 重複登録
-        (\"弱い特級\".to_string(), 500, \"特級\".to_string()),     // 等級と呪力の不整合
+        ("".to_string(), 1000, "1級".to_string()),           // 空の名前
+        ("テスト1".to_string(), 1000, "1級".to_string()),      // 数字を含む名前
+        ("テスト".to_string(), -100, "1級".to_string()),       // 負の呪力
+        ("テスト".to_string(), 1000, "無効等級".to_string()),   // 無効な等級
+        ("五条悟".to_string(), 2000, "特級".to_string()),      // 重複登録
+        ("弱い特級".to_string(), 500, "特級".to_string()),     // 等級と呪力の不整合
     ];
 
     for (name, power, grade) in error_cases {
         match system.register_sorcerer(name.clone(), power, grade.clone()) {
-            Ok(index) => println!(\"✓ {}を登録しました (ID: {})\", name, index),
-            Err(error) => println!(\"✗ 予期されたエラー: {}\", error),
+            Ok(index) => println!("✓ {}を登録しました (ID: {})", name, index),
+            Err(error) => println!("✗ 予期されたエラー: {}", error),
         }
     }
 
     // 一括登録テスト
-    println!(\"\\n=== 一括登録テスト ===\");
+    println!("\\n=== 一括登録テスト ===");
     let batch_registrations = vec![
-        (\"新人A\".to_string(), 300, \"3級\".to_string()),
-        (\"新人B\".to_string(), 600, \"2級\".to_string()),
-        (\"\".to_string(), 1000, \"1級\".to_string()),  // エラーケース
+        ("新人A".to_string(), 300, "3級".to_string()),
+        ("新人B".to_string(), 600, "2級".to_string()),
+        ("".to_string(), 1000, "1級".to_string()),  // エラーケース
     ];
 
     let results = system.batch_register(batch_registrations);
     for (i, result) in results.iter().enumerate() {
         match result {
-            Ok(index) => println!(\"✓ 一括登録 {}: 成功 (ID: {})\", i, index),
-            Err(error) => println!(\"✗ 一括登録 {}: {}\", i, error),
+            Ok(index) => println!("✓ 一括登録 {}: 成功 (ID: {})", i, index),
+            Err(error) => println!("✗ 一括登録 {}: {}", i, error),
         }
     }
 
     // 統計情報
-    println!(\"\\n=== 統計情報 ===\");
+    println!("\\n=== 統計情報 ===");
     match system.get_statistics() {
-        Ok(stats) => println!(\"{}\", stats),
-        Err(error) => println!(\"統計エラー: {}\", error),
+        Ok(stats) => println!("{}", stats),
+        Err(error) => println!("統計エラー: {}", error),
     }
 }
 ```
@@ -795,7 +795,7 @@ fn main() {
 
 呪術師データをファイルに保存・読み込みするシステムを実装せよ。複数のエラー型を統合したカスタムエラーを使用すること。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 use std::fs;
@@ -817,7 +817,7 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 use std::fmt;
@@ -836,11 +836,11 @@ enum FileSystemError {
 impl fmt::Display for FileSystemError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            FileSystemError::IoError(err) => write!(f, \"I/Oエラー: {}\", err),
-            FileSystemError::ParseError(msg) => write!(f, \"パースエラー: {}\", msg),
-            FileSystemError::ValidationError(msg) => write!(f, \"バリデーションエラー: {}\", msg),
-            FileSystemError::CorruptedData(msg) => write!(f, \"データ破損: {}\", msg),
-            FileSystemError::BackupError(msg) => write!(f, \"バックアップエラー: {}\", msg),
+            FileSystemError::IoError(err) => write!(f, "I/Oエラー: {}", err),
+            FileSystemError::ParseError(msg) => write!(f, "パースエラー: {}", msg),
+            FileSystemError::ValidationError(msg) => write!(f, "バリデーションエラー: {}", msg),
+            FileSystemError::CorruptedData(msg) => write!(f, "データ破損: {}", msg),
+            FileSystemError::BackupError(msg) => write!(f, "バックアップエラー: {}", msg),
         }
     }
 }
@@ -875,12 +875,12 @@ impl Sorcerer {
 
     // CSV形式での文字列化
     fn to_csv_line(&self) -> String {
-        format!(\"{},{},{},{},{}\",
+        format!("{},{},{},{},{}",
                 self.id,
                 self.name,
                 self.power,
                 self.grade,
-                self.techniques.join(\";\"))
+                self.techniques.join(";"))
     }
 
     // CSV行からの復元
@@ -889,15 +889,15 @@ impl Sorcerer {
 
         if parts.len() != 5 {
             return Err(FileSystemError::ParseError(
-                format!(\"無効なCSV形式: {}\", line)
+                format!("無効なCSV形式: {}", line)
             ));
         }
 
         let id: u32 = parts[0].parse()
-            .map_err(|_| FileSystemError::ParseError(\"IDのパースに失敗\".to_string()))?;
+            .map_err(|_| FileSystemError::ParseError("IDのパースに失敗".to_string()))?;
 
         let power: i32 = parts[2].parse()
-            .map_err(|_| FileSystemError::ParseError(\"呪力のパースに失敗\".to_string()))?;
+            .map_err(|_| FileSystemError::ParseError("呪力のパースに失敗".to_string()))?;
 
         let techniques = if parts[4].is_empty() {
             Vec::new()
@@ -914,17 +914,17 @@ impl Sorcerer {
     // データの整合性チェック
     fn validate(&self) -> Result<(), FileSystemError> {
         if self.name.is_empty() {
-            return Err(FileSystemError::ValidationError(\"名前が空です\".to_string()));
+            return Err(FileSystemError::ValidationError("名前が空です".to_string()));
         }
 
         if self.power < 0 {
-            return Err(FileSystemError::ValidationError(\"呪力が負の値です\".to_string()));
+            return Err(FileSystemError::ValidationError("呪力が負の値です".to_string()));
         }
 
-        let valid_grades = [\"特級\", \"1級\", \"2級\", \"3級\", \"4級\"];
+        let valid_grades = ["特級", "1級", "2級", "3級", "4級"];
         if !valid_grades.contains(&self.grade.as_str()) {
             return Err(FileSystemError::ValidationError(
-                format!(\"無効な等級: {}\", self.grade)
+                format!("無効な等級: {}", self.grade)
             ));
         }
 
@@ -961,12 +961,12 @@ impl SorcererFileManager {
 
             let sorcerer = Sorcerer::from_csv_line(line)
                 .map_err(|e| FileSystemError::ParseError(
-                    format!(\"行{}: {}\", line_number, e)
+                    format!("行{}: {}", line_number, e)
                 ))?;
 
             sorcerer.validate()
                 .map_err(|e| FileSystemError::CorruptedData(
-                    format!(\"行{}のデータが無効: {}\", line_number, e)
+                    format!("行{}のデータが無効: {}", line_number, e)
                 ))?;
 
             sorcerers.push(sorcerer);
@@ -989,8 +989,8 @@ impl SorcererFileManager {
 
         // CSV形式で保存
         let mut content = String::new();
-        content.push_str(\"# 呪術師データベース\\n\");
-        content.push_str(\"# ID,名前,呪力,等級,術式(;区切り)\\n\");
+        content.push_str("# 呪術師データベース\\n");
+        content.push_str("# ID,名前,呪力,等級,術式(;区切り)\\n");
 
         for sorcerer in sorcerers {
             content.push_str(&sorcerer.to_csv_line());
@@ -1005,35 +1005,35 @@ impl SorcererFileManager {
     fn create_backup(&self) -> Result<String, FileSystemError> {
         // バックアップディレクトリの作成
         fs::create_dir_all(&self.backup_dir)
-            .map_err(|e| FileSystemError::BackupError(format!(\"ディレクトリ作成失敗: {}\", e)))?;
+            .map_err(|e| FileSystemError::BackupError(format!("ディレクトリ作成失敗: {}", e)))?;
 
         // タイムスタンプ付きバックアップファイル名
         let timestamp = std::time::SystemTime::now()
             .duration_since(std::time::UNIX_EPOCH)
-            .map_err(|e| FileSystemError::BackupError(format!(\"タイムスタンプ取得失敗: {}\", e)))?
+            .map_err(|e| FileSystemError::BackupError(format!("タイムスタンプ取得失敗: {}", e)))?
             .as_secs();
 
-        let backup_filename = format!(\"{}/sorcerers_backup_{}.csv\", self.backup_dir, timestamp);
+        let backup_filename = format!("{}/sorcerers_backup_{}.csv", self.backup_dir, timestamp);
 
         // ファイルをバックアップ
         let content = fs::read_to_string(&self.filename)
-            .map_err(|e| FileSystemError::BackupError(format!(\"元ファイル読み込み失敗: {}\", e)))?;
+            .map_err(|e| FileSystemError::BackupError(format!("元ファイル読み込み失敗: {}", e)))?;
 
         fs::write(&backup_filename, content)
-            .map_err(|e| FileSystemError::BackupError(format!(\"バックアップ書き込み失敗: {}\", e)))?;
+            .map_err(|e| FileSystemError::BackupError(format!("バックアップ書き込み失敗: {}", e)))?;
 
         Ok(backup_filename)
     }
 
     fn restore_from_backup(&self, backup_filename: &str) -> Result<(), FileSystemError> {
         let content = fs::read_to_string(backup_filename)
-            .map_err(|e| FileSystemError::BackupError(format!(\"バックアップ読み込み失敗: {}\", e)))?;
+            .map_err(|e| FileSystemError::BackupError(format!("バックアップ読み込み失敗: {}", e)))?;
 
         // バックアップデータの検証
         let _sorcerers = self.parse_content(&content)?;
 
         fs::write(&self.filename, content)
-            .map_err(|e| FileSystemError::BackupError(format!(\"復元書き込み失敗: {}\", e)))?;
+            .map_err(|e| FileSystemError::BackupError(format!("復元書き込み失敗: {}", e)))?;
 
         Ok(())
     }
@@ -1043,8 +1043,8 @@ impl SorcererFileManager {
         let sorcerers = self.load_sorcerers()?;
 
         let mut report = String::new();
-        report.push_str(\"=== データ整合性レポート ===\\n\");
-        report.push_str(&format!(\"総レコード数: {}\\n\", sorcerers.len()));
+        report.push_str("=== データ整合性レポート ===\\n");
+        report.push_str(&format!("総レコード数: {}\\n", sorcerers.len()));
 
         // 等級分布
         let mut grade_counts = std::collections::HashMap::new();
@@ -1052,9 +1052,9 @@ impl SorcererFileManager {
             *grade_counts.entry(&sorcerer.grade).or_insert(0) += 1;
         }
 
-        report.push_str(\"\\n等級分布:\\n\");
+        report.push_str("\\n等級分布:\\n");
         for (grade, count) in grade_counts {
-            report.push_str(&format!(\"  {}: {}人\\n\", grade, count));
+            report.push_str(&format!("  {}: {}人\\n", grade, count));
         }
 
         // 呪力統計
@@ -1063,36 +1063,36 @@ impl SorcererFileManager {
         let max_power = powers.iter().max().unwrap_or(&0);
         let min_power = powers.iter().min().unwrap_or(&0);
 
-        report.push_str(&format!(\"\\n呪力統計:\\n\"));
-        report.push_str(&format!(\"  平均: {}\\n\", avg_power));
-        report.push_str(&format!(\"  最大: {}\\n\", max_power));
-        report.push_str(&format!(\"  最小: {}\\n\", min_power));
+        report.push_str(&format!("\\n呪力統計:\\n"));
+        report.push_str(&format!("  平均: {}\\n", avg_power));
+        report.push_str(&format!("  最大: {}\\n", max_power));
+        report.push_str(&format!("  最小: {}\\n", min_power));
 
         // 異常データのチェック
         let mut anomalies = Vec::new();
         for sorcerer in &sorcerers {
             let expected_min_power = match sorcerer.grade.as_str() {
-                \"特級\" => 2000,
-                \"1級\" => 1000,
-                \"2級\" => 500,
-                \"3級\" => 200,
-                \"4級\" => 0,
+                "特級" => 2000,
+                "1級" => 1000,
+                "2級" => 500,
+                "3級" => 200,
+                "4級" => 0,
                 _ => 0,
             };
 
             if sorcerer.power < expected_min_power {
-                anomalies.push(format!(\"{}(ID:{}): {}等級なのに呪力が{}しかない\",
+                anomalies.push(format!("{}(ID:{}): {}等級なのに呪力が{}しかない",
                     sorcerer.name, sorcerer.id, sorcerer.grade, sorcerer.power));
             }
         }
 
         if !anomalies.is_empty() {
-            report.push_str(\"\\n⚠️ 異常データ:\\n\");
+            report.push_str("\\n⚠️ 異常データ:\\n");
             for anomaly in anomalies {
-                report.push_str(&format!(\"  {}\", anomaly));
+                report.push_str(&format!("  {}", anomaly));
             }
         } else {
-            report.push_str(\"\\n✅ 異常データは見つかりませんでした\\n\");
+            report.push_str("\\n✅ 異常データは見つかりませんでした\\n");
         }
 
         Ok(report)
@@ -1105,27 +1105,27 @@ impl SorcererFileManager {
         for pattern in file_patterns {
             let files = glob::glob(pattern)
                 .map_err(|e| FileSystemError::IoError(
-                    io::Error::new(io::ErrorKind::InvalidInput, format!(\"Globパターンエラー: {}\", e))
+                    io::Error::new(io::ErrorKind::InvalidInput, format!("Globパターンエラー: {}", e))
                 ))?;
 
             for file_result in files {
                 let file_path = file_result
                     .map_err(|e| FileSystemError::IoError(
-                        io::Error::new(io::ErrorKind::NotFound, format!(\"ファイルパスエラー: {}\", e))
+                        io::Error::new(io::ErrorKind::NotFound, format!("ファイルパスエラー: {}", e))
                     ))?;
 
                 let temp_manager = SorcererFileManager::new(
-                    file_path.to_str().unwrap_or(\"unknown\"),
+                    file_path.to_str().unwrap_or("unknown"),
                     &self.backup_dir
                 );
 
                 match temp_manager.verify_data_integrity() {
                     Ok(report) => {
-                        results.push(format!(\"✅ {}: 整合性チェック完了\",
+                        results.push(format!("✅ {}: 整合性チェック完了",
                                            file_path.display()));
                     },
                     Err(e) => {
-                        results.push(format!(\"❌ {}: {}\",
+                        results.push(format!("❌ {}: {}",
                                            file_path.display(), e));
                     }
                 }
@@ -1142,7 +1142,7 @@ impl SorcererFileManager {
         for sorcerer in sorcerers {
             if !seen_ids.insert(sorcerer.id) {
                 return Err(FileSystemError::CorruptedData(
-                    format!(\"重複したID: {}\", sorcerer.id)
+                    format!("重複したID: {}", sorcerer.id)
                 ));
             }
         }
@@ -1168,77 +1168,77 @@ impl SorcererFileManager {
 }
 
 fn main() {
-    let manager = SorcererFileManager::new(\"sorcerers.csv\", \"backups\");
+    let manager = SorcererFileManager::new("sorcerers.csv", "backups");
 
-    println!(\"=== 呪術師ファイル管理システム ===\");
+    println!("=== 呪術師ファイル管理システム ===");
 
     // テスト用データの作成
     let mut test_sorcerers = vec![
-        Sorcerer::new(1, \"五条悟\".to_string(), 3000, \"特級\".to_string()),
-        Sorcerer::new(2, \"虎杖悠仁\".to_string(), 1200, \"1級\".to_string()),
-        Sorcerer::new(3, \"伏黒恵\".to_string(), 800, \"2級\".to_string()),
+        Sorcerer::new(1, "五条悟".to_string(), 3000, "特級".to_string()),
+        Sorcerer::new(2, "虎杖悠仁".to_string(), 1200, "1級".to_string()),
+        Sorcerer::new(3, "伏黒恵".to_string(), 800, "2級".to_string()),
     ];
 
     // 術式の追加
-    test_sorcerers[0].techniques.push(\"無下限呪術\".to_string());
-    test_sorcerers[0].techniques.push(\"術式順転『蒼』\".to_string());
-    test_sorcerers[1].techniques.push(\"黒閃\".to_string());
-    test_sorcerers[2].techniques.push(\"十種影法術\".to_string());
+    test_sorcerers[0].techniques.push("無下限呪術".to_string());
+    test_sorcerers[0].techniques.push("術式順転『蒼』".to_string());
+    test_sorcerers[1].techniques.push("黒閃".to_string());
+    test_sorcerers[2].techniques.push("十種影法術".to_string());
 
     // 1. データの保存
     match manager.save_sorcerers(&test_sorcerers) {
-        Ok(_) => println!(\"✅ データ保存完了\"),
-        Err(e) => println!(\"❌ 保存エラー: {}\", e),
+        Ok(_) => println!("✅ データ保存完了"),
+        Err(e) => println!("❌ 保存エラー: {}", e),
     }
 
     // 2. データの読み込み
     match manager.load_sorcerers() {
         Ok(sorcerers) => {
-            println!(\"✅ データ読み込み完了: {}件\", sorcerers.len());
+            println!("✅ データ読み込み完了: {}件", sorcerers.len());
             for sorcerer in &sorcerers[..2] {  // 最初の2件のみ表示
-                println!(\"  {} (ID:{}, 呪力:{}, 等級:{})\",
+                println!("  {} (ID:{}, 呪力:{}, 等級:{})",
                          sorcerer.name, sorcerer.id, sorcerer.power, sorcerer.grade);
             }
         },
-        Err(e) => println!(\"❌ 読み込みエラー: {}\", e),
+        Err(e) => println!("❌ 読み込みエラー: {}", e),
     }
 
     // 3. バックアップの作成
     match manager.create_backup() {
-        Ok(backup_file) => println!(\"✅ バックアップ作成: {}\", backup_file),
-        Err(e) => println!(\"❌ バックアップエラー: {}\", e),
+        Ok(backup_file) => println!("✅ バックアップ作成: {}", backup_file),
+        Err(e) => println!("❌ バックアップエラー: {}", e),
     }
 
     // 4. データ整合性チェック
     match manager.verify_data_integrity() {
-        Ok(report) => println!(\"\\n{}\", report),
-        Err(e) => println!(\"❌ 整合性チェックエラー: {}\", e),
+        Ok(report) => println!("\\n{}", report),
+        Err(e) => println!("❌ 整合性チェックエラー: {}", e),
     }
 
     // 5. エラーケースのテスト
-    println!(\"\\n=== エラーケーステスト ===\");
+    println!("\\n=== エラーケーステスト ===");
 
     // 不正なデータでテスト
-    let invalid_content = \"1,五条悟,3000,特級,無下限呪術\\ninvalid,line,format\\n\";
-    if let Err(e) = fs::write(\"invalid_test.csv\", invalid_content) {
-        println!(\"テストファイル作成エラー: {}\", e);
+    let invalid_content = "1,五条悟,3000,特級,無下限呪術\\ninvalid,line,format\\n";
+    if let Err(e) = fs::write("invalid_test.csv", invalid_content) {
+        println!("テストファイル作成エラー: {}", e);
     } else {
-        let invalid_manager = SorcererFileManager::new(\"invalid_test.csv\", \"backups\");
+        let invalid_manager = SorcererFileManager::new("invalid_test.csv", "backups");
         match invalid_manager.load_sorcerers() {
-            Ok(_) => println!(\"❌ 無効データが読み込まれてしまいました\"),
-            Err(e) => println!(\"✅ 予期されたエラー: {}\", e),
+            Ok(_) => println!("❌ 無効データが読み込まれてしまいました"),
+            Err(e) => println!("✅ 予期されたエラー: {}", e),
         }
 
         // テストファイルの削除
-        let _ = fs::remove_file(\"invalid_test.csv\");
+        let _ = fs::remove_file("invalid_test.csv");
     }
 
-    println!(\"\\n✅ ファイル管理システムテスト完了\");
+    println!("\\n✅ ファイル管理システムテスト完了");
 }
 
 // 注意: このコードを実行するには Cargo.toml に以下を追加してください:
 // [dependencies]
-// glob = \"0.3\"
+// glob = "0.3"
 ```
 
 </div>
@@ -1250,7 +1250,7 @@ fn main() {
 
 複数のスレッドで並行処理を行い、各スレッドのエラーを適切に集約するシステムを実装せよ。
 
-<div class=\"exercise\">
+<div class="exercise">
 
 ```rust
 use std::sync::{Arc, Mutex};
@@ -1272,7 +1272,7 @@ fn main() {
 
 <details>
 <summary>解答を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 use std::sync::{Arc, Mutex, mpsc};
@@ -1290,10 +1290,10 @@ enum ProcessingError {
 impl std::fmt::Display for ProcessingError {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
-            ProcessingError::InvalidData(msg) => write!(f, \"データエラー: {}\", msg),
-            ProcessingError::CalculationError(msg) => write!(f, \"計算エラー: {}\", msg),
-            ProcessingError::ThreadError(msg) => write!(f, \"スレッドエラー: {}\", msg),
-            ProcessingError::TimeoutError => write!(f, \"タイムアウトエラー\"),
+            ProcessingError::InvalidData(msg) => write!(f, "データエラー: {}", msg),
+            ProcessingError::CalculationError(msg) => write!(f, "計算エラー: {}", msg),
+            ProcessingError::ThreadError(msg) => write!(f, "スレッドエラー: {}", msg),
+            ProcessingError::TimeoutError => write!(f, "タイムアウトエラー"),
         }
     }
 }
@@ -1322,7 +1322,7 @@ impl SorcererData {
     fn calculate_combat_rating(&self) -> Result<f64, ProcessingError> {
         if self.power <= 0 {
             return Err(ProcessingError::InvalidData(
-                format!(\"無効な呪力: {}\", self.power)
+                format!("無効な呪力: {}", self.power)
             ));
         }
 
@@ -1333,9 +1333,9 @@ impl SorcererData {
         let technique_bonus = self.techniques.len() as f64 * 100.0;
 
         // 意図的なエラーケース
-        if self.name.contains(\"エラー\") {
+        if self.name.contains("エラー") {
             return Err(ProcessingError::CalculationError(
-                \"計算中にエラーが発生しました\".to_string()
+                "計算中にエラーが発生しました".to_string()
             ));
         }
 
@@ -1343,7 +1343,7 @@ impl SorcererData {
 
         if rating > 10000.0 {
             Err(ProcessingError::CalculationError(
-                \"戦闘力が上限を超えました\".to_string()
+                "戦闘力が上限を超えました".to_string()
             ))
         } else {
             Ok(rating)
@@ -1390,7 +1390,7 @@ impl ParallelProcessor {
                     // 次の処理対象を取得
                     let sorcerer = {
                         let mut sorcerers_guard = sorcerers_clone.lock()
-                            .map_err(|_| ProcessingError::ThreadError(\"ロック取得失敗\".to_string()))?;
+                            .map_err(|_| ProcessingError::ThreadError("ロック取得失敗".to_string()))?;
 
                         sorcerers_guard.pop()
                     };
@@ -1441,7 +1441,7 @@ impl ParallelProcessor {
             match handle.join() {
                 Ok(Ok(())) => {},
                 Ok(Err(e)) => return Err(e),
-                Err(_) => return Err(ProcessingError::ThreadError(\"スレッド終了エラー\".to_string())),
+                Err(_) => return Err(ProcessingError::ThreadError("スレッド終了エラー".to_string())),
             }
         }
 
@@ -1470,10 +1470,10 @@ impl ParallelProcessor {
                     thread_stats.1 += 1;
 
                     let error_type = match error {
-                        ProcessingError::InvalidData(_) => \"InvalidData\",
-                        ProcessingError::CalculationError(_) => \"CalculationError\",
-                        ProcessingError::ThreadError(_) => \"ThreadError\",
-                        ProcessingError::TimeoutError => \"TimeoutError\",
+                        ProcessingError::InvalidData(_) => "InvalidData",
+                        ProcessingError::CalculationError(_) => "CalculationError",
+                        ProcessingError::ThreadError(_) => "ThreadError",
+                        ProcessingError::TimeoutError => "TimeoutError",
                     };
 
                     *errors_by_type.entry(error_type).or_insert(0) += 1;
@@ -1506,29 +1506,29 @@ impl ProcessingSummary {
     fn generate_report(&self) -> String {
         let mut report = String::new();
 
-        report.push_str(\"=== 並行処理結果レポート ===\\n\");
-        report.push_str(&format!(\"総処理数: {}\\n\", self.total_processed));
-        report.push_str(&format!(\"成功: {} ({:.1}%)\\n\",
+        report.push_str("=== 並行処理結果レポート ===\\n");
+        report.push_str(&format!("総処理数: {}\\n", self.total_processed));
+        report.push_str(&format!("成功: {} ({:.1}%)\\n",
             self.successful,
             (self.successful as f64 / self.total_processed as f64) * 100.0));
-        report.push_str(&format!(\"失敗: {} ({:.1}%)\\n\",
+        report.push_str(&format!("失敗: {} ({:.1}%)\\n",
             self.failed,
             (self.failed as f64 / self.total_processed as f64) * 100.0));
 
         if self.successful > 0 {
-            report.push_str(&format!(\"平均戦闘力: {:.1}\\n\", self.average_rating));
+            report.push_str(&format!("平均戦闘力: {:.1}\\n", self.average_rating));
         }
 
         if !self.errors_by_type.is_empty() {
-            report.push_str(\"\\nエラー種別:\\n\");
+            report.push_str("\\nエラー種別:\\n");
             for (error_type, count) in &self.errors_by_type {
-                report.push_str(&format!(\"  {}: {}件\\n\", error_type, count));
+                report.push_str(&format!("  {}: {}件\\n", error_type, count));
             }
         }
 
-        report.push_str(&format!(\"\\nスレッド別処理結果:\\n\"));
+        report.push_str(&format!("\\nスレッド別処理結果:\\n"));
         for (thread_id, (success, failure)) in &self.results_by_thread {
-            report.push_str(&format!(\"  {:?}: 成功{}件, 失敗{}件\\n\",
+            report.push_str(&format!("  {:?}: 成功{}件, 失敗{}件\\n",
                 thread_id, success, failure));
         }
 
@@ -1538,28 +1538,28 @@ impl ProcessingSummary {
 
 fn create_test_data() -> Vec<SorcererData> {
     let mut sorcerers = vec![
-        SorcererData::new(1, \"五条悟\".to_string(), 3000),
-        SorcererData::new(2, \"両面宿儺\".to_string(), 2800),
-        SorcererData::new(3, \"虎杖悠仁\".to_string(), 1200),
-        SorcererData::new(4, \"伏黒恵\".to_string(), 1000),
-        SorcererData::new(5, \"釘崎野薔薇\".to_string(), 900),
-        SorcererData::new(6, \"禪院真希\".to_string(), 800),
-        SorcererData::new(7, \"狗巻棘\".to_string(), 700),
-        SorcererData::new(8, \"パンダ\".to_string(), 600),
-        SorcererData::new(9, \"エラーテスト\".to_string(), 1000), // 意図的なエラー
-        SorcererData::new(10, \"無効呪力\".to_string(), -100),     // 無効データ
+        SorcererData::new(1, "五条悟".to_string(), 3000),
+        SorcererData::new(2, "両面宿儺".to_string(), 2800),
+        SorcererData::new(3, "虎杖悠仁".to_string(), 1200),
+        SorcererData::new(4, "伏黒恵".to_string(), 1000),
+        SorcererData::new(5, "釘崎野薔薇".to_string(), 900),
+        SorcererData::new(6, "禪院真希".to_string(), 800),
+        SorcererData::new(7, "狗巻棘".to_string(), 700),
+        SorcererData::new(8, "パンダ".to_string(), 600),
+        SorcererData::new(9, "エラーテスト".to_string(), 1000), // 意図的なエラー
+        SorcererData::new(10, "無効呪力".to_string(), -100),     // 無効データ
     ];
 
     // 術式の追加
-    sorcerers[0].techniques.extend(vec![\"無下限呪術\".to_string(), \"領域展開\".to_string()]);
-    sorcerers[1].techniques.extend(vec![\"解\".to_string(), \"捌\".to_string()]);
-    sorcerers[2].techniques.push(\"黒閃\".to_string());
-    sorcerers[3].techniques.push(\"十種影法術\".to_string());
+    sorcerers[0].techniques.extend(vec!["無下限呪術".to_string(), "領域展開".to_string()]);
+    sorcerers[1].techniques.extend(vec!["解".to_string(), "捌".to_string()]);
+    sorcerers[2].techniques.push("黒閃".to_string());
+    sorcerers[3].techniques.push("十種影法術".to_string());
 
     // 追加のテストデータ
     for i in 11..=20 {
-        let mut sorcerer = SorcererData::new(i, format!(\"呪術師{}\", i), 500 + (i as i32 * 50));
-        sorcerer.techniques.push(format!(\"術式{}\", i));
+        let mut sorcerer = SorcererData::new(i, format!("呪術師{}", i), 500 + (i as i32 * 50));
+        sorcerer.techniques.push(format!("術式{}", i));
         sorcerers.push(sorcerer);
     }
 
@@ -1567,32 +1567,32 @@ fn create_test_data() -> Vec<SorcererData> {
 }
 
 fn main() {
-    println!(\"=== マルチスレッド呪術師処理システム ===\");
+    println!("=== マルチスレッド呪術師処理システム ===");
 
     let processor = ParallelProcessor::new(4, 5000); // 4スレッド、5秒タイムアウト
     let test_data = create_test_data();
 
-    println!(\"処理対象: {}件の呪術師データ\", test_data.len());
-    println!(\"スレッド数: {}\", processor.thread_count);
-    println!(\"タイムアウト: {}ms\\n\", processor.timeout_ms);
+    println!("処理対象: {}件の呪術師データ", test_data.len());
+    println!("スレッド数: {}", processor.thread_count);
+    println!("タイムアウト: {}ms\\n", processor.timeout_ms);
 
     let start_time = std::time::Instant::now();
 
     match processor.process_sorcerers(test_data) {
         Ok(results) => {
             let elapsed = start_time.elapsed();
-            println!(\"✅ 処理完了（実行時間: {:.2}秒）\\n\", elapsed.as_secs_f64());
+            println!("✅ 処理完了（実行時間: {:.2}秒）\\n", elapsed.as_secs_f64());
 
             // 結果の詳細表示（最初の5件）
-            println!(\"=== 処理結果詳細（最初の5件）===\");
+            println!("=== 処理結果詳細（最初の5件）===");
             for (i, result) in results.iter().take(5).enumerate() {
                 match &result.result {
                     Ok(rating) => {
-                        println!(\"{}. ID {}: 戦闘力 {:.1} (スレッド: {:?})\",
+                        println!("{}. ID {}: 戦闘力 {:.1} (スレッド: {:?})",
                                  i + 1, result.sorcerer_id, rating, result.thread_id);
                     },
                     Err(error) => {
-                        println!(\"{}. ID {}: エラー - {} (スレッド: {:?})\",
+                        println!("{}. ID {}: エラー - {} (スレッド: {:?})",
                                  i + 1, result.sorcerer_id, error, result.thread_id);
                     }
                 }
@@ -1600,26 +1600,26 @@ fn main() {
 
             // 統計分析
             let summary = processor.analyze_results(&results);
-            println!(\"\\n{}\", summary.generate_report());
+            println!("\\n{}", summary.generate_report());
 
         },
         Err(error) => {
-            println!(\"❌ 処理失敗: {}\", error);
+            println!("❌ 処理失敗: {}", error);
         }
     }
 
     // パフォーマンステスト
-    println!(\"\\n=== パフォーマンステスト ===\");
+    println!("\\n=== パフォーマンステスト ===");
 
     let large_dataset: Vec<SorcererData> = (1..=1000)
         .map(|i| {
-            let mut sorcerer = SorcererData::new(i, format!(\"呪術師{}\", i), 500 + (i % 1000));
-            sorcerer.techniques.push(format!(\"術式{}\", i));
+            let mut sorcerer = SorcererData::new(i, format!("呪術師{}", i), 500 + (i % 1000));
+            sorcerer.techniques.push(format!("術式{}", i));
             sorcerer
         })
         .collect();
 
-    println!(\"大規模データセット: {}件\", large_dataset.len());
+    println!("大規模データセット: {}件", large_dataset.len());
 
     let large_processor = ParallelProcessor::new(8, 10000); // 8スレッド、10秒タイムアウト
     let start_time = std::time::Instant::now();
@@ -1627,13 +1627,13 @@ fn main() {
     match large_processor.process_sorcerers(large_dataset) {
         Ok(results) => {
             let elapsed = start_time.elapsed();
-            println!(\"✅ 大規模処理完了（実行時間: {:.2}秒）\", elapsed.as_secs_f64());
+            println!("✅ 大規模処理完了（実行時間: {:.2}秒）", elapsed.as_secs_f64());
 
             let summary = large_processor.analyze_results(&results);
-            println!(\"\\n{}\", summary.generate_report());
+            println!("\\n{}", summary.generate_report());
         },
         Err(error) => {
-            println!(\"❌ 大規模処理失敗: {}\", error);
+            println!("❌ 大規模処理失敗: {}", error);
         }
     }
 }
@@ -1656,7 +1656,7 @@ fn main() {
 - ログ記録システム
 - リトライ機構
 
-<div class=\"exercise\">
+<div class="exercise">
 
 自由に設計して実装してみよう！すべてのエラーハンドリング技術を駆使すること。
 
@@ -1664,7 +1664,7 @@ fn main() {
 
 <details>
 <summary>解答例を見る</summary>
-<div class=\"solution\">
+<div class="solution">
 
 ```rust
 use std::collections::HashMap;
@@ -1686,13 +1686,13 @@ enum ServiceError {
 impl fmt::Display for ServiceError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            ServiceError::ValidationError(msg) => write!(f, \"[400] Validation: {}\", msg),
-            ServiceError::NotFound(resource) => write!(f, \"[404] Not Found: {}\", resource),
-            ServiceError::Conflict(msg) => write!(f, \"[409] Conflict: {}\", msg),
-            ServiceError::InternalError(msg) => write!(f, \"[500] Internal: {}\", msg),
-            ServiceError::ExternalServiceError(msg) => write!(f, \"[502] External: {}\", msg),
-            ServiceError::TimeoutError => write!(f, \"[504] Timeout\"),
-            ServiceError::RateLimitExceeded => write!(f, \"[429] Rate Limit Exceeded\"),
+            ServiceError::ValidationError(msg) => write!(f, "[400] Validation: {}", msg),
+            ServiceError::NotFound(resource) => write!(f, "[404] Not Found: {}", resource),
+            ServiceError::Conflict(msg) => write!(f, "[409] Conflict: {}", msg),
+            ServiceError::InternalError(msg) => write!(f, "[500] Internal: {}", msg),
+            ServiceError::ExternalServiceError(msg) => write!(f, "[502] External: {}", msg),
+            ServiceError::TimeoutError => write!(f, "[504] Timeout"),
+            ServiceError::RateLimitExceeded => write!(f, "[429] Rate Limit Exceeded"),
         }
     }
 }
@@ -1748,7 +1748,7 @@ impl Default for ServiceConfig {
             retry_delay_ms: 1000,
             timeout_ms: 5000,
             rate_limit_per_minute: 100,
-            log_level: \"INFO\".to_string(),
+            log_level: "INFO".to_string(),
         }
     }
 }
@@ -1764,15 +1764,15 @@ impl Logger {
     }
 
     fn info(&self, message: &str, context: &HashMap<String, String>) {
-        println!(\"[INFO] {} | {:?}\", message, context);
+        println!("[INFO] {} | {:?}", message, context);
     }
 
     fn warn(&self, message: &str, context: &HashMap<String, String>) {
-        println!(\"[WARN] {} | {:?}\", message, context);
+        println!("[WARN] {} | {:?}", message, context);
     }
 
     fn error(&self, message: &str, error: &dyn std::error::Error, context: &HashMap<String, String>) {
-        println!(\"[ERROR] {} | Error: {} | {:?}\", message, error, context);
+        println!("[ERROR] {} | Error: {} | {:?}", message, error, context);
     }
 }
 
@@ -1823,7 +1823,7 @@ impl RetryPolicy {
     where
         F: Fn() -> Result<T, ServiceError>,
     {
-        let mut last_error = ServiceError::InternalError(\"No attempts made\".to_string());
+        let mut last_error = ServiceError::InternalError("No attempts made".to_string());
 
         for attempt in 1..=self.max_attempts {
             match operation() {
@@ -1857,16 +1857,16 @@ struct Sorcerer {
 impl Sorcerer {
     fn new(id: String, name: String, power: i32, grade: String) -> Result<Self, ServiceError> {
         if name.is_empty() {
-            return Err(ServiceError::ValidationError(\"名前は必須です\".to_string()));
+            return Err(ServiceError::ValidationError("名前は必須です".to_string()));
         }
 
-        let valid_grades = [\"特級\", \"1級\", \"2級\", \"3級\", \"4級\"];
+        let valid_grades = ["特級", "1級", "2級", "3級", "4級"];
         if !valid_grades.contains(&grade.as_str()) {
-            return Err(ServiceError::ValidationError(format!(\"無効な等級: {}\", grade)));
+            return Err(ServiceError::ValidationError(format!("無効な等級: {}", grade)));
         }
 
         if power < 0 || power > 10000 {
-            return Err(ServiceError::ValidationError(\"呪力は0-10000の範囲である必要があります\".to_string()));
+            return Err(ServiceError::ValidationError("呪力は0-10000の範囲である必要があります".to_string()));
         }
 
         let now = chrono::Utc::now().to_rfc3339();
@@ -1885,11 +1885,11 @@ impl Sorcerer {
 
     fn add_technique(&mut self, technique: String) -> Result<(), ServiceError> {
         if technique.is_empty() {
-            return Err(ServiceError::ValidationError(\"術式名は必須です\".to_string()));
+            return Err(ServiceError::ValidationError("術式名は必須です".to_string()));
         }
 
         if self.techniques.contains(&technique) {
-            return Err(ServiceError::Conflict(format!(\"術式'{}'は既に習得済みです\", technique)));
+            return Err(ServiceError::Conflict(format!("術式'{}'は既に習得済みです", technique)));
         }
 
         self.techniques.push(technique);
@@ -1913,12 +1913,12 @@ impl SorcererStore {
     }
 
     fn create(&mut self, name: String, power: i32, grade: String) -> Result<Sorcerer, ServiceError> {
-        let id = format!(\"sorcerer_{}\", self.next_id);
+        let id = format!("sorcerer_{}", self.next_id);
         self.next_id += 1;
 
         // 重複チェック
         if self.data.values().any(|s| s.name == name) {
-            return Err(ServiceError::Conflict(format!(\"名前'{}'は既に使用されています\", name)));
+            return Err(ServiceError::Conflict(format!("名前'{}'は既に使用されています", name)));
         }
 
         let sorcerer = Sorcerer::new(id.clone(), name, power, grade)?;
@@ -1929,12 +1929,12 @@ impl SorcererStore {
 
     fn get(&self, id: &str) -> Result<&Sorcerer, ServiceError> {
         self.data.get(id)
-            .ok_or_else(|| ServiceError::NotFound(format!(\"呪術師ID: {}\", id)))
+            .ok_or_else(|| ServiceError::NotFound(format!("呪術師ID: {}", id)))
     }
 
     fn get_mut(&mut self, id: &str) -> Result<&mut Sorcerer, ServiceError> {
         self.data.get_mut(id)
-            .ok_or_else(|| ServiceError::NotFound(format!(\"呪術師ID: {}\", id)))
+            .ok_or_else(|| ServiceError::NotFound(format!("呪術師ID: {}", id)))
     }
 
     fn list(&self) -> Vec<&Sorcerer> {
@@ -1969,15 +1969,15 @@ impl ExternalGradeService {
 
         // 意図的にエラーを発生させる場合
         if power == 9999 {
-            return Err(ServiceError::ExternalServiceError(\"等級サービスが利用できません\".to_string()));
+            return Err(ServiceError::ExternalServiceError("等級サービスが利用できません".to_string()));
         }
 
         let min_power = match grade {
-            \"特級\" => 2000,
-            \"1級\" => 1000,
-            \"2級\" => 500,
-            \"3級\" => 200,
-            \"4級\" => 0,
+            "特級" => 2000,
+            "1級" => 1000,
+            "2級" => 500,
+            "3級" => 200,
+            "4級" => 0,
             _ => return Ok(false),
         };
 
@@ -2015,13 +2015,13 @@ impl SorcererService {
         -> ApiResponse<Sorcerer> {
 
         let mut context = HashMap::new();
-        context.insert(\"request_id\".to_string(), request_id.clone());
-        context.insert(\"client_id\".to_string(), client_id.clone());
-        context.insert(\"name\".to_string(), name.clone());
+        context.insert("request_id".to_string(), request_id.clone());
+        context.insert("client_id".to_string(), client_id.clone());
+        context.insert("name".to_string(), name.clone());
 
         // レート制限チェック
         if let Err(error) = self.rate_limiter.check_rate_limit(&client_id) {
-            self.logger.warn(\"Rate limit exceeded\", &context);
+            self.logger.warn("Rate limit exceeded", &context);
             return ApiResponse::error(error, request_id);
         }
 
@@ -2034,14 +2034,14 @@ impl SorcererService {
             Ok(is_eligible) => {
                 if !is_eligible {
                     let error = ServiceError::ValidationError(
-                        format!(\"呪力{}では{}等級の資格がありません\", power, grade)
+                        format!("呪力{}では{}等級の資格がありません", power, grade)
                     );
-                    self.logger.warn(\"Grade validation failed\", &context);
+                    self.logger.warn("Grade validation failed", &context);
                     return ApiResponse::error(error, request_id);
                 }
             },
             Err(error) => {
-                self.logger.error(\"External grade validation failed\", &error, &context);
+                self.logger.error("External grade validation failed", &error, &context);
                 return ApiResponse::error(error, request_id);
             }
         }
@@ -2049,11 +2049,11 @@ impl SorcererService {
         // 呪術師作成
         match self.store.create(name, power, grade) {
             Ok(sorcerer) => {
-                self.logger.info(\"Sorcerer created successfully\", &context);
+                self.logger.info("Sorcerer created successfully", &context);
                 ApiResponse::success(sorcerer, request_id)
             },
             Err(error) => {
-                self.logger.error(\"Failed to create sorcerer\", &error, &context);
+                self.logger.error("Failed to create sorcerer", &error, &context);
                 ApiResponse::error(error, request_id)
             }
         }
@@ -2063,9 +2063,9 @@ impl SorcererService {
         -> ApiResponse<Sorcerer> {
 
         let mut context = HashMap::new();
-        context.insert(\"request_id\".to_string(), request_id.clone());
-        context.insert(\"client_id\".to_string(), client_id.clone());
-        context.insert(\"sorcerer_id\".to_string(), id.clone());
+        context.insert("request_id".to_string(), request_id.clone());
+        context.insert("client_id".to_string(), client_id.clone());
+        context.insert("sorcerer_id".to_string(), id.clone());
 
         if let Err(error) = self.rate_limiter.check_rate_limit(&client_id) {
             return ApiResponse::error(error, request_id);
@@ -2073,11 +2073,11 @@ impl SorcererService {
 
         match self.store.get(&id) {
             Ok(sorcerer) => {
-                self.logger.info(\"Sorcerer retrieved\", &context);
+                self.logger.info("Sorcerer retrieved", &context);
                 ApiResponse::success(sorcerer.clone(), request_id)
             },
             Err(error) => {
-                self.logger.warn(\"Sorcerer not found\", &context);
+                self.logger.warn("Sorcerer not found", &context);
                 ApiResponse::error(error, request_id)
             }
         }
@@ -2087,9 +2087,9 @@ impl SorcererService {
         -> ApiResponse<Sorcerer> {
 
         let mut context = HashMap::new();
-        context.insert(\"request_id\".to_string(), request_id.clone());
-        context.insert(\"sorcerer_id\".to_string(), id.clone());
-        context.insert(\"technique\".to_string(), technique.clone());
+        context.insert("request_id".to_string(), request_id.clone());
+        context.insert("sorcerer_id".to_string(), id.clone());
+        context.insert("technique".to_string(), technique.clone());
 
         if let Err(error) = self.rate_limiter.check_rate_limit(&client_id) {
             return ApiResponse::error(error, request_id);
@@ -2101,11 +2101,11 @@ impl SorcererService {
 
         match result {
             Ok(sorcerer) => {
-                self.logger.info(\"Technique added successfully\", &context);
+                self.logger.info("Technique added successfully", &context);
                 ApiResponse::success(sorcerer.clone(), request_id)
             },
             Err(error) => {
-                self.logger.error(\"Failed to add technique\", &error, &context);
+                self.logger.error("Failed to add technique", &error, &context);
                 ApiResponse::error(error, request_id)
             }
         }
@@ -2121,38 +2121,38 @@ impl SorcererService {
         let sorcerers: Vec<Sorcerer> = self.store.list().into_iter().cloned().collect();
 
         let mut context = HashMap::new();
-        context.insert(\"request_id\".to_string(), request_id.clone());
-        context.insert(\"count\".to_string(), sorcerers.len().to_string());
+        context.insert("request_id".to_string(), request_id.clone());
+        context.insert("count".to_string(), sorcerers.len().to_string());
 
-        self.logger.info(\"Sorcerers listed\", &context);
+        self.logger.info("Sorcerers listed", &context);
         ApiResponse::success(sorcerers, request_id)
     }
 }
 
 fn main() {
-    println!(\"=== 呪術師管理マイクロサービス ===\");
+    println!("=== 呪術師管理マイクロサービス ===");
 
     let config = ServiceConfig::default();
     let mut service = SorcererService::new(config);
 
     // テストクライアント
-    let client_id = \"test_client\".to_string();
+    let client_id = "test_client".to_string();
     let mut request_counter = 1;
 
     // 呪術師作成テスト
-    println!(\"\\n1. 呪術師作成テスト\");
+    println!("\\n1. 呪術師作成テスト");
 
     let test_cases = vec![
-        (\"五条悟\", 3000, \"特級\"),
-        (\"虎杖悠仁\", 1200, \"1級\"),
-        (\"無効テスト\", 100, \"特級\"), // 等級不適格
-        (\"エラーテスト\", 9999, \"特級\"), // 外部サービスエラー
+        ("五条悟", 3000, "特級"),
+        ("虎杖悠仁", 1200, "1級"),
+        ("無効テスト", 100, "特級"), // 等級不適格
+        ("エラーテスト", 9999, "特級"), // 外部サービスエラー
     ];
 
     let mut created_ids = Vec::new();
 
     for (name, power, grade) in test_cases {
-        let request_id = format!(\"req_{}\", request_counter);
+        let request_id = format!("req_{}", request_counter);
         request_counter += 1;
 
         let response = service.create_sorcerer(
@@ -2165,41 +2165,41 @@ fn main() {
 
         if response.success {
             if let Some(sorcerer) = response.data {
-                println!(\"✅ 作成成功: {} (ID: {})\", sorcerer.name, sorcerer.id);
+                println!("✅ 作成成功: {} (ID: {})", sorcerer.name, sorcerer.id);
                 created_ids.push(sorcerer.id);
             }
         } else {
-            println!(\"❌ 作成失敗: {}\", response.error.unwrap_or(\"Unknown error\".to_string()));
+            println!("❌ 作成失敗: {}", response.error.unwrap_or("Unknown error".to_string()));
         }
     }
 
     // 呪術師取得テスト
-    println!(\"\\n2. 呪術師取得テスト\");
+    println!("\\n2. 呪術師取得テスト");
 
     for id in &created_ids {
-        let request_id = format!(\"req_{}\", request_counter);
+        let request_id = format!("req_{}", request_counter);
         request_counter += 1;
 
         let response = service.get_sorcerer(request_id, client_id.clone(), id.clone());
 
         if response.success {
             if let Some(sorcerer) = response.data {
-                println!(\"✅ 取得成功: {} (呪力: {})\", sorcerer.name, sorcerer.power);
+                println!("✅ 取得成功: {} (呪力: {})", sorcerer.name, sorcerer.power);
             }
         } else {
-            println!(\"❌ 取得失敗: {}\", response.error.unwrap_or(\"Unknown error\".to_string()));
+            println!("❌ 取得失敗: {}", response.error.unwrap_or("Unknown error".to_string()));
         }
     }
 
     // 術式追加テスト
-    println!(\"\\n3. 術式追加テスト\");
+    println!("\\n3. 術式追加テスト");
 
     if !created_ids.is_empty() {
-        let techniques = vec![\"無下限呪術\", \"術式順転『蒼』\", \"黒閃\"];
+        let techniques = vec!["無下限呪術", "術式順転『蒼』", "黒閃"];
 
         for (i, technique) in techniques.iter().enumerate() {
             if i < created_ids.len() {
-                let request_id = format!(\"req_{}\", request_counter);
+                let request_id = format!("req_{}", request_counter);
                 request_counter += 1;
 
                 let response = service.add_technique(
@@ -2210,52 +2210,52 @@ fn main() {
                 );
 
                 if response.success {
-                    println!(\"✅ 術式追加成功: {}\", technique);
+                    println!("✅ 術式追加成功: {}", technique);
                 } else {
-                    println!(\"❌ 術式追加失敗: {}\", response.error.unwrap_or(\"Unknown error\".to_string()));
+                    println!("❌ 術式追加失敗: {}", response.error.unwrap_or("Unknown error".to_string()));
                 }
             }
         }
     }
 
     // 一覧取得テスト
-    println!(\"\\n4. 一覧取得テスト\");
+    println!("\\n4. 一覧取得テスト");
 
-    let request_id = format!(\"req_{}\", request_counter);
+    let request_id = format!("req_{}", request_counter);
     let response = service.list_sorcerers(request_id, client_id.clone());
 
     if response.success {
         if let Some(sorcerers) = response.data {
-            println!(\"✅ 一覧取得成功: {}件\", sorcerers.len());
+            println!("✅ 一覧取得成功: {}件", sorcerers.len());
             for sorcerer in sorcerers {
-                println!(\"  - {} (ID: {}, 呪力: {}, 術式数: {})\",
+                println!("  - {} (ID: {}, 呪力: {}, 術式数: {})",
                          sorcerer.name, sorcerer.id, sorcerer.power, sorcerer.techniques.len());
             }
         }
     } else {
-        println!(\"❌ 一覧取得失敗: {}\", response.error.unwrap_or(\"Unknown error\".to_string()));
+        println!("❌ 一覧取得失敗: {}", response.error.unwrap_or("Unknown error".to_string()));
     }
 
     // レート制限テスト
-    println!(\"\\n5. レート制限テスト\");
+    println!("\\n5. レート制限テスト");
 
     for i in 1..=5 {
-        let request_id = format!(\"rate_test_{}\", i);
-        let response = service.list_sorcerers(request_id, \"rate_test_client\".to_string());
+        let request_id = format!("rate_test_{}", i);
+        let response = service.list_sorcerers(request_id, "rate_test_client".to_string());
 
         if response.success {
-            println!(\"✅ リクエスト{}: 成功\", i);
+            println!("✅ リクエスト{}: 成功", i);
         } else {
-            println!(\"❌ リクエスト{}: {}\", i, response.error.unwrap_or(\"Unknown error\".to_string()));
+            println!("❌ リクエスト{}: {}", i, response.error.unwrap_or("Unknown error".to_string()));
         }
     }
 
-    println!(\"\\n=== マイクロサービステスト完了 ===\");
+    println!("\\n=== マイクロサービステスト完了 ===");
 }
 
 // 注意: このコードを実行するには Cargo.toml に以下を追加してください:
 // [dependencies]
-// chrono = { version = \"0.4\", features = [\"serde\"] }
+// chrono = { version = "0.4", features = ["serde"] }
 ```
 
 </div>
