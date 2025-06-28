@@ -192,7 +192,7 @@ impl fmt::Display for Technique {
 }
 
 fn main() {
-    let blue = Technique::new("術式順転『青』", 1000, "無下限");
+    let blue = Technique::new("術式順転『蒼』", 1000, "無下限");
 
     println!("Display: {}", blue);     // Displayトレイト使用
     println!("Debug: {:?}", blue);     // Debugトレイト使用
@@ -483,7 +483,7 @@ impl Ability for BlackFlash {
 // トレイトオブジェクトのベクター
 fn main() {
     let abilities: Vec<Box<dyn Ability>> = vec![
-        Box::new(Limitless::new("青")),
+        Box::new(Limitless::new("蒼")),
         Box::new(Limitless::new("赤")),
         Box::new(BlackFlash),
     ];

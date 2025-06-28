@@ -27,13 +27,13 @@ enum Option<T> {
 ```rust
 fn main() {
     // 値がある場合
-    let technique_name: Option<String> = Some(String::from(\"術式順転『青』\"));
+    let technique_name: Option<String> = Some(String::from(\"術式順転『蒼』\"));
 
     // 値がない場合
     let unknown_technique: Option<String> = None;
 
     // Option型の値を表示
-    println!(\"{:?}\", technique_name);  // Some(\"術式順転『青』\")
+    println!(\"{:?}\", technique_name);  // Some(\"術式順転『蒼』\")
     println!(\"{:?}\", unknown_technique);  // None
 }
 ```
@@ -60,7 +60,7 @@ fn main() {
 ```rust
 fn find_technique_power(technique_name: &str) -> Option<i32> {
     match technique_name {
-        \"青\" => Some(1000),
+        \"蒼\" => Some(1000),
         \"赤\" => Some(1500),
         \"茈\" => Some(3000),
         \"紫\" => Some(9999),
@@ -80,10 +80,10 @@ fn get_strongest_student() -> Option<String> {
 }
 
 fn main() {
-    let blue_power = find_technique_power(\"青\");
+    let blue_power = find_technique_power(\"蒼\");
     let unknown_power = find_technique_power(\"未知の技\");
 
-    println!(\"青の威力: {:?}\", blue_power);      // Some(1000)
+    println!(\"蒼の威力: {:?}\", blue_power);      // Some(1000)
     println!(\"未知技の威力: {:?}\", unknown_power); // None
 
     let strongest = get_strongest_student();
@@ -115,7 +115,7 @@ fn get_power_level(power: Option<i32>) -> String {
 
 fn main() {
     let techniques = [
-        (\"青\", Some(1000)),
+        (\"蒼\", Some(1000)),
         (\"赤\", Some(1500)),
         (\"茈\", Some(3000)),
         (\"未知\", None),
@@ -197,7 +197,7 @@ fn main() {
 
 ```rust
 fn main() {
-    let technique = Some(\"術式順転『青』\");
+    let technique = Some(\"術式順転『蒼』\");
     let empty_technique: Option<&str> = None;
 
     // expect() - unwrap()と同じだが、エラーメッセージを指定できる
@@ -229,7 +229,7 @@ fn check_technique_availability(technique: Option<&str>) {
 }
 
 fn main() {
-    let available_technique = Some(\"術式順転『青』\");
+    let available_technique = Some(\"術式順転『蒼』\");
     let unavailable_technique: Option<&str> = None;
 
     check_technique_availability(available_technique);
@@ -273,7 +273,7 @@ fn main() {
 ```rust
 fn get_technique_power(name: &str) -> Option<i32> {
     match name {
-        \"青\" => Some(1000),
+        \"蒼\" => Some(1000),
         \"赤\" => Some(1500),
         \"茈\" => Some(3000),
         _ => None,
@@ -289,7 +289,7 @@ fn calculate_combo_power(power: i32) -> Option<i32> {
 }
 
 fn main() {
-    let technique_name = \"青\";
+    let technique_name = \"蒼\";
 
     // and_then() でOptionを返す関数をチェーン
     let combo_power = get_technique_power(technique_name)
@@ -470,7 +470,7 @@ fn main() {
     // データの登録
     let mut gojo = Sorcerer::new(\"五条悟\", \"特級\", 3000);
     gojo.add_technique(\"無下限呪術\".to_string());
-    gojo.add_technique(\"術式順転『青』\".to_string());
+    gojo.add_technique(\"術式順転『蒼』\".to_string());
     gojo.add_technique(\"術式反転『赤』\".to_string());
 
     let mut sukuna = Sorcerer::new(\"両面宿儺\", \"特級\", 2800);

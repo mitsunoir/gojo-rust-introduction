@@ -54,7 +54,7 @@ fn main() {
 
 ### 問題2: 文字列操作
 
-「術式順転」という文字列に「『青』」を追加して「術式順転『青』」にし、さらに「発動！」を追加するプログラムを書け。
+「術式順転」という文字列に「『蒼』」を追加して「術式順転『蒼』」にし、さらに「発動！」を追加するプログラムを書け。
 
 <div class=\"exercise\">
 
@@ -77,13 +77,13 @@ fn main() {
 
     // String型に変換して操作
     let mut full_technique = String::from(base_technique);
-    full_technique.push_str(\"『青』\");
+    full_technique.push_str(\"『蒼』\");
     full_technique.push_str(\"発動！\");
 
     println!(\"完成した呪文: {}\", full_technique);
 
     // format!マクロを使う方法
-    let formatted = format!(\"{}『青』発動！\", base_technique);
+    let formatted = format!(\"{}『蒼』発動！\", base_technique);
     println!(\"format!使用: {}\", formatted);
 }
 ```
@@ -182,11 +182,11 @@ fn main() {
 
 以下の術式を組み合わせて新しい技を作成するシステムを実装せよ。
 
-基本術式: 青(1000), 赤(1200), 黒(800), 白(600)
+基本術式: 蒼(1000), 赤(1200), 黒(800), 白(600)
 
 **組み合わせルール:**
 
-- 青 + 赤 = 茈 (威力3000)
+- 蒼 + 赤 = 茈 (威力3000)
 - 黒 + 白 = 陰陽 (威力1800)
 - 同じ術式2つ = 強化版 (威力1.5倍)
 - その他 = 基本コンボ (威力合計 × 1.2)
@@ -196,10 +196,10 @@ fn main() {
 ```rust
 fn main() {
     let combinations = [
-        (\"青\", \"赤\"),
+        (\"蒼\", \"赤\"),
         (\"黒\", \"白\"),
-        (\"青\", \"青\"),
-        (\"青\", \"黒\"),
+        (\"蒼\", \"蒼\"),
+        (\"蒼\", \"黒\"),
     ];
 
     // ここに実装
@@ -215,7 +215,7 @@ fn main() {
 ```rust
 fn get_base_power(technique: &str) -> i32 {
     match technique {
-        \"青\" => 1000,
+        \"蒼\" => 1000,
         \"赤\" => 1200,
         \"黒\" => 800,
         \"白\" => 600,
@@ -225,7 +225,7 @@ fn get_base_power(technique: &str) -> i32 {
 
 fn combine_techniques(tech1: &str, tech2: &str) -> (String, i32) {
     match (tech1, tech2) {
-        (\"青\", \"赤\") | (\"赤\", \"青\") => {
+        (\"蒼\", \"赤\") | (\"赤\", \"蒼\") => {
             (String::from(\"虚式『茈』\"), 3000)
         },
         (\"黒\", \"白\") | (\"白\", \"黒\") => {
@@ -246,10 +246,10 @@ fn combine_techniques(tech1: &str, tech2: &str) -> (String, i32) {
 
 fn main() {
     let combinations = [
-        (\"青\", \"赤\"),
+        (\"蒼\", \"赤\"),
         (\"黒\", \"白\"),
-        (\"青\", \"青\"),
-        (\"青\", \"黒\"),
+        (\"蒼\", \"蒼\"),
+        (\"蒼\", \"黒\"),
         (\"赤\", \"白\"),
     ];
 
@@ -590,7 +590,7 @@ fn main() {
     let mut db = TechniqueDatabase::new();
 
     // サンプルデータの追加
-    db.add_technique(Technique::new(\"術式順転『青』\", 1000, \"無下限\", \"五条悟\"));
+    db.add_technique(Technique::new(\"術式順転『蒼』\", 1000, \"無下限\", \"五条悟\"));
     db.add_technique(Technique::new(\"術式反転『赤』\", 1500, \"無下限\", \"五条悟\"));
     db.add_technique(Technique::new(\"虚式『茈』\", 3000, \"無下限\", \"五条悟\"));
     db.add_technique(Technique::new(\"解\", 2000, \"斬撃\", \"両面宿儺\"));
@@ -606,8 +606,8 @@ fn main() {
 
     // 検索テスト
     println!(\"\\n=== 検索テスト ===\");
-    let blue_results = db.search_by_name(\"青\");
-    println!(\"'青'を含む術式:\");
+    let blue_results = db.search_by_name(\"蒼\");
+    println!(\"'蒼'を含む術式:\");
     for tech in blue_results {
         println!(\"  {}\", tech.name);
     }

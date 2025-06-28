@@ -18,7 +18,7 @@
 
 ```rust
 fn main() {
-    let technique = String::from(\"術式順転『青』\");  // techniqueが所有者
+    let technique = String::from(\"術式順転『蒼』\");  // techniqueが所有者
     // この時点で、techniqueが文字列データの唯一の所有者
 }
 ```
@@ -27,7 +27,7 @@ fn main() {
 
 ```rust
 fn main() {
-    let technique = String::from(\"術式順転『青』\");
+    let technique = String::from(\"術式順転『蒼』\");
     let other_technique = technique;  // 所有権がother_techniqueに移動
 
     // println!(\"{}\", technique);  // エラー！もう使えない
@@ -40,7 +40,7 @@ fn main() {
 ```rust
 fn main() {
     {
-        let technique = String::from(\"術式順転『青』\");
+        let technique = String::from(\"術式順転『蒼』\");
         println!(\"{}\", technique);
     }  // ここでtechniqueは自動的に破棄される
 
@@ -70,7 +70,7 @@ fn cast_technique(spell: String) {
 }  // ここでspellが破棄される
 
 fn main() {
-    let my_technique = String::from(\"術式順転『青』\");
+    let my_technique = String::from(\"術式順転『蒼』\");
     cast_technique(my_technique);  // 所有権が関数に移動
 
     // println!(\"{}\", my_technique);  // エラー！もう使えない
@@ -122,7 +122,7 @@ fn main() {
     let y = x;  // 自動的にコピー
 
     // Clone - 明示的な複製（ヒープ上の値も可能）
-    let technique = String::from(\"術式順転『青』\");
+    let technique = String::from(\"術式順転『蒼』\");
     let cloned_technique = technique.clone();  // 明示的にクローン
 
     println!(\"元の技: {}\", technique);
@@ -186,7 +186,7 @@ fn main() {
     let mut megumi = Sorcerer::new(String::from(\"伏黒恵\"));
 
     // 技の習得
-    gojo.learn_technique(String::from(\"術式順転『青』\"));
+    gojo.learn_technique(String::from(\"術式順転『蒼』\"));
     gojo.learn_technique(String::from(\"術式反転『赤』\"));
     gojo.learn_technique(String::from(\"虚式『茈』\"));
 
@@ -199,7 +199,7 @@ fn main() {
     }
 
     // 技の移譲（基本術式を教える）
-    gojo.transfer_technique(&mut megumi, 0);  // 青を移譲
+    gojo.transfer_technique(&mut megumi, 0);  // 蒼を移譲
 
     println!(\"\\n=== 最終状態 ===\");
     println!(\"{}: 呪力 {}, 技数 {}\", gojo.name, gojo.power, gojo.techniques.len());
@@ -219,7 +219,7 @@ fn enhance_technique(mut technique: String) -> String {
 }
 
 fn main() {
-    let basic = String::from(\"術式順転『青』\");
+    let basic = String::from(\"術式順転『蒼』\");
     let enhanced = enhance_technique(basic);  // 所有権移動
 
     println!(\"{}\", enhanced);
@@ -252,7 +252,7 @@ fn get_technique_info(technique: &String) -> usize {
 }
 
 fn main() {
-    let technique = String::from(\"術式順転『青』\");
+    let technique = String::from(\"術式順転『蒼』\");
     let info = get_technique_info(&technique);  // 借用
 
     println!(\"{} の情報: {}\", technique, info);  // まだ使える！
@@ -267,7 +267,7 @@ Rustの所有権システムは、データ競合を防ぐ：
 use std::thread;
 
 fn main() {
-    let technique = String::from(\"術式順転『青』\");
+    let technique = String::from(\"術式順転『蒼』\");
 
     // 複数のスレッドで同じデータを使うとエラー
     /*
@@ -344,7 +344,7 @@ fn combine_techniques(mut tech1: Vec<String>, mut tech2: Vec<String>) -> Vec<Str
 
 fn main() {
     let gojo_techniques = vec![
-        String::from(\"術式順転『青』\"),
+        String::from(\"術式順転『蒼』\"),
         String::from(\"術式反転『赤』\")
     ];
 

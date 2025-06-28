@@ -73,9 +73,9 @@ use std::time::{Duration, Instant};
 use tokio::time::sleep;
 
 async fn cast_blue() -> String {
-    println!("術式順転『青』詠唱開始...");
+    println!("術式順転『蒼』詠唱開始...");
     sleep(Duration::from_millis(800)).await;
-    "術式順転『青』発動完了！".to_string()
+    "術式順転『蒼』発動完了！".to_string()
 }
 
 async fn cast_red() -> String {

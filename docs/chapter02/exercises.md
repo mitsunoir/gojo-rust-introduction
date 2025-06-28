@@ -117,7 +117,7 @@ fn count_powerful_techniques(techniques: &Vec<String>) -> usize {
 
 fn main() {
     let techniques = vec![
-        String::from(\"術式順転『青』\"),
+        String::from(\"術式順転『蒼』\"),
         String::from(\"基本攻撃\"),
         String::from(\"術式反転『赤』\"),
         String::from(\"防御技\"),
@@ -148,7 +148,7 @@ fn count_powerful_techniques(techniques: &Vec<String>) -> usize {
 
 fn main() {
     let techniques = vec![
-        String::from(\"術式順転『青』\"),
+        String::from(\"術式順転『蒼』\"),
         String::from(\"基本攻撃\"),
         String::from(\"術式反転『赤』\"),
         String::from(\"防御技\"),
@@ -205,7 +205,7 @@ impl BattleLog {
 
 fn main() {
     let mut log = BattleLog::new();
-    log.add_entry(String::from(\"五条悟が術式順転『青』を使用\"));
+    log.add_entry(String::from(\"五条悟が術式順転『蒼』を使用\"));
     log.add_entry(String::from(\"宿儺が解を発動\"));
     log.add_entry(String::from(\"五条悟が術式反転『赤』を使用\"));
 
@@ -270,7 +270,7 @@ fn find_entries_by_user<'a>(log: &'a BattleLog, user: &str) -> Vec<&'a String> {
 
 fn main() {
     let mut log = BattleLog::new();
-    log.add_entry(String::from(\"五条悟が術式順転『青』を使用\"));
+    log.add_entry(String::from(\"五条悟が術式順転『蒼』を使用\"));
     log.add_entry(String::from(\"宿儺が解を発動\"));
     log.add_entry(String::from(\"五条悟が術式反転『赤』を使用\"));
     log.add_entry(String::from(\"虎杖悠仁が黒閃を発動\"));
@@ -316,14 +316,14 @@ fn main() {
 
 ```rust
 // 以下の関数を実装せよ：
-// 1. 術式名から種類を抽出（\"術式順転『青』\" → \"順転\"）
-// 2. 術式名から技名を抽出（\"術式順転『青』\" → \"青\"）
+// 1. 術式名から種類を抽出（\"術式順転『蒼』\" → \"順転\"）
+// 2. 術式名から技名を抽出（\"術式順転『蒼』\" → \"蒼\"）
 // 3. 複数の術式名の中から最も長いものを返す
 // 4. 術式名が有効かチェック（「術式」と「『』」を含む）
 
 fn main() {
     let techniques = [
-        \"術式順転『青』\",
+        \"術式順転『蒼』\",
         \"術式反転『赤』\",
         \"虚式『茈』\",
         \"無効な技名\",
@@ -422,7 +422,7 @@ fn generate_technique_stats(techniques: &[&str]) -> String {
 
 fn main() {
     let techniques = [
-        \"術式順転『青』\",
+        \"術式順転『蒼』\",
         \"術式反転『赤』\",
         \"虚式『茈』\",
         \"無効な技名\",
@@ -500,7 +500,7 @@ fn main() {
     let names = [\"五条悟\", \"両面宿儺\", \"虎杖悠仁\"];
     let grades = [\"特級\", \"特級\", \"1級\"];
     let techniques = [
-        vec![\"無下限呪術\", \"術式順転『青』\", \"術式反転『赤』\"],
+        vec![\"無下限呪術\", \"術式順転『蒼』\", \"術式反転『赤』\"],
         vec![\"解\", \"捌\", \"伏魔御廚子\"],
         vec![\"黒閃\", \"発散\"],
     ];
@@ -654,7 +654,7 @@ fn main() {
     // 呪術師データの追加
     let mut gojo = SorcererRef::new(names[0], grades[0]);
     gojo.add_technique(\"無下限呪術\");
-    gojo.add_technique(\"術式順転『青』\");
+    gojo.add_technique(\"術式順転『蒼』\");
     gojo.add_technique(\"術式反転『赤』\");
     gojo.add_technique(\"虚式『茈』\");
     database.add_sorcerer(gojo);
@@ -1266,7 +1266,7 @@ fn main() {
     // 戦闘者の登録
     let mut gojo = Combatant::new(\"五条悟\", 2000, 1800);
     gojo.add_technique(\"無下限呪術\".to_string());
-    gojo.add_technique(\"術式順転『青』\".to_string());
+    gojo.add_technique(\"術式順転『蒼』\".to_string());
 
     let mut sukuna = Combatant::new(\"両面宿儺\", 1800, 1700);
     sukuna.add_technique(\"解\".to_string());

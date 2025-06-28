@@ -152,17 +152,17 @@ impl Sorcerer {
 
 fn main() {
     let mut gojo = Sorcerer::new(\"五条悟\", 3000);
-    gojo.add_technique(\"術式順転『青』\".to_string());
+    gojo.add_technique(\"術式順転『蒼』\".to_string());
     gojo.add_technique(\"術式反転『赤』\".to_string());
 
     // 成功例
-    match gojo.use_technique(\"術式順転『青』\", 500) {
+    match gojo.use_technique(\"術式順転『蒼』\", 500) {
         Ok(message) => println!(\"✓ {}\", message),
         Err(error) => println!(\"✗ エラー: {}\", error),
     }
 
     // クールダウンエラー
-    match gojo.use_technique(\"術式順転『青』\", 500) {
+    match gojo.use_technique(\"術式順転『蒼』\", 500) {
         Ok(message) => println!(\"✓ {}\", message),
         Err(error) => println!(\"✗ エラー: {}\", error),
     }
@@ -175,7 +175,7 @@ fn main() {
 
     // クールダウンリセット後に再実行
     gojo.reset_cooldowns();
-    match gojo.use_technique(\"術式順転『青』\", 500) {
+    match gojo.use_technique(\"術式順転『蒼』\", 500) {
         Ok(message) => println!(\"✓ {}\", message),
         Err(error) => println!(\"✗ エラー: {}\", error),
     }
@@ -257,7 +257,7 @@ fn main() {
 
 ```rust
 fn main() {
-    let technique_result: Result<String, &str> = Ok(\"術式順転『青』\".to_string());
+    let technique_result: Result<String, &str> = Ok(\"術式順転『蒼』\".to_string());
 
     // expect() - unwrap()と同じだが、エラーメッセージを指定
     let technique = technique_result.expect(\"術式の取得に失敗しました\");

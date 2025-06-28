@@ -195,7 +195,7 @@ fn main() {
     let mut combat = CombatSystem::new();
 
     // 様々な術式を追加
-    combat.add_technique(Box::new(Limitless::new("青", 500)));
+    combat.add_technique(Box::new(Limitless::new("蒼", 500)));
     combat.add_technique(Box::new(BlackFlash::new()));
     combat.add_technique(Box::new(Limitless::new("赤", 800)));
     combat.add_technique(Box::new(Limitless::new("茈", 1500)));
@@ -580,7 +580,7 @@ impl TechniqueSystem for SorcererTechniqueSystem {
 
     fn register_technique(&mut self, id: Self::TechniqueId, name: String) -> Result<(), Self::Error> {
         let required_power = match name.as_str() {
-            n if n.contains("青") => 500,
+            n if n.contains("蒼") => 500,
             n if n.contains("赤") => 800,
             n if n.contains("茈") => 1500,
             n if n.contains("紫") => 3000,
@@ -626,7 +626,7 @@ fn main() {
     let red_id = TechniqueId(2);
     let hollow_id = TechniqueId(3);
 
-    system.register_technique(blue_id.clone(), "術式順転『青』".to_string()).unwrap();
+    system.register_technique(blue_id.clone(), "術式順転『蒼』".to_string()).unwrap();
     system.register_technique(red_id.clone(), "術式反転『赤』".to_string()).unwrap();
     system.register_technique(hollow_id.clone(), "虚式『茈』".to_string()).unwrap();
 
@@ -897,7 +897,7 @@ fn main() {
     let mut inventory = TechniqueInventory::new();
 
     // 術式を追加
-    inventory.add_technique("術式順転『青』", 1000);
+    inventory.add_technique("術式順転『蒼』", 1000);
     inventory.add_technique("術式反転『赤』", 1500);
     inventory.add_technique("虚式『茈』", 3000);
 

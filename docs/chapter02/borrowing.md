@@ -16,7 +16,7 @@
 
 ```rust
 fn main() {
-    let technique = String::from(\"術式順転『青』\");
+    let technique = String::from(\"術式順転『蒼』\");
     let reference = &technique;  // 参照を作成
 
     println!(\"元のデータ: {}\", technique);    // 所有者も使える
@@ -37,7 +37,7 @@ fn display_technique(technique: &String) {
 }
 
 fn main() {
-    let my_technique = String::from(\"術式順転『青』\");
+    let my_technique = String::from(\"術式順転『蒼』\");
 
     let length = analyze_technique(&my_technique);  // 借用
     display_technique(&my_technique);               // 借用
@@ -74,7 +74,7 @@ fn main() {
     let mut technique = String::from(\"術式順転\");
     let mutable_ref = &mut technique;  // 可変参照
 
-    mutable_ref.push_str(\"『青』\");  // 参照経由で変更
+    mutable_ref.push_str(\"『蒼』\");  // 参照経由で変更
 
     println!(\"変更後: {}\", mutable_ref);
 }
@@ -93,7 +93,7 @@ fn clear_technique(technique: &mut String) {
 }
 
 fn main() {
-    let mut my_technique = String::from(\"術式順転『青』\");
+    let mut my_technique = String::from(\"術式順転『蒼』\");
     println!(\"変更前: {}\", my_technique);
 
     power_up_technique(&mut my_technique);  // 可変借用
@@ -110,7 +110,7 @@ fn main() {
 
 ```rust
 fn main() {
-    let mut technique = String::from(\"術式順転『青』\");
+    let mut technique = String::from(\"術式順転『蒼』\");
 
     // パターン1: 複数の不変参照 - OK
     let ref1 = &technique;
@@ -157,11 +157,11 @@ fn main() {
 
 ```rust
 fn main() {
-    let technique = String::from(\"術式順転『青』\");
+    let technique = String::from(\"術式順転『蒼』\");
 
     // 部分的な借用（スライス）
     let technique_type = &technique[0..6];   // \"術式順転\"
-    let technique_name = &technique[6..];    // \"『青』\"
+    let technique_name = &technique[6..];    // \"『蒼』\"
     let full_slice = &technique[..];         // 全体
 
     println!(\"種類: {}\", technique_type);
@@ -185,7 +185,7 @@ fn analyze_technique_name(name: &str) -> usize {
 fn get_technique_grade(name: &str) -> &str {
     if name.contains(\"茈\") {
         \"特級\"
-    } else if name.contains(\"青\") || name.contains(\"赤\") {
+    } else if name.contains(\"蒼\") || name.contains(\"赤\") {
         \"上級\"
     } else {
         \"基本\"
@@ -194,7 +194,7 @@ fn get_technique_grade(name: &str) -> &str {
 
 fn main() {
     let owned_string = String::from(\"虚式『茈』\");
-    let string_literal = \"術式順転『青』\";
+    let string_literal = \"術式順転『蒼』\";
 
     // どちらも同じ関数で処理できる
     println!(\"文字数1: {}\", analyze_technique_name(&owned_string));
@@ -437,7 +437,7 @@ fn analyze_text(text: &str) -> (usize, bool, &str) {
 }
 
 fn main() {
-    let technique1 = \"術式順転『青』\";
+    let technique1 = \"術式順転『蒼』\";
     let technique2 = String::from(\"無下限 呪術 領域展開\");
 
     let (count1, has_jutsu1, first1) = analyze_text(technique1);

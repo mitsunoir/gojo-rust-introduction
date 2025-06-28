@@ -53,7 +53,7 @@ fn cast_advanced_technique(
 
     // 呪力チェック
     let required_power = match technique {
-        \"青\" => 500,
+        \"蒼\" => 500,
         \"赤\" => 800,
         \"茈\" => 1500,
         \"紫\" => 3000,
@@ -77,7 +77,7 @@ fn cast_advanced_technique(
 
 fn main() {
     let test_cases = [
-        (2000, \"青\", \"呪霊A\"),
+        (2000, \"蒼\", \"呪霊A\"),
         (300, \"赤\", \"呪霊B\"),
         (1000, \"未知の術式\", \"呪霊C\"),
         (2000, \"茈\", \"\"),
@@ -689,7 +689,7 @@ fn run_sorcerer_management_system() -> Result<(), SystemError> {
 
     // 術式の追加
     manager.add_technique_to_sorcerer(gojo_id, \"無下限呪術\".to_string())?;
-    manager.add_technique_to_sorcerer(gojo_id, \"術式順転『青』\".to_string())?;
+    manager.add_technique_to_sorcerer(gojo_id, \"術式順転『蒼』\".to_string())?;
     manager.add_technique_to_sorcerer(yuji_id, \"黒閃\".to_string())?;
     manager.add_technique_to_sorcerer(megumi_id, \"十種影法術\".to_string())?;
 

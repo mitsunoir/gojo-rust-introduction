@@ -472,7 +472,7 @@ fn main() {
     let mut technique_repo: Repository<u32, TechniqueData> = Repository::new();
 
     technique_repo.add(1, TechniqueData {
-        name: \"術式順転『青』\".to_string(),
+        name: \"術式順転『蒼』\".to_string(),
         power: 1000,
         element: \"無下限\".to_string(),
         difficulty: 8,

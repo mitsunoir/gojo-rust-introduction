@@ -237,7 +237,7 @@ struct TechniqueDatabase {
 
 fn main() {
     let techniques = vec![
-        TechniqueInfo { name: \"青\".to_string(), power: 1000, element: \"無下限\".to_string() },
+        TechniqueInfo { name: \"蒼\".to_string(), power: 1000, element: \"無下限\".to_string() },
         TechniqueInfo { name: \"赤\".to_string(), power: 1500, element: \"無下限\".to_string() },
         TechniqueInfo { name: \"茈\".to_string(), power: 3000, element: \"無下限\".to_string() },
     ];
@@ -311,7 +311,7 @@ impl TechniqueDatabase {
         let power2 = self.get_power(tech2)?;
 
         let (combo_power, combo_name) = match (tech1, tech2) {
-            (\"青\", \"赤\") | (\"赤\", \"青\") => {
+            (\"蒼\", \"赤\") | (\"赤\", \"蒼\") => {
                 (power1 + power2 + 500, \"虚式『茈』\".to_string())
             },
             (a, b) if a == b => {
@@ -348,7 +348,7 @@ impl TechniqueDatabase {
 
 fn main() {
     let techniques = vec![
-        TechniqueInfo { name: \"青\".to_string(), power: 1000, element: \"無下限\".to_string() },
+        TechniqueInfo { name: \"蒼\".to_string(), power: 1000, element: \"無下限\".to_string() },
         TechniqueInfo { name: \"赤\".to_string(), power: 1500, element: \"無下限\".to_string() },
         TechniqueInfo { name: \"茈\".to_string(), power: 3000, element: \"無下限\".to_string() },
         TechniqueInfo { name: \"黒閃\".to_string(), power: 800, element: \"物理\".to_string() },
@@ -359,7 +359,7 @@ fn main() {
     println!(\"=== Option型チェーン操作システム ===\");
 
     // 1. 基本的な威力取得
-    let techniques_to_test = [\"青\", \"赤\", \"存在しない術式\"];
+    let techniques_to_test = [\"蒼\", \"赤\", \"存在しない術式\"];
     for tech in techniques_to_test.iter() {
         match db.get_power(tech) {
             Some(power) => println!(\"✓ {}: 威力 {}\", tech, power),
@@ -369,7 +369,7 @@ fn main() {
 
     // 2. 推奨レベル計算のチェーン
     println!(\"\\n=== 術式分析 ===\");
-    for tech in [\"青\", \"茈\", \"黒閃\"].iter() {
+    for tech in [\"蒼\", \"茈\", \"黒閃\"].iter() {
         match db.get_technique_analysis(tech) {
             Some(analysis) => println!(\"✓ {}\", analysis),
             None => println!(\"✗ {}の分析に失敗\", tech),
@@ -379,9 +379,9 @@ fn main() {
     // 3. 合計威力計算
     println!(\"\\n=== 合計威力計算 ===\");
     let combos = vec![
-        vec![\"青\", \"赤\"],
-        vec![\"青\", \"赤\", \"茈\"],
-        vec![\"青\", \"存在しない術式\"],
+        vec![\"蒼\", \"赤\"],
+        vec![\"蒼\", \"赤\", \"茈\"],
+        vec![\"蒼\", \"存在しない術式\"],
     ];
 
     for combo in combos {
@@ -398,8 +398,8 @@ fn main() {
     // 4. コンボ効果計算
     println!(\"\\n=== コンボ効果分析 ===\");
     let combo_pairs = vec![
-        (\"青\", \"赤\"),
-        (\"青\", \"青\"),
+        (\"蒼\", \"赤\"),
+        (\"蒼\", \"蒼\"),
         (\"茈\", \"黒閃\"),
     ];
 
@@ -418,7 +418,7 @@ fn main() {
 
     for level in user_levels.iter() {
         println!(\"\\nユーザーレベル: {}\", level);
-        for (tech1, tech2) in [(\"青\", \"赤\"), (\"茈\", \"黒閃\")].iter() {
+        for (tech1, tech2) in [(\"蒼\", \"赤\"), (\"茈\", \"黒閃\")].iter() {
             match db.analyze_combo_viability(tech1, tech2, *level) {
                 Some(analysis) => println!(\"  {}\", analysis),
                 None => println!(\"  {}/{}: 分析失敗\", tech1, tech2),
@@ -727,7 +727,7 @@ fn main() {
 
                 // 術式の追加テスト
                 let techniques = match name.as_str() {
-                    \"五条悟\" => vec![\"無下限呪術\", \"術式順転『青』\"],
+                    \"五条悟\" => vec![\"無下限呪術\", \"術式順転『蒼』\"],
                     \"虎杖悠仁\" => vec![\"黒閃\"],
                     \"伏黒恵\" => vec![\"十種影法術\"],
                     _ => vec![],
@@ -1181,7 +1181,7 @@ fn main() {
 
     // 術式の追加
     test_sorcerers[0].techniques.push(\"無下限呪術\".to_string());
-    test_sorcerers[0].techniques.push(\"術式順転『青』\".to_string());
+    test_sorcerers[0].techniques.push(\"術式順転『蒼』\".to_string());
     test_sorcerers[1].techniques.push(\"黒閃\".to_string());
     test_sorcerers[2].techniques.push(\"十種影法術\".to_string());
 
@@ -2195,7 +2195,7 @@ fn main() {
     println!(\"\\n3. 術式追加テスト\");
 
     if !created_ids.is_empty() {
-        let techniques = vec![\"無下限呪術\", \"術式順転『青』\", \"黒閃\"];
+        let techniques = vec![\"無下限呪術\", \"術式順転『蒼』\", \"黒閃\"];
 
         for (i, technique) in techniques.iter().enumerate() {
             if i < created_ids.len() {

@@ -25,7 +25,7 @@ fn cast_technique(name: &str, power: i32) {
 }
 
 fn main() {
-    cast_technique(\"術式順転『青』\", 1000);
+    cast_technique(\"術式順転『蒼』\", 1000);
     cast_technique(\"術式反転『赤』\", 1500);
     cast_technique(\"虚式『茈』\", 3000);
 }
@@ -47,7 +47,7 @@ fn get_technique_name(level: i32) -> &'static str {
     } else if level >= 1500 {
         \"術式反転『赤』\"
     } else {
-        \"術式順転『青』\"
+        \"術式順転『蒼』\"
     }
 }
 
@@ -123,7 +123,7 @@ fn take_ownership(technique: String) {
 }  // ここでtechniqueがドロップされる
 
 fn main() {
-    let my_technique = String::from(\"術式順転『青』\");
+    let my_technique = String::from(\"術式順転『蒼』\");
     take_ownership(my_technique);
 
     // println!(\"{}\", my_technique);  // エラー！所有権が移動した
@@ -138,7 +138,7 @@ fn analyze_technique(technique: &String) -> usize {
 }
 
 fn main() {
-    let my_technique = String::from(\"術式順転『青』\");
+    let my_technique = String::from(\"術式順転『蒼』\");
     let length = analyze_technique(&my_technique);
 
     println!(\"技名: {}\", my_technique);  // まだ使える！
@@ -154,7 +154,7 @@ fn power_up(technique: &mut String) {
 }
 
 fn main() {
-    let mut my_technique = String::from(\"術式順転『青』\");
+    let mut my_technique = String::from(\"術式順転『蒼』\");
     println!(\"変更前: {}\", my_technique);
 
     power_up(&mut my_technique);
@@ -268,7 +268,7 @@ fn attack(attacker: &Sorcerer, target: &mut Sorcerer, technique_name: &str) {
 // 術式ダメージ計算
 fn calculate_technique_damage(sorcerer: &Sorcerer, technique: &str) -> i32 {
     let base_damage = match technique {
-        \"術式順転『青』\" => sorcerer.power,
+        \"術式順転『蒼』\" => sorcerer.power,
         \"術式反転『赤』\" => (sorcerer.power as f64 * 1.5) as i32,
         \"虚式『茈』\" => sorcerer.power * 2,
         \"無下限呪術『紫』\" => sorcerer.power * 10,
@@ -311,7 +311,7 @@ fn main() {
 
         // 五条の攻撃
         if gojo.health > 0 {
-            let technique = if round >= 3 { \"無下限呪術『紫』\" } else { \"術式順転『青』\" };
+            let technique = if round >= 3 { \"無下限呪術『紫』\" } else { \"術式順転『蒼』\" };
             attack(&gojo, &mut sukuna, technique);
         }
 
@@ -407,8 +407,8 @@ fn main() {
 ```rust
 fn combo_technique(tech1: &str, tech2: &str) -> (String, i32) {
     match (tech1, tech2) {
-        (\"青\", \"赤\") | (\"赤\", \"青\") => (String::from(\"虚式『茈』\"), 3000),
-        (\"青\", \"青\") => (String::from(\"強化『青』\"), 1500),
+        (\"蒼\", \"赤\") | (\"赤\", \"蒼\") => (String::from(\"虚式『茈』\"), 3000),
+        (\"蒼\", \"蒼\") => (String::from(\"強化『蒼』\"), 1500),
         (\"赤\", \"赤\") => (String::from(\"強化『赤』\"), 2000),
         (\"茈\", _) | (_, \"茈\") => (String::from(\"超虚式『茈』\"), 5000),
         _ => (format!(\"{} + {}\", tech1, tech2), 800),
@@ -417,10 +417,10 @@ fn combo_technique(tech1: &str, tech2: &str) -> (String, i32) {
 
 fn main() {
     let combinations = [
-        (\"青\", \"赤\"),
-        (\"青\", \"青\"),
+        (\"蒼\", \"赤\"),
+        (\"蒼\", \"蒼\"),
         (\"赤\", \"赤\"),
-        (\"茈\", \"青\"),
+        (\"茈\", \"蒼\"),
         (\"基本\", \"基本\"),
     ];
 

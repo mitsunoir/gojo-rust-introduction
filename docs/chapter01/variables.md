@@ -51,7 +51,7 @@ fn main() {
 
 !!! tip "シャドーイングの利点"
     シャドーイングを使えば、同じ名前で違う型の値を扱える。
-    俺の術式も「青」→「赤」→「茈」と進化するように、変数も段階的に進化させられる。
+    俺の術式も「蒼」→「赤」→「茈」と進化するように、変数も段階的に進化させられる。
 
 ## 型アノテーション - 術式の詳細指定
 
@@ -92,7 +92,7 @@ fn main() {
 ```rust
 fn main() {
     // タプルの作成
-    let technique_info = (\"術式順転『青』\", 9999, true);
+    let technique_info = (\"術式順転『蒼』\", 9999, true);
 
     // 分解して取得
     let (name, power, is_offensive) = technique_info;
@@ -111,7 +111,7 @@ fn main() {
 
 ```rust
 fn get_technique_stats() -> (String, i32, bool) {
-    (String::from(\"術式順転『青』\"), 9999, true)
+    (String::from(\"術式順転『蒼』\"), 9999, true)
 }
 
 fn main() {
@@ -130,7 +130,7 @@ fn main() {
 ```rust
 fn main() {
     // 固定長配列
-    let techniques = [\"青\", \"赤\", \"茈\"];
+    let techniques = [\"蒼\", \"赤\", \"茈\"];
     let power_levels = [1000, 1500, 3000];
 
     // 型と長さを明示
@@ -152,7 +152,7 @@ fn main() {
 
 ```rust
 fn main() {
-    let techniques = [\"青\", \"赤\", \"茈\", \"紫\"];
+    let techniques = [\"蒼\", \"赤\", \"茈\", \"紫\"];
 
     // インデックス付きループ
     for i in 0..techniques.len() {
@@ -203,7 +203,7 @@ fn main() {
 
 ```rust
 fn main() {
-    let mut techniques = vec![\"青\", \"赤\"];
+    let mut techniques = vec![\"蒼\", \"赤\"];
 
     // 要素の追加
     techniques.push(\"茈\");
@@ -238,7 +238,7 @@ fn main() {
 
     // String型（所有権あり）
     let mut technique_name = String::from(\"術式順転\");
-    technique_name.push_str(\"『青』\");
+    technique_name.push_str(\"『蒼』\");
 
     // 変換
     let static_str: &str = &technique_name;  // StringからStrへ
@@ -258,7 +258,7 @@ fn main() {
     // 文字列の結合
     spell.push_str(\"順転\");
     spell.push('『');
-    spell.push_str(\"青』\");
+    spell.push_str(\"蒼』\");
 
     // format!マクロ
     let power = 9999;
@@ -325,7 +325,7 @@ fn main() {
 
 ```rust
 fn main() {
-    let techniques = [1000, 1500, 3000];  // 青、赤、茈の威力
+    let techniques = [1000, 1500, 3000];  // 蒼、赤、茈の威力
     let mut total_power = 0;
 
     for power in techniques.iter() {

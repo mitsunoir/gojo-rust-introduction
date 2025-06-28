@@ -31,7 +31,7 @@ fn main() {
     let enemy_type = \"特級呪霊\";
 
     let technique = if enemy_type == \"特級呪霊\" {
-        \"術式順転『青』\"
+        \"術式順転『蒼』\"
     } else if enemy_type == \"偽夏油\" {
         \"術式反転『赤』\"
     } else {
@@ -56,10 +56,10 @@ fn main() {
 
 ```rust
 fn main() {
-    let technique_type = \"青\";
+    let technique_type = \"蒼\";
 
     match technique_type {
-        \"青\" => println!(\"術式順転『青』 - 引力操作\"),
+        \"蒼\" => println!(\"術式順転『蒼』 - 引力操作\"),
         \"赤\" => println!(\"術式反転『赤』 - 斥力操作\"),
         \"茈\" => println!(\"虚式『茈』 - 仮想質量\"),
         \"紫\" => println!(\"無下限呪術『紫』 - 最強\"),
@@ -73,7 +73,7 @@ fn main() {
 ```rust
 fn calculate_damage(technique: &str) -> i32 {
     match technique {
-        \"青\" => 1000,
+        \"蒼\" => 1000,
         \"赤\" => 1500,
         \"茈\" => 3000,
         \"紫\" => 9999,
@@ -82,7 +82,7 @@ fn calculate_damage(technique: &str) -> i32 {
 }
 
 fn main() {
-    let techniques = [\"青\", \"赤\", \"茈\", \"紫\"];
+    let techniques = [\"蒼\", \"赤\", \"茈\", \"紫\"];
 
     for tech in techniques.iter() {
         let damage = calculate_damage(tech);
@@ -193,7 +193,7 @@ fn main() {
     println!(\"術式発動！\");
 
     // 配列のループ
-    let techniques = [\"青\", \"赤\", \"茈\"];
+    let techniques = [\"蒼\", \"赤\", \"茈\"];
     for (index, technique) in techniques.iter().enumerate() {
         println!(\"技{}: {}\", index + 1, technique);
     }
@@ -258,7 +258,7 @@ fn main() {
     ];
 
     let techniques = [
-        (\"青\", 600),
+        (\"蒼\", 600),
         (\"赤\", 800),
         (\"茈\", 2000),
         (\"紫\", 9999),
@@ -268,7 +268,7 @@ fn main() {
         println!(\"\\n{} (HP: {}) が現れた！\", enemy_name, enemy_hp);
 
         let selected_technique = match *enemy_hp {
-            0..=500 => &techniques[0],      // 青
+            0..=500 => &techniques[0],      // 蒼
             501..=1000 => &techniques[1],   // 赤
             1001..=2000 => &techniques[2],  // 茈
             _ => &techniques[3],            // 紫

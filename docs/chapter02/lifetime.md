@@ -19,7 +19,7 @@ fn main() {
     let technique;               // -------+-- 'a
                                 //        |
     {                           //        |
-        let temp = String::from("青");  // -+-- 'b
+        let temp = String::from("蒼");  // -+-- 'b
         technique = &temp;      //        |  |
     }                           // -------+  |
                                 //           |
@@ -31,7 +31,7 @@ fn main() {
 
 ```rust
 fn main() {
-    let temp = String::from("術式順転『青』");  // ----+-- 'a
+    let temp = String::from("術式順転『蒼』");  // ----+-- 'a
     let technique = &temp;                     //     |
     println!("{}", technique);                 //     |
 }                                              // ----+
@@ -52,8 +52,8 @@ fn get_longer<'a>(x: &'a str, y: &'a str) -> &'a str {
 }
 
 fn main() {
-    let technique1 = "青";
-    let technique2 = "術式順転『青』";
+    let technique1 = "蒼";
+    let technique2 = "術式順転『蒼』";
 
     let longer = get_longer(technique1, technique2);
     println!("長い方: {}", longer);
@@ -72,7 +72,7 @@ fn combine_techniques<'a, 'b>(
 }
 
 fn main() {
-    let blue = "青";
+    let blue = "蒼";
     let red = "赤";
     let combo = combine_techniques(blue, red);
     println!("コンボ: {}", combo);
@@ -164,7 +164,7 @@ fn main() {
     // すべての文字列リテラルは'staticライフタイム
     let mut gojo = Sorcerer::new("五条悟");
 
-    gojo.add_technique("術式順転『青』");
+    gojo.add_technique("術式順転『蒼』");
     gojo.add_technique("術式反転『赤』");
     gojo.add_technique("虚式『茈』");
     gojo.add_technique("無下限呪術『紫』");
@@ -256,7 +256,7 @@ fn main() {
 ```rust
 // ヒープ上のデータは所有権で管理
 fn create_owned_technique() -> Box<str> {
-    let technique = String::from("術式順転『青』");
+    let technique = String::from("術式順転『蒼』");
     technique.into_boxed_str()
 }
 
@@ -375,7 +375,7 @@ impl BattleSimulator {
         record.add_combatant("両面宿儺");
 
         // 戦闘シミュレーション
-        record.record_technique("術式順転『青』");
+        record.record_technique("術式順転『蒼』");
         record.record_technique("解");
         record.record_technique("術式反転『赤』");
         record.record_technique("捌");
@@ -465,7 +465,7 @@ fn enhance_technique(technique: &str) -> String {
 }
 
 fn main() {
-    let technique = "術式順転『青』";
+    let technique = "術式順転『蒼』";
     let result = apply_to_technique(technique, enhance_technique);
     println!("{}", result);
 }
