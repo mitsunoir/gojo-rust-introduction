@@ -287,17 +287,12 @@ fn main() {
 
 ## 練習問題
 
-<div class="exercise">
-
 ### 問題1: 呪力の移譲
 
 文字列を受け取って先頭に「最強の」を追加する関数を作成し、所有権の移動を確認せよ。
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 fn make_strongest(mut technique: String) -> String {
@@ -316,20 +311,14 @@ fn main() {
 }
 ```
 
-</div>
 </details>
-
-<div class="exercise">
 
 ### 問題2: 技のコレクション管理
 
 ベクターの所有権を操作して、技のリストを管理するプログラムを作成せよ。
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 fn add_technique(mut techniques: Vec<String>, new_technique: String) -> Vec<String> {
@@ -361,7 +350,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## まとめ

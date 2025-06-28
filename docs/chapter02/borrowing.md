@@ -408,8 +408,6 @@ fn main() {
 
 ## 練習問題
 
-<div class="exercise">
-
 ### 問題1: 文字列分析関数
 
 文字列スライスを受け取って、以下の情報を返す関数を作成せよ：
@@ -418,11 +416,8 @@ fn main() {
 - 「術式」が含まれているか
 - 最初の単語
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 fn analyze_text(text: &str) -> (usize, bool, &str) {
@@ -450,10 +445,7 @@ fn main() {
 }
 ```
 
-</div>
 </details>
-
-<div class="exercise">
 
 ### 問題2: ベクター操作システム
 
@@ -463,11 +455,8 @@ fn main() {
 - 最大値を見つける（不変借用）
 - 全要素を2倍にする（可変借用）
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 // 不変借用で合計計算
@@ -519,7 +508,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## まとめ

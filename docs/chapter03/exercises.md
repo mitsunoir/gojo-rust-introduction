@@ -14,8 +14,6 @@
 
 呪術師のデータベースからOption型を使って安全に検索するシステムを作成せよ。
 
-<div class="exercise">
-
 ```rust
 #[derive(Debug, Clone)]
 struct Sorcerer {
@@ -57,11 +55,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 #[derive(Debug, Clone)]
@@ -208,14 +203,11 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ### 問題2: Option型のチェーン操作
 
 複数のOption型を組み合わせて、安全にデータを処理するシステムを作成せよ。
-
-<div class="exercise">
 
 ```rust
 #[derive(Debug)]
@@ -246,11 +238,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 #[derive(Debug)]
@@ -428,7 +417,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## 中級編 - Result型とエラーハンドリング
@@ -436,8 +424,6 @@ fn main() {
 ### 問題3: 呪術師登録システム
 
 バリデーション機能付きの呪術師登録システムをResult型を使って実装せよ。
-
-<div class="exercise">
 
 ```rust
 #[derive(Debug)]
@@ -480,11 +466,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 use std::fmt;
@@ -788,14 +771,11 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ### 問題4: ファイルI/Oとエラーハンドリング
 
 呪術師データをファイルに保存・読み込みするシステムを実装せよ。複数のエラー型を統合したカスタムエラーを使用すること。
-
-<div class="exercise">
 
 ```rust
 use std::fs;
@@ -813,11 +793,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 use std::fmt;
@@ -1241,7 +1218,6 @@ fn main() {
 // glob = "0.3"
 ```
 
-</div>
 </details>
 
 ## 上級編 - 高度なエラーハンドリングパターン
@@ -1249,8 +1225,6 @@ fn main() {
 ### 問題5: マルチスレッド対応エラーハンドリング
 
 複数のスレッドで並行処理を行い、各スレッドのエラーを適切に集約するシステムを実装せよ。
-
-<div class="exercise">
 
 ```rust
 use std::sync::{Arc, Mutex};
@@ -1268,11 +1242,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 use std::sync::{Arc, Mutex, mpsc};
@@ -1639,7 +1610,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## 総合問題
@@ -1656,15 +1626,10 @@ fn main() {
 - ログ記録システム
 - リトライ機構
 
-<div class="exercise">
-
 自由に設計して実装してみよう！すべてのエラーハンドリング技術を駆使すること。
-
-</div>
 
 <details>
 <summary>解答例を見る</summary>
-<div class="solution">
 
 ```rust
 use std::collections::HashMap;
@@ -2258,7 +2223,6 @@ fn main() {
 // chrono = { version = "0.4", features = ["serde"] }
 ```
 
-</div>
 </details>
 
 ## 章末総括

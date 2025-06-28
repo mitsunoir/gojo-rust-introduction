@@ -16,8 +16,6 @@
 
 独自のDSL（ドメイン固有言語）を作成し、呪術師の戦闘シナリオを記述できるシステムを構築せよ。
 
-<div class="exercise">
-
 ```rust
 // 以下のような記法で戦闘シナリオを記述できるマクロを作成
 // 要件：
@@ -57,8 +55,6 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>ヒントを見る</summary>
 
@@ -73,8 +69,6 @@ fn main() {
 ### 問題2: 型安全な設定システム
 
 コンパイル時に設定の妥当性を検証する、型安全な設定システムを作成せよ。
-
-<div class="exercise">
 
 ```rust
 // 要件：
@@ -110,13 +104,9 @@ async fn main() -> Result<(), ConfigError> {
 }
 ```
 
-</div>
-
 ### 問題3: リアルタイム監視システム
 
 非同期ストリーミングとエラーハンドリングを組み合わせた、呪術師の活動監視システムを作成せよ。
-
-<div class="exercise">
 
 ```rust
 // 要件：
@@ -181,15 +171,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-</div>
-
 ## 中級編 - アーキテクチャ設計
 
 ### 問題4: プラグインシステム
 
 動的ローディング可能なプラグインシステムを設計せよ。
-
-<div class="exercise">
 
 ```rust
 // 要件：
@@ -247,13 +233,9 @@ async fn main() -> Result<(), PluginError> {
 }
 ```
 
-</div>
-
 ### 問題5: 分散システム通信
 
 複数のノード間で呪術師情報を同期する分散システムを構築せよ。
-
-<div class="exercise">
 
 ```rust
 // 要件：
@@ -307,15 +289,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-</div>
-
 ## 上級編 - 最高難度の挑戦
 
 ### 問題6: 自動最適化コンパイラ
 
 Rustコードを解析し、自動的に最適化を提案するシステムを作成せよ。
-
-<div class="exercise">
 
 ```rust
 // 要件：
@@ -403,13 +381,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-</div>
-
 ### 問題7: メタプログラミングフレームワーク
 
 実行時にコードを生成・コンパイル・実行できるメタプログラミングフレームワークを構築せよ。
-
-<div class="exercise">
 
 ```rust
 // 要件：
@@ -497,13 +471,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-</div>
-
 ### 問題8: 究極の統合システム
 
 これまでの全ての技術を統合した、完全な呪術師管理・戦闘・分析システムを構築せよ。
-
-<div class="exercise">
 
 ```rust
 // 要件：
@@ -607,8 +577,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 1. **包括的なテスト**
 1. **詳細なドキュメント**
 1. **パフォーマンス最適化**
-
-</div>
 
 ## 評価基準
 

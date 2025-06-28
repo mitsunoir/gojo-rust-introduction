@@ -18,8 +18,6 @@
 - 呪力を他の呪術師に移譲する関数
 - 移譲後は元の呪術師の呪力は0になる
 
-<div class="exercise">
-
 ```rust
 struct Sorcerer {
     name: String,
@@ -42,11 +40,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 struct Sorcerer {
@@ -96,14 +91,11 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ### 問題2: 術式コレクションの管理
 
 術式名のベクターを管理するシステムで、所有権の移動を正しく処理せよ。
-
-<div class="exercise">
 
 ```rust
 fn process_techniques(techniques: Vec<String>) -> Vec<String> {
@@ -127,11 +119,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 fn process_techniques(techniques: Vec<String>) -> Vec<String> {
@@ -169,7 +158,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## 中級編 - 借用と参照の活用
@@ -177,8 +165,6 @@ fn main() {
 ### 問題3: 戦闘ログ分析システム
 
 戦闘ログを分析して統計情報を提供するシステムを作成せよ。借用を適切に使用すること。
-
-<div class="exercise">
 
 ```rust
 struct BattleLog {
@@ -213,11 +199,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 struct BattleLog {
@@ -305,14 +288,11 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ### 問題4: 文字列スライス操作
 
 文字列スライスを使って術式名を解析する関数群を作成せよ。
-
-<div class="exercise">
 
 ```rust
 // 以下の関数を実装せよ：
@@ -334,11 +314,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 // 1. 術式の種類を抽出
@@ -464,7 +441,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## 上級編 - ライフタイムの実践
@@ -472,8 +448,6 @@ fn main() {
 ### 問題5: 呪術師データベース
 
 ライフタイム注釈を使って、呪術師の情報を管理するデータベースシステムを作成せよ。
-
-<div class="exercise">
 
 ```rust
 // 呪術師の参照を保持する構造体
@@ -509,11 +483,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 #[derive(Debug)]
@@ -710,14 +681,11 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ### 問題6: 複雑なライフタイム関係
 
 複数の構造体間で参照を持つ複雑なシステムを実装せよ。
-
-<div class="exercise">
 
 ```rust
 // 学校、クラス、生徒の関係を表現
@@ -745,11 +713,8 @@ struct Student<'a> {
 // 学校システムの管理機能を実装せよ
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 #[derive(Debug)]
@@ -973,7 +938,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## 総合問題
@@ -990,15 +954,10 @@ fn main() {
 - リアルタイム統計
 - メモリ効率的な設計
 
-<div class="exercise">
-
 自由に設計して実装してみよう！所有権、借用、ライフタイムを適切に使い分けること。
-
-</div>
 
 <details>
 <summary>解答例を見る</summary>
-<div class="solution">
 
 ```rust
 use std::collections::HashMap;
@@ -1314,7 +1273,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## 章末総括

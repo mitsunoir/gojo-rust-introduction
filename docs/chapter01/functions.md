@@ -352,8 +352,6 @@ impl Clone for Sorcerer {
 
 ## 練習問題
 
-<div class="exercise">
-
 ### 問題1: 呪力変換関数
 
 整数の呪力値を受け取り、以下の変換を行う関数を作成せよ：
@@ -362,11 +360,8 @@ impl Clone for Sorcerer {
 - 1000以下の場合は2倍する
 - 1000を超える場合は平方根を取る（整数で返す）
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 fn convert_power(power: i32) -> i32 {
@@ -389,20 +384,14 @@ fn main() {
 }
 ```
 
-</div>
 </details>
-
-<div class="exercise">
 
 ### 問題2: 術式コンボ関数
 
 2つの術式名を受け取り、組み合わせによって新しい技名とダメージを返す関数を作成せよ。
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 fn combo_technique(tech1: &str, tech2: &str) -> (String, i32) {
@@ -432,7 +421,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## まとめ

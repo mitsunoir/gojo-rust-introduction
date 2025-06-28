@@ -16,19 +16,14 @@
 
 五条先生の基本呪力は1500、レベルアップで300増加する。レベル5まで上がった時の最終呪力を計算して表示するプログラムを書け。
 
-<div class="exercise">
-
 ```rust
 fn main() {
     // ここにコードを書く
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 fn main() {
@@ -49,14 +44,11 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ### 問題2: 文字列操作
 
 「術式順転」という文字列に「『蒼』」を追加して「術式順転『蒼』」にし、さらに「発動！」を追加するプログラムを書け。
-
-<div class="exercise">
 
 ```rust
 fn main() {
@@ -65,11 +57,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 fn main() {
@@ -88,7 +77,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## 中級編 - 制御構文の応用
@@ -113,8 +101,6 @@ fn main() {
 - 5の倍数: 「努力型」
 - 1000の倍数: 「規格外」
 
-<div class="exercise">
-
 ```rust
 fn main() {
     let test_powers = [300, 750, 1200, 2000, 3000, 5000];
@@ -125,11 +111,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 fn judge_grade(power: i32) -> String {
@@ -175,7 +158,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ### 問題4: 術式コンビネーション
@@ -191,8 +173,6 @@ fn main() {
 - 同じ術式2つ = 強化版 (威力1.5倍)
 - その他 = 基本コンボ (威力合計 × 1.2)
 
-<div class="exercise">
-
 ```rust
 fn main() {
     let combinations = [
@@ -206,11 +186,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 fn get_base_power(technique: &str) -> i32 {
@@ -263,7 +240,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## 上級編 - 関数とデータ構造
@@ -285,8 +261,6 @@ fn main() {
 - レベルアップ: 経験値100で呪力+200
 - 攻撃パターン: 基本攻撃(呪力×0.8), 必殺技(呪力×1.5, 3回に1回)
 
-<div class="exercise">
-
 ```rust
 // 構造体の定義例
 struct Curse {
@@ -307,11 +281,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 #[derive(Clone)]
@@ -460,7 +431,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ### 問題6: 術式データベース
@@ -471,8 +441,6 @@ fn main() {
 - 名前による検索
 - 威力でのソート
 - 統計情報の表示
-
-<div class="exercise">
 
 ```rust
 struct Technique {
@@ -487,11 +455,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 #[derive(Debug, Clone)]
@@ -628,7 +593,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## 総合問題
@@ -644,15 +608,10 @@ fn main() {
 - 科目ごとに異なる評価方法
 - 最終的な合否判定と講評
 
-<div class="exercise">
-
 自由に設計して実装してみよう！
-
-</div>
 
 <details>
 <summary>解答例を見る</summary>
-<div class="solution">
 
 ```rust
 use std::collections::HashMap;
@@ -850,7 +809,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## 章末総括

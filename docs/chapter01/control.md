@@ -291,8 +291,6 @@ fn main() {
 
 ## 練習問題
 
-<div class="exercise">
-
 ### 問題1: 呪力判定システム
 
 呪力値に応じて等級を判定するプログラムを`match`式で作成せよ。
@@ -303,11 +301,8 @@ fn main() {
 - 1001-2000: 1級
 - 2001以上: 特級
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 fn judge_grade(power: i32) -> &'static str {
@@ -330,20 +325,14 @@ fn main() {
 }
 ```
 
-</div>
 </details>
-
-<div class="exercise">
 
 ### 問題2: FizzBuzz呪術版
 
 1から30まで数えて、3の倍数で「呪", 5の倍数で「術", 両方の倍数で「呪術"と表示するプログラムを作成せよ。
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 fn main() {
@@ -358,7 +347,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## まとめ

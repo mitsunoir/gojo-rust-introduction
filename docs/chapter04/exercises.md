@@ -14,8 +14,6 @@
 
 様々な型の値を安全に管理できる汎用コンテナシステムを作成せよ。
 
-<div class="exercise">
-
 ```rust
 // 以下の要件を満たすコンテナを実装せよ：
 // 1. 任意の型Tの値を保持
@@ -41,11 +39,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 use std::collections::VecDeque;
@@ -256,14 +251,11 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ### 問題2: ジェネリック計算システム
 
 数値計算を汎用的に行うシステムを作成せよ。
-
-<div class="exercise">
 
 ```rust
 // 以下の機能を持つ計算システムを実装せよ：
@@ -279,11 +271,8 @@ struct Calculator<T> {
 // 必要なトレイト境界を考慮して実装
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 use std::ops::{Add, Sub, Mul, Div};
@@ -608,7 +597,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## 中級編 - トレイトの実践応用
@@ -616,8 +604,6 @@ fn main() {
 ### 問題3: 呪術戦闘システム
 
 複数のトレイトを組み合わせた戦闘システムを実装せよ。
-
-<div class="exercise">
 
 ```rust
 // 以下のトレイトを定義し、戦闘システムを実装せよ：
@@ -635,11 +621,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 use std::collections::HashMap;
@@ -1094,14 +1077,11 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ### 問題4: 型安全な設定管理システム
 
 異なる型の設定値を安全に管理するシステムを作成せよ。
-
-<div class="exercise">
 
 ```rust
 // 以下の要件を満たす設定管理システムを実装せよ：
@@ -1121,11 +1101,8 @@ struct ConfigManager {
 // 設定値のトレイト定義も含めて実装
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 use std::collections::HashMap;
@@ -1508,7 +1485,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## 上級編 - 高度なトレイト応用
@@ -1516,8 +1492,6 @@ fn main() {
 ### 問題5: 関数型プログラミングライブラリ
 
 関数型プログラミングの概念を取り入れた汎用ライブラリを実装せよ。
-
-<div class="exercise">
 
 ```rust
 // 以下の関数型プログラミング概念を実装せよ：
@@ -1530,11 +1504,8 @@ fn main() {
 // これらのトレイトを定義し、適切な型に実装せよ
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 // Functor trait - map操作が可能
@@ -2085,14 +2056,11 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ### 問題6: 総合問題 - 呪術学園管理システム
 
 これまで学んだすべての技術を統合した大規模システムを実装せよ。
-
-<div class="exercise">
 
 **要件:**
 
@@ -2107,11 +2075,8 @@ fn main() {
 
 自由に設計して実装してみよう！
 
-</div>
-
 <details>
 <summary>解答例を見る</summary>
-<div class="solution">
 
 ```rust
 // （コードが非常に長くなるため、主要部分のみ表示）
@@ -2447,7 +2412,6 @@ fn main() {
 // chrono = { version = "0.4", features = ["serde"] }
 ```
 
-</div>
 </details>
 
 ## 章末総括

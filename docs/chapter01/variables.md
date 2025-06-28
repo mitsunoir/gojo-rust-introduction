@@ -305,8 +305,6 @@ fn main() {
 
 ## 練習問題
 
-<div class="exercise">
-
 ### 問題1: 呪力計算機
 
 3つの術式の威力を配列に保存し、合計威力を計算するプログラムを書け。
@@ -317,11 +315,8 @@ fn main() {
 }
 ```
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 fn main() {
@@ -340,20 +335,14 @@ fn main() {
 }
 ```
 
-</div>
 </details>
-
-<div class="exercise">
 
 ### 問題2: 敵リスト管理
 
 ベクターを使って敵リストを作成し、敵を追加・削除する機能を実装せよ。
 
-</div>
-
 <details>
 <summary>解答を見る</summary>
-<div class="solution">
 
 ```rust
 fn main() {
@@ -378,7 +367,6 @@ fn main() {
 }
 ```
 
-</div>
 </details>
 
 ## まとめ
